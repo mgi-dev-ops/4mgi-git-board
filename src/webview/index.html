@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Content Security Policy for VS Code Webview
+      - default-src: only allow content from VS Code webview origin
+      - style-src: allow inline styles and VS Code stylesheets
+      - script-src: allow scripts with specific nonce
+      - img-src: allow images from VS Code and data URIs
+      - font-src: allow fonts from VS Code origin
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'none';
+        style-src ${webview.cspSource} 'unsafe-inline';
+        script-src 'nonce-${nonce}';
+        img-src ${webview.cspSource} data: https:;
+        font-src ${webview.cspSource};
+        connect-src ${webview.cspSource};
+      "
+    />
+    <title>4MGI Git Board</title>
+    <!-- Styles will be injected here by the extension -->
+    ${styleUri}
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Script will be injected here by the extension -->
+    <script nonce="${nonce}" src="${scriptUri}"></script>
+  </body>
+</html>

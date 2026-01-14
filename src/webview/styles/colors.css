@@ -1,0 +1,140 @@
+/**
+ * Color System for 4MGI Git Board
+ * Defines all color variables for the extension
+ */
+
+:root {
+  /* ===== Branch Colors ===== */
+  --branch-main: #4caf50;
+  --branch-develop: #2196f3;
+  --branch-feature: #9c27b0;
+  --branch-hotfix: #f44336;
+  --branch-release: #ff9800;
+
+  /* ===== Graph Line Colors ===== */
+  --graph-line-1: #4caf50; /* main/master - green */
+  --graph-line-2: #2196f3; /* develop - blue */
+  --graph-line-3: #9c27b0; /* feature branches - purple */
+  --graph-line-4: #ff9800; /* release - orange */
+  --graph-line-5: #f44336; /* hotfix - red */
+  --graph-line-6: #00bcd4; /* other - cyan */
+  --graph-line-7: #e91e63; /* pink */
+  --graph-line-8: #009688; /* teal */
+
+  /* ===== File Status Colors ===== */
+  --status-added: #4caf50;
+  --status-modified: #ff9800;
+  --status-deleted: #f44336;
+  --status-conflict: #e91e63;
+  --status-renamed: #2196f3;
+  --status-copied: #00bcd4;
+  --status-untracked: #9e9e9e;
+  --status-ignored: #757575;
+
+  /* ===== Azure DevOps Colors ===== */
+  --azure-pr-active: #0078d4;
+  --azure-pr-approved: #107c10;
+  --azure-pr-rejected: #d13438;
+  --azure-pr-draft: #8a8886;
+  --azure-workitem: #009ccc;
+  --azure-workitem-bug: #cc293d;
+  --azure-workitem-task: #f2cb1d;
+  --azure-workitem-feature: #773b93;
+  --azure-workitem-epic: #ff7b00;
+  --azure-workitem-story: #009ccc;
+
+  /* ===== Pipeline Status Colors ===== */
+  --pipeline-running: #0078d4;
+  --pipeline-succeeded: #107c10;
+  --pipeline-failed: #d13438;
+  --pipeline-canceled: #8a8886;
+  --pipeline-partial: #ffb900;
+  --pipeline-queued: #605e5c;
+  --pipeline-warning: #ffd335;
+
+  /* ===== Policy Status Colors ===== */
+  --policy-approved: #107c10;
+  --policy-rejected: #d13438;
+  --policy-pending: #ffb900;
+  --policy-running: #0078d4;
+  --policy-not-applicable: #8a8886;
+
+  /* ===== Commit Type Badge Colors ===== */
+  --commit-feat: #4caf50; /* New feature - green */
+  --commit-fix: #f44336; /* Bug fix - red */
+  --commit-chore: #9e9e9e; /* Maintenance - gray */
+  --commit-refactor: #2196f3; /* Code refactor - blue */
+  --commit-docs: #9c27b0; /* Documentation - purple */
+  --commit-style: #e91e63; /* Styling - pink */
+  --commit-test: #00bcd4; /* Tests - cyan */
+  --commit-perf: #ff9800; /* Performance - orange */
+  --commit-build: #795548; /* Build - brown */
+  --commit-ci: #607d8b; /* CI - blue-gray */
+  --commit-revert: #ff5722; /* Revert - deep orange */
+  --commit-wip: #ffc107; /* Work in progress - amber */
+
+  /* ===== Semantic Colors ===== */
+  --color-success: #4caf50;
+  --color-warning: #ff9800;
+  --color-error: #f44336;
+  --color-info: #2196f3;
+
+  /* ===== UI Feedback Colors ===== */
+  --info-blue: #2196f3;
+  --warning-yellow: #ffc107;
+  --error-red: #f44336;
+  --success-green: #4caf50;
+
+  /* ===== Rebase Action Colors ===== */
+  --rebase-pick: var(--text-primary);
+  --rebase-reword: #2196f3;
+  --rebase-edit: #ffc107;
+  --rebase-squash: #9c27b0;
+  --rebase-fixup: #607d8b;
+  --rebase-drop: #f44336;
+
+  /* ===== Selection & Highlight ===== */
+  --selection-bg: rgba(33, 150, 243, 0.2);
+  --highlight-bg: rgba(255, 235, 59, 0.2);
+  --drag-preview-bg: rgba(33, 150, 243, 0.1);
+  --drop-zone-border: #2196f3;
+  --invalid-drop-bg: rgba(244, 67, 54, 0.1);
+
+  /* ===== Opacity Variants ===== */
+  --opacity-disabled: 0.5;
+  --opacity-hover: 0.1;
+  --opacity-active: 0.2;
+  --opacity-dragging: 0.7;
+
+  /* ===== Alpha Colors (for backgrounds) ===== */
+  --alpha-success-10: rgba(76, 175, 80, 0.1);
+  --alpha-warning-10: rgba(255, 152, 0, 0.1);
+  --alpha-error-10: rgba(244, 67, 54, 0.1);
+  --alpha-info-10: rgba(33, 150, 243, 0.1);
+}
+
+/* Dark Theme Color Adjustments (if needed beyond VS Code vars) */
+[data-theme="dark"] {
+  /* Colors generally work well across themes, but can add overrides here if needed */
+}
+
+/* Light Theme Color Adjustments */
+[data-theme="light"] {
+  /* Colors generally work well across themes, but can add overrides here if needed */
+}
+
+/* High Contrast Adjustments */
+[data-theme="high-contrast"] {
+  --branch-main: #00ff00;
+  --branch-develop: #00bfff;
+  --branch-feature: #ff00ff;
+  --branch-hotfix: #ff0000;
+  --branch-release: #ffa500;
+
+  --graph-line-1: #00ff00;
+  --graph-line-2: #00bfff;
+  --graph-line-3: #ff00ff;
+  --graph-line-4: #ffa500;
+  --graph-line-5: #ff0000;
+  --graph-line-6: #00ffff;
+}

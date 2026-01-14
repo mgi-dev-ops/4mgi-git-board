@@ -1,0 +1,307 @@
+/**
+ * RebaseConflict.module.css
+ * Conflict resolution view during rebase
+ * Based on docs/04-UI-UX-DESIGN.md section 2.2 - Conflict Resolution View
+ */
+
+/* Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--bg-primary);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: rgba(255, 193, 7, 0.1);
+  border-bottom: 1px solid var(--warning-yellow);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.warningIcon {
+  font-size: var(--font-size-xl);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-small);
+  color: var(--text-secondary);
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color var(--animation-fast), color var(--animation-fast);
+}
+
+.closeButton:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.closeButton:focus {
+  outline: 1px solid var(--border-focus);
+}
+
+/* Conflict info */
+.conflictInfo {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.commitInfo {
+  font-size: var(--font-size-md);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.commitInfo code {
+  font-family: var(--vscode-editor-font-family, monospace);
+  color: var(--text-link);
+  background-color: var(--bg-secondary);
+  padding: 1px 4px;
+  border-radius: var(--radius-small);
+}
+
+.progressInfo {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+/* Files section */
+.filesSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: var(--spacing-lg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-medium);
+}
+
+.sectionHeader {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+}
+
+/* File list */
+.fileList {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* File item */
+.fileItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid var(--border-primary);
+  transition: background-color var(--animation-fast);
+}
+
+.fileItem:last-child {
+  border-bottom: none;
+}
+
+.fileItem:hover {
+  background-color: var(--bg-hover);
+}
+
+/* File resolved state */
+.fileResolved {
+  background-color: rgba(76, 175, 80, 0.05);
+}
+
+.fileResolved .filePath {
+  color: var(--text-secondary);
+}
+
+/* File icon */
+.fileIcon {
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+  font-size: var(--font-size-md);
+}
+
+.fileItem:not(.fileResolved) .fileIcon {
+  color: var(--warning-yellow);
+}
+
+.fileResolved .fileIcon {
+  color: var(--success-green);
+}
+
+/* File path */
+.filePath {
+  flex: 1;
+  font-family: var(--vscode-editor-font-family, monospace);
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Resolved label */
+.resolvedLabel {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  background-color: rgba(76, 175, 80, 0.2);
+  color: var(--success-green);
+  border-radius: var(--radius-small);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+}
+
+/* Resolve button */
+.resolveButton {
+  flex-shrink: 0;
+  padding: 4px 12px;
+  background-color: var(--button-bg);
+  color: var(--button-fg);
+  border: none;
+  border-radius: var(--radius-small);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--animation-fast);
+}
+
+.resolveButton:hover {
+  background-color: var(--button-hover-bg);
+}
+
+.resolveButton:focus {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* Help text */
+.helpText {
+  padding: 0 var(--spacing-lg) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-primary);
+}
+
+.abortButton,
+.skipButton,
+.continueButton {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: none;
+  border-radius: var(--radius-medium);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--animation-fast), opacity var(--animation-fast);
+}
+
+.abortButton {
+  background-color: rgba(244, 67, 54, 0.2);
+  color: var(--status-deleted);
+}
+
+.abortButton:hover {
+  background-color: rgba(244, 67, 54, 0.3);
+}
+
+.skipButton {
+  background-color: var(--button-secondary-bg);
+  color: var(--button-secondary-fg);
+}
+
+.skipButton:hover {
+  background-color: var(--button-secondary-hover-bg);
+}
+
+.continueButton {
+  background-color: var(--button-bg);
+  color: var(--button-fg);
+  margin-left: auto;
+}
+
+.continueButton:hover {
+  background-color: var(--button-hover-bg);
+}
+
+.continueButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.abortButton:focus,
+.skipButton:focus,
+.continueButton:focus {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* Scrollbar */
+.fileList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.fileList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.fileList::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-bg);
+  border-radius: 4px;
+}
+
+.fileList::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-hover);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .fileItem,
+  .closeButton,
+  .resolveButton,
+  .abortButton,
+  .skipButton,
+  .continueButton {
+    transition: none;
+  }
+}

@@ -1,0 +1,184 @@
+/* Spinner.module.css - Spinner component styles */
+
+/* Spinner */
+.spinnerContainer {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.spinner {
+  animation: rotate 1s linear infinite;
+  color: var(--vscode-progressBar-background, var(--info-blue));
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Size variants */
+.small {
+  width: 16px;
+  height: 16px;
+}
+
+.medium {
+  width: 24px;
+  height: 24px;
+}
+
+.large {
+  width: 40px;
+  height: 40px;
+}
+
+.track {
+  opacity: 0.2;
+}
+
+.arc {
+  opacity: 1;
+}
+
+.label {
+  font-family: var(--vscode-font-family);
+  font-size: var(--font-size-sm);
+  color: var(--vscode-descriptionForeground);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skeleton */
+.skeleton {
+  background-color: var(--vscode-input-background);
+}
+
+/* Skeleton variants */
+.text {
+  height: 1em;
+  border-radius: var(--radius-small);
+  width: 100%;
+}
+
+.circular {
+  border-radius: 50%;
+}
+
+.rectangular {
+  border-radius: var(--radius-small);
+}
+
+/* Skeleton animations */
+.pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.wave {
+  position: relative;
+  overflow: hidden;
+}
+
+.wave::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: wave 1.5s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.none {
+  animation: none;
+}
+
+/* Loading Overlay */
+.overlayContainer {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  animation: fadeIn var(--animation-fast) ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+
+  .pulse {
+    animation: none;
+  }
+
+  .wave::after {
+    animation: none;
+  }
+
+  .overlay {
+    animation: none;
+  }
+}

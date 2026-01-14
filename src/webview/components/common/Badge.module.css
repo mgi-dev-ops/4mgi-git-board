@@ -1,0 +1,152 @@
+/* Badge.module.css - Badge component styles */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  font-family: var(--vscode-font-family);
+  font-weight: 500;
+  line-height: 1;
+  border-radius: var(--radius-small);
+  white-space: nowrap;
+}
+
+/* Size variants */
+.small {
+  padding: 2px 6px;
+  font-size: var(--font-size-xs);
+  min-height: 18px;
+}
+
+.medium {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  min-height: 22px;
+}
+
+/* Default variant */
+.default {
+  background-color: var(--vscode-badge-background);
+  color: var(--vscode-badge-foreground);
+}
+
+/* Semantic variants */
+.success {
+  background-color: var(--success-green);
+  color: #ffffff;
+}
+
+.warning {
+  background-color: var(--warning-yellow);
+  color: #000000;
+}
+
+.error {
+  background-color: var(--error-red);
+  color: #ffffff;
+}
+
+.info {
+  background-color: var(--info-blue);
+  color: #ffffff;
+}
+
+/* Commit type variants */
+.feat {
+  background-color: var(--badge-feat);
+  color: #ffffff;
+}
+
+.fix {
+  background-color: var(--badge-fix);
+  color: #ffffff;
+}
+
+.chore {
+  background-color: var(--badge-chore);
+  color: #ffffff;
+}
+
+.refactor {
+  background-color: var(--badge-refactor);
+  color: #ffffff;
+}
+
+.docs {
+  background-color: var(--badge-docs);
+  color: #ffffff;
+}
+
+.style {
+  background-color: var(--badge-style);
+  color: #ffffff;
+}
+
+.test {
+  background-color: var(--badge-test);
+  color: #ffffff;
+}
+
+.perf {
+  background-color: var(--badge-perf);
+  color: #ffffff;
+}
+
+/* Count badge */
+.countBadge {
+  min-width: 18px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.countBadge.small {
+  min-width: 16px;
+  font-size: 10px;
+}
+
+/* Dot badge */
+.dotBadge {
+  width: 8px;
+  height: 8px;
+  min-height: 8px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* Icon badge */
+.iconBadge {
+  padding: var(--spacing-xs);
+}
+
+.iconBadge svg {
+  width: 12px;
+  height: 12px;
+}
+
+.iconBadge.small svg {
+  width: 10px;
+  height: 10px;
+}
+
+/* Badge with icon and text */
+.badgeIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badgeIcon svg {
+  width: 12px;
+  height: 12px;
+}
+
+.small .badgeIcon svg {
+  width: 10px;
+  height: 10px;
+}
+
+.badgeText {
+  display: inline-block;
+}

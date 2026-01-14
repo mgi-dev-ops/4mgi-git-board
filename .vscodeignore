@@ -1,0 +1,53 @@
+# Source files
+src/**
+**/*.ts
+**/*.tsx
+
+# Development files
+.vscode/**
+.github/**
+.git/**
+
+# Build and config files
+tsconfig.json
+.eslintrc*
+.prettierrc*
+.editorconfig
+webpack.config.js
+esbuild.config.js
+
+# Test files
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+**/test/**
+**/tests/**
+**/__tests__/**
+**/__mocks__/**
+coverage/**
+.nyc_output/**
+
+# Documentation (not needed in extension)
+docs/**
+*.md
+!README.md
+!CHANGELOG.md
+!LICENSE
+
+# Package manager files
+node_modules/**
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Prototype/demo files
+prototype/**
+
+# Other
+.DS_Store
+Thumbs.db
+*.log
+*.vsix
+.env
+.env.*

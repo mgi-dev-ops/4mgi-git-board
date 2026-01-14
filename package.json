@@ -1,0 +1,430 @@
+{
+  "name": "4mgi-git-board",
+  "displayName": "4MGI Git Board",
+  "description": "Visual Git Workflow Manager for VS Code",
+  "version": "0.0.1",
+  "publisher": "4mgi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4mgi/4mgi-git-board"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "SCM Providers",
+    "Visualization"
+  ],
+  "keywords": [
+    "git",
+    "graph",
+    "visualization",
+    "scm",
+    "azure devops",
+    "azure repos"
+  ],
+  "activationEvents": [
+    "onCommand:gitBoard.open",
+    "workspaceContains:.git"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "gitBoard.open",
+        "title": "Open Git Board",
+        "category": "Git Board",
+        "icon": "$(git-branch)"
+      },
+      {
+        "command": "gitBoard.refresh",
+        "title": "Refresh",
+        "category": "Git Board",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "gitBoard.commit",
+        "title": "Commit",
+        "category": "Git Board",
+        "icon": "$(git-commit)"
+      },
+      {
+        "command": "gitBoard.toggleExpandCommit",
+        "title": "Toggle Expand Commit",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.checkoutOrOpen",
+        "title": "Checkout/Open",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.focusSearch",
+        "title": "Focus Search",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.navigateUp",
+        "title": "Navigate Up",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.navigateDown",
+        "title": "Navigate Down",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.openCommitDialog",
+        "title": "Open Commit Dialog",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.push",
+        "title": "Push",
+        "category": "Git Board",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "gitBoard.fetch",
+        "title": "Fetch",
+        "category": "Git Board",
+        "icon": "$(cloud-download)"
+      },
+      {
+        "command": "gitBoard.undo",
+        "title": "Undo",
+        "category": "Git Board",
+        "icon": "$(discard)"
+      },
+      {
+        "command": "gitBoard.linkWorkItem",
+        "title": "Link Work Item (Azure)",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.rebase.pick",
+        "title": "Rebase: Pick",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.rebase.reword",
+        "title": "Rebase: Reword",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.rebase.edit",
+        "title": "Rebase: Edit",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.rebase.squash",
+        "title": "Rebase: Squash",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.rebase.fixup",
+        "title": "Rebase: Fixup",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.rebase.drop",
+        "title": "Rebase: Drop",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.rebase.moveUp",
+        "title": "Rebase: Move Up",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.rebase.moveDown",
+        "title": "Rebase: Move Down",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.rebase.editMessage",
+        "title": "Rebase: Edit Message",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.rebase.cancel",
+        "title": "Rebase: Cancel",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.rebase.start",
+        "title": "Rebase: Start",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.showShortcutHelp",
+        "title": "Show Keyboard Shortcuts",
+        "category": "Git Board"
+      },
+      {
+        "command": "gitBoard.escape",
+        "title": "Close/Cancel",
+        "category": "Git Board"
+      }
+    ],
+    "views": {
+      "scm": [
+        {
+          "type": "webview",
+          "id": "gitBoard.mainView",
+          "name": "Git Board",
+          "icon": "$(git-branch)",
+          "contextualTitle": "Git Board"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "4MGI Git Board",
+      "properties": {
+        "gitBoard.autoFetch": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically fetch from remote repositories"
+        },
+        "gitBoard.fetchInterval": {
+          "type": "number",
+          "default": 5,
+          "minimum": 1,
+          "maximum": 60,
+          "description": "Auto-fetch interval in minutes"
+        },
+        "gitBoard.commitLimit": {
+          "type": "number",
+          "default": 100,
+          "minimum": 10,
+          "maximum": 1000,
+          "description": "Maximum number of commits to display in the graph"
+        },
+        "gitBoard.showRemoteBranches": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show remote branches in the graph"
+        },
+        "gitBoard.graphOrientation": {
+          "type": "string",
+          "enum": [
+            "vertical",
+            "horizontal"
+          ],
+          "default": "vertical",
+          "description": "Graph orientation (vertical or horizontal)"
+        },
+        "gitBoard.confirmDestructive": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show confirmation dialog for destructive operations (rebase, force push, etc.)"
+        },
+        "gitBoard.defaultProvider": {
+          "type": "string",
+          "enum": [
+            "azure",
+            "github"
+          ],
+          "default": "azure",
+          "description": "Default provider for remote operations"
+        },
+        "gitBoard.azure.organization": {
+          "type": "string",
+          "default": "",
+          "description": "Azure DevOps organization name"
+        },
+        "gitBoard.azure.project": {
+          "type": "string",
+          "default": "",
+          "description": "Azure DevOps project name"
+        }
+      }
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "gitBoard.refresh",
+          "when": "view == gitBoard.mainView",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "gitBoard.open",
+          "when": "workspaceFolderCount > 0"
+        },
+        {
+          "command": "gitBoard.refresh",
+          "when": "workspaceFolderCount > 0"
+        },
+        {
+          "command": "gitBoard.commit",
+          "when": "workspaceFolderCount > 0"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "gitBoard.toggleExpandCommit",
+        "key": "space",
+        "when": "gitBoard.active && !inputFocus"
+      },
+      {
+        "command": "gitBoard.checkoutOrOpen",
+        "key": "enter",
+        "when": "gitBoard.active && !inputFocus && !gitBoard.rebaseMode"
+      },
+      {
+        "command": "gitBoard.focusSearch",
+        "key": "/",
+        "when": "gitBoard.active && !inputFocus"
+      },
+      {
+        "command": "gitBoard.navigateUp",
+        "key": "up",
+        "when": "gitBoard.active && !inputFocus && !gitBoard.rebaseMode"
+      },
+      {
+        "command": "gitBoard.navigateDown",
+        "key": "down",
+        "when": "gitBoard.active && !inputFocus && !gitBoard.rebaseMode"
+      },
+      {
+        "command": "gitBoard.openCommitDialog",
+        "key": "c",
+        "when": "gitBoard.active && !inputFocus && !gitBoard.rebaseMode"
+      },
+      {
+        "command": "gitBoard.push",
+        "key": "p",
+        "when": "gitBoard.active && !inputFocus && !gitBoard.rebaseMode"
+      },
+      {
+        "command": "gitBoard.fetch",
+        "key": "f",
+        "when": "gitBoard.active && !inputFocus && !gitBoard.rebaseMode"
+      },
+      {
+        "command": "gitBoard.undo",
+        "key": "ctrl+z",
+        "mac": "cmd+z",
+        "when": "gitBoard.active && !inputFocus"
+      },
+      {
+        "command": "gitBoard.linkWorkItem",
+        "key": "w",
+        "when": "gitBoard.active && !inputFocus && !gitBoard.rebaseMode"
+      },
+      {
+        "command": "gitBoard.rebase.pick",
+        "key": "p",
+        "when": "gitBoard.active && gitBoard.rebaseMode && !inputFocus"
+      },
+      {
+        "command": "gitBoard.rebase.reword",
+        "key": "r",
+        "when": "gitBoard.active && gitBoard.rebaseMode && !inputFocus"
+      },
+      {
+        "command": "gitBoard.rebase.edit",
+        "key": "e",
+        "when": "gitBoard.active && gitBoard.rebaseMode && !inputFocus"
+      },
+      {
+        "command": "gitBoard.rebase.squash",
+        "key": "s",
+        "when": "gitBoard.active && gitBoard.rebaseMode && !inputFocus"
+      },
+      {
+        "command": "gitBoard.rebase.fixup",
+        "key": "f",
+        "when": "gitBoard.active && gitBoard.rebaseMode && !inputFocus"
+      },
+      {
+        "command": "gitBoard.rebase.drop",
+        "key": "d",
+        "when": "gitBoard.active && gitBoard.rebaseMode && !inputFocus"
+      },
+      {
+        "command": "gitBoard.rebase.moveUp",
+        "key": "ctrl+up",
+        "mac": "cmd+up",
+        "when": "gitBoard.active && gitBoard.rebaseMode && !inputFocus"
+      },
+      {
+        "command": "gitBoard.rebase.moveDown",
+        "key": "ctrl+down",
+        "mac": "cmd+down",
+        "when": "gitBoard.active && gitBoard.rebaseMode && !inputFocus"
+      },
+      {
+        "command": "gitBoard.rebase.editMessage",
+        "key": "enter",
+        "when": "gitBoard.active && gitBoard.rebaseMode && !inputFocus"
+      },
+      {
+        "command": "gitBoard.rebase.cancel",
+        "key": "escape",
+        "when": "gitBoard.active && gitBoard.rebaseMode"
+      },
+      {
+        "command": "gitBoard.rebase.start",
+        "key": "ctrl+enter",
+        "mac": "cmd+enter",
+        "when": "gitBoard.active && gitBoard.rebaseMode && !inputFocus"
+      },
+      {
+        "command": "gitBoard.showShortcutHelp",
+        "key": "shift+/",
+        "when": "gitBoard.active && !inputFocus"
+      },
+      {
+        "command": "gitBoard.escape",
+        "key": "escape",
+        "when": "gitBoard.active && gitBoard.modalOpen && !gitBoard.rebaseMode"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "build:watch": "node build.mjs --watch",
+    "build:prod": "node build.mjs --production",
+    "compile": "yarn run build",
+    "watch": "yarn run build:watch",
+    "package": "yarn run build:prod",
+    "lint": "eslint src --ext ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@gitgraph/js": "^1.4.0",
+    "@octokit/rest": "^21.0.0",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "@vscode/codicons": "^0.0.44",
+    "azure-devops-node-api": "^14.1.0",
+    "immer": "^11.1.3",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "simple-git": "^3.22.0",
+    "zustand": "^5.0.10"
+  },
+  "devDependencies": {
+    "@octokit/types": "^13.0.0",
+    "@testing-library/react": "^16.3.1",
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "@vscode/test-electron": "^2.3.8",
+    "esbuild": "^0.19.8",
+    "eslint": "^8.55.0",
+    "jsdom": "^27.4.0",
+    "typescript": "^5.3.2",
+    "vitest": "^1.0.0"
+  }
+}

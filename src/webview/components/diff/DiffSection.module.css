@@ -1,0 +1,638 @@
+/* DiffSection.module.css - Diff/Staging section styles */
+
+/* ===========================================================================
+   Main Section Container
+   =========================================================================== */
+
+.diffSection {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--vscode-sideBar-background);
+  border-bottom: 1px solid var(--vscode-panel-border);
+  max-height: 50vh;
+  overflow: hidden;
+  transition: max-height 250ms ease-in-out;
+}
+
+.diffSection.collapsed {
+  max-height: 36px;
+}
+
+/* ===========================================================================
+   Header
+   =========================================================================== */
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  background-color: var(--vscode-sideBarSectionHeader-background);
+  border-bottom: 1px solid var(--vscode-panel-border);
+}
+
+.header:hover {
+  background-color: var(--vscode-list-hoverBackground);
+}
+
+.header:focus {
+  outline: 1px solid var(--vscode-focusBorder);
+  outline-offset: -1px;
+}
+
+.collapseIcon {
+  font-family: monospace;
+  font-size: 10px;
+  width: 12px;
+  color: var(--vscode-foreground);
+}
+
+.headerTitle {
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--vscode-sideBarSectionHeader-foreground);
+}
+
+.changeCount {
+  font-size: 11px;
+  color: var(--vscode-descriptionForeground);
+}
+
+/* ===========================================================================
+   Content Area
+   =========================================================================== */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ===========================================================================
+   Tabs
+   =========================================================================== */
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--vscode-panel-border);
+}
+
+.tab {
+  flex: 1;
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--vscode-foreground);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.tab:hover {
+  background-color: var(--vscode-list-hoverBackground);
+}
+
+.tab:focus {
+  outline: none;
+}
+
+.tabActive {
+  border-bottom-color: var(--vscode-focusBorder);
+  color: var(--vscode-textLink-foreground);
+}
+
+/* ===========================================================================
+   Toolbar
+   =========================================================================== */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  background-color: var(--vscode-editor-background);
+  border-bottom: 1px solid var(--vscode-panel-border);
+}
+
+.selectAllLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--vscode-foreground);
+  cursor: pointer;
+}
+
+.selectAllLabel input[type="checkbox"] {
+  accent-color: var(--vscode-focusBorder);
+}
+
+.toolbarActions {
+  display: flex;
+  gap: 8px;
+}
+
+.toolbarButton {
+  padding: 4px 8px;
+  font-size: 11px;
+  background-color: var(--vscode-button-secondaryBackground);
+  color: var(--vscode-button-secondaryForeground);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.toolbarButton:hover:not(:disabled) {
+  background-color: var(--vscode-button-secondaryHoverBackground);
+}
+
+.toolbarButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dangerButton {
+  background-color: var(--vscode-inputValidation-errorBackground, #5a1d1d);
+  color: var(--vscode-inputValidation-errorForeground, #f48771);
+}
+
+.dangerButton:hover:not(:disabled) {
+  background-color: var(--vscode-inputValidation-errorBorder, #be1100);
+}
+
+/* ===========================================================================
+   File List
+   =========================================================================== */
+
+.fileList {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.fileListHeader {
+  display: grid;
+  grid-template-columns: 24px 50px 60px 60px 1fr auto;
+  gap: 8px;
+  padding: 6px 12px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--vscode-descriptionForeground);
+  background-color: var(--vscode-editor-background);
+  border-bottom: 1px solid var(--vscode-panel-border);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.headerCell {
+  text-align: center;
+}
+
+.headerCellPath {
+  text-align: left;
+}
+
+.headerCellActions {
+  text-align: right;
+  padding-right: 8px;
+}
+
+/* ===========================================================================
+   File Row
+   =========================================================================== */
+
+.fileRow {
+  display: grid;
+  grid-template-columns: 24px 50px 60px 60px 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-bottom: 1px solid var(--vscode-panel-border);
+  transition: background-color 150ms ease, transform 150ms ease, opacity 150ms ease;
+  /* Staggered animation for file list */
+  opacity: 0;
+  animation: fileRowAppear 200ms ease forwards;
+}
+
+/* Staggered delays */
+.fileRow:nth-child(1) { animation-delay: 0ms; }
+.fileRow:nth-child(2) { animation-delay: 30ms; }
+.fileRow:nth-child(3) { animation-delay: 60ms; }
+.fileRow:nth-child(4) { animation-delay: 90ms; }
+.fileRow:nth-child(5) { animation-delay: 120ms; }
+.fileRow:nth-child(n+6) { animation-delay: 150ms; }
+
+@keyframes fileRowAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fileRow:hover {
+  background-color: var(--vscode-list-hoverBackground);
+}
+
+.fileCheckbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fileCheckbox input[type="checkbox"] {
+  accent-color: var(--vscode-focusBorder);
+  cursor: pointer;
+}
+
+/* ===========================================================================
+   File Status Indicators
+   =========================================================================== */
+
+.fileStatus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.statusAdded {
+  background-color: rgba(35, 134, 54, 0.2);
+  color: var(--vscode-gitDecoration-addedResourceForeground, #81b88b);
+}
+
+.statusModified {
+  background-color: rgba(227, 98, 9, 0.2);
+  color: var(--vscode-gitDecoration-modifiedResourceForeground, #e2c08d);
+}
+
+.statusDeleted {
+  background-color: rgba(248, 81, 73, 0.2);
+  color: var(--vscode-gitDecoration-deletedResourceForeground, #c74e39);
+}
+
+.statusRenamed {
+  background-color: rgba(163, 113, 247, 0.2);
+  color: var(--vscode-gitDecoration-renamedResourceForeground, #73c991);
+}
+
+.statusCopied {
+  background-color: rgba(163, 113, 247, 0.2);
+  color: var(--vscode-gitDecoration-untrackedResourceForeground, #73c991);
+}
+
+/* ===========================================================================
+   Line Changes
+   =========================================================================== */
+
+.linesAdded {
+  text-align: center;
+  font-family: monospace;
+  font-size: 11px;
+  color: var(--vscode-gitDecoration-addedResourceForeground, #81b88b);
+}
+
+.linesRemoved {
+  text-align: center;
+  font-family: monospace;
+  font-size: 11px;
+  color: var(--vscode-gitDecoration-deletedResourceForeground, #c74e39);
+}
+
+/* ===========================================================================
+   File Path
+   =========================================================================== */
+
+.filePath {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--vscode-foreground);
+  font-family: var(--vscode-editor-font-family, monospace);
+  font-size: 12px;
+}
+
+/* ===========================================================================
+   File Actions
+   =========================================================================== */
+
+.fileActions {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+.actionButton {
+  padding: 2px 6px;
+  font-size: 10px;
+  background-color: transparent;
+  color: var(--vscode-textLink-foreground);
+  border: 1px solid var(--vscode-panel-border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.actionButton:hover {
+  background-color: var(--vscode-button-secondaryBackground);
+  color: var(--vscode-button-secondaryForeground);
+}
+
+/* ===========================================================================
+   Empty State
+   =========================================================================== */
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 12px;
+  color: var(--vscode-descriptionForeground);
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* ===========================================================================
+   Actions Bar
+   =========================================================================== */
+
+.actions {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  background-color: var(--vscode-editor-background);
+  border-top: 1px solid var(--vscode-panel-border);
+}
+
+.actionButtonPrimary {
+  flex: 1;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  background-color: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.actionButtonPrimary:hover:not(:disabled) {
+  background-color: var(--vscode-button-hoverBackground);
+}
+
+.actionButtonPrimary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.actionButtonSecondary {
+  padding: 8px 16px;
+  font-size: 12px;
+  background-color: var(--vscode-button-secondaryBackground);
+  color: var(--vscode-button-secondaryForeground);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.actionButtonSecondary:hover {
+  background-color: var(--vscode-button-secondaryHoverBackground);
+}
+
+/* ===========================================================================
+   Commit Dialog
+   =========================================================================== */
+
+.dialogOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dialog {
+  background-color: var(--vscode-editor-background);
+  border: 1px solid var(--vscode-panel-border);
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  width: 500px;
+  max-width: 90vw;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.dialogHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--vscode-panel-border);
+}
+
+.dialogTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--vscode-foreground);
+}
+
+.dialogCloseButton {
+  background: transparent;
+  border: none;
+  color: var(--vscode-foreground);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+
+.dialogCloseButton:hover {
+  color: var(--vscode-textLink-foreground);
+}
+
+.dialogContent {
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.dialogFooter {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  padding: 12px 16px;
+  border-top: 1px solid var(--vscode-panel-border);
+}
+
+/* ===========================================================================
+   Commit Form
+   =========================================================================== */
+
+.commitForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--vscode-foreground);
+}
+
+.formHint {
+  font-size: 11px;
+  color: var(--vscode-descriptionForeground);
+}
+
+.subjectInput {
+  padding: 8px 12px;
+  font-size: 12px;
+  font-family: var(--vscode-editor-font-family, monospace);
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  border: 1px solid var(--vscode-input-border);
+  border-radius: 2px;
+}
+
+.subjectInput:focus {
+  outline: none;
+  border-color: var(--vscode-focusBorder);
+}
+
+.subjectInput.warning {
+  border-color: var(--vscode-inputValidation-warningBorder, #b89500);
+}
+
+.charCounter {
+  font-size: 11px;
+  text-align: right;
+  color: var(--vscode-descriptionForeground);
+}
+
+.charCounter.warning {
+  color: var(--vscode-inputValidation-warningForeground, #cca700);
+}
+
+.charCounter.error {
+  color: var(--vscode-inputValidation-errorForeground, #f48771);
+}
+
+.bodyTextarea {
+  padding: 8px 12px;
+  font-size: 12px;
+  font-family: var(--vscode-editor-font-family, monospace);
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  border: 1px solid var(--vscode-input-border);
+  border-radius: 2px;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.bodyTextarea:focus {
+  outline: none;
+  border-color: var(--vscode-focusBorder);
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--vscode-foreground);
+  cursor: pointer;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  accent-color: var(--vscode-focusBorder);
+}
+
+.workItemInput {
+  padding: 8px 12px;
+  font-size: 12px;
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  border: 1px solid var(--vscode-input-border);
+  border-radius: 2px;
+}
+
+.workItemInput:focus {
+  outline: none;
+  border-color: var(--vscode-focusBorder);
+}
+
+/* ===========================================================================
+   Scrollbar Styling
+   =========================================================================== */
+
+.fileList::-webkit-scrollbar,
+.dialogContent::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.fileList::-webkit-scrollbar-track,
+.dialogContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.fileList::-webkit-scrollbar-thumb,
+.dialogContent::-webkit-scrollbar-thumb {
+  background-color: var(--vscode-scrollbarSlider-background);
+  border-radius: 4px;
+}
+
+.fileList::-webkit-scrollbar-thumb:hover,
+.dialogContent::-webkit-scrollbar-thumb:hover {
+  background-color: var(--vscode-scrollbarSlider-hoverBackground);
+}
+
+/* ===========================================================================
+   Accessibility - Reduced Motion
+   =========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .diffSection,
+  .tab,
+  .toolbarButton,
+  .fileRow,
+  .actionButton,
+  .actionButtonPrimary,
+  .actionButtonSecondary {
+    transition: none;
+  }
+}

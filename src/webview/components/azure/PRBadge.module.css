@@ -1,0 +1,128 @@
+/* PRBadge.module.css - Pull Request badge styles */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 2px 6px;
+  border-radius: var(--radius-small);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: background-color var(--animation-fast) ease,
+    transform var(--animation-fast) ease;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  transform: translateY(-1px);
+}
+
+.clickable:focus {
+  outline: 1px solid var(--vscode-focusBorder);
+  outline-offset: 1px;
+}
+
+.clickable:active {
+  transform: translateY(0);
+}
+
+/* Status variants */
+.active {
+  background-color: rgba(0, 120, 212, 0.15);
+  color: var(--azure-pr-active, #0078d4);
+  border: 1px solid rgba(0, 120, 212, 0.3);
+}
+
+.active:hover {
+  background-color: rgba(0, 120, 212, 0.25);
+}
+
+.approved {
+  background-color: rgba(16, 124, 16, 0.15);
+  color: var(--azure-pr-approved, #107c10);
+  border: 1px solid rgba(16, 124, 16, 0.3);
+}
+
+.approved:hover {
+  background-color: rgba(16, 124, 16, 0.25);
+}
+
+.needsWork {
+  background-color: rgba(255, 185, 0, 0.15);
+  color: var(--warning-yellow, #ffb900);
+  border: 1px solid rgba(255, 185, 0, 0.3);
+}
+
+.needsWork:hover {
+  background-color: rgba(255, 185, 0, 0.25);
+}
+
+.completed {
+  background-color: rgba(16, 124, 16, 0.1);
+  color: var(--azure-pr-approved, #107c10);
+  border: 1px solid rgba(16, 124, 16, 0.2);
+  opacity: 0.8;
+}
+
+.abandoned {
+  background-color: rgba(138, 136, 134, 0.15);
+  color: var(--pipeline-canceled, #8a8886);
+  border: 1px solid rgba(138, 136, 134, 0.3);
+  opacity: 0.7;
+}
+
+/* Icon */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* PR number */
+.number {
+  font-weight: 600;
+  font-family: var(--vscode-editor-font-family, monospace);
+}
+
+/* Status text */
+.statusText {
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Compact mode */
+.compact {
+  padding: 2px 4px;
+  gap: 2px;
+}
+
+.compact .icon svg {
+  width: 10px;
+  height: 10px;
+}
+
+.compact .number {
+  font-size: calc(var(--font-size-sm) - 1px);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .badge {
+    transition: none;
+  }
+
+  .clickable:hover {
+    transform: none;
+  }
+}
