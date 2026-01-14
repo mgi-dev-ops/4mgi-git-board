@@ -179,7 +179,58 @@
 
 ---
 
-### 3.2 GitHub Integration (Basic)
+### 3.2 Branch Policies Deep Integration
+
+**Description:** Visual representation and management of Azure Repos branch policies.
+
+| ID | Requirement | Priority |
+|----|-------------|----------|
+| AZR-10 | Display policy configuration per branch | Must Have |
+| AZR-11 | Show policy violation status on commits/PRs | Must Have |
+| AZR-12 | Policy types: minimum reviewers, linked work items, build validation | Must Have |
+| AZR-13 | Policy types: required reviewers, comment resolution | Should Have |
+| AZR-14 | Visual lock icon on protected branches | Must Have |
+| AZR-15 | Policy details tooltip on hover | Should Have |
+| AZR-16 | Policy violation panel with details | Should Have |
+
+**API Reference:**
+- Policy Configurations: `GET /{org}/{project}/_apis/git/policy/configurations`
+- PR Status Server: Custom Azure Functions for status checks
+
+---
+
+### 3.3 Azure Pipelines Deep Integration
+
+**Description:** CI/CD pipeline status and actions directly on the commit graph.
+
+| ID | Requirement | Priority |
+|----|-------------|----------|
+| AZR-17 | Display build status badge on commit nodes | Must Have |
+| AZR-18 | Click commit → view build details panel | Must Have |
+| AZR-19 | Show test results summary (passed/failed/skipped) | Should Have |
+| AZR-20 | Show code coverage percentage | Should Have |
+| AZR-21 | View build logs link | Should Have |
+| AZR-22 | Context menu: "Rebuild this commit" | Should Have |
+| AZR-23 | Context menu: "View in Azure DevOps" | Must Have |
+| AZR-24 | Pipeline run history per branch | Nice to Have |
+
+**Build Status Badge States:**
+
+| Status | Icon | Color |
+|--------|------|-------|
+| Running | ⟳ spinner | Blue #0078D4 |
+| Succeeded | ✓ checkmark | Green #107C10 |
+| Failed | ✗ cross | Red #D13438 |
+| Canceled | ⊘ stop | Gray #8A8886 |
+| Partial | ⚠ warning | Yellow #FFB900 |
+
+**API Reference:**
+- Build API: `GET /{org}/{project}/_apis/build/builds`
+- Status Badge: `GET /{org}/{project}/_apis/build/status/{definition}`
+
+---
+
+### 3.4 GitHub Integration (Basic)
 
 **Description:** Basic GitHub support for occasional use.
 

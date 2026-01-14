@@ -108,7 +108,36 @@
 - Branch policies
 - Pipeline status
 
-### 5.2 GitHub
+### 5.2 Branch Policies Integration
+
+**API Endpoints:**
+- Policy Configurations: `GET /{org}/{project}/_apis/git/policy/configurations`
+- Policy Evaluations: `GET /{org}/{project}/_apis/git/policy/evaluations`
+
+**Policy Types Supported:**
+- Minimum reviewers
+- Work item linking
+- Build validation
+- Required reviewers
+- Comment resolution
+
+### 5.3 Azure Pipelines Integration
+
+**API Endpoints:**
+- Builds: `GET /{org}/{project}/_apis/build/builds`
+- Build Details: `GET /{org}/{project}/_apis/build/builds/{buildId}`
+- Test Results: `GET /{org}/{project}/_apis/test/runs`
+- Code Coverage: `GET /{org}/{project}/_apis/test/codecoverage`
+- Queue Build: `POST /{org}/{project}/_apis/build/builds`
+
+**Features:**
+- Build status on commit nodes
+- Test results summary
+- Code coverage display
+- Rebuild trigger from context menu
+- Deep link to Azure DevOps
+
+### 5.4 GitHub
 
 **Authentication:** PAT or OAuth
 **API:** GitHub REST API via @octokit/rest

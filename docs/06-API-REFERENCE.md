@@ -58,6 +58,16 @@
 - `{ type: 'azure/linkWorkItem', payload: { commitSha: string, workItemId: number } }`
 - `{ type: 'azure/getPipelineStatus', payload: { branch: string } }`
 
+**Azure Branch Policies:**
+- `{ type: 'azure/getPolicyConfigurations', payload: { branch: string } }`
+- `{ type: 'azure/getPolicyEvaluations', payload: { prId: number } }`
+
+**Azure Pipelines:**
+- `{ type: 'azure/getBuildDetails', payload: { commitSha: string } }`
+- `{ type: 'azure/getTestResults', payload: { buildId: number } }`
+- `{ type: 'azure/getCodeCoverage', payload: { buildId: number } }`
+- `{ type: 'azure/triggerRebuild', payload: { commitSha: string, definitionId: number } }`
+
 **GitHub:**
 - `{ type: 'github/getPRs', payload: { branch?: string } }`
 
@@ -72,6 +82,12 @@
 - `{ type: 'azure/prs', payload: PullRequest[] }`
 - `{ type: 'azure/workItems', payload: WorkItem[] }`
 - `{ type: 'azure/pipelineStatus', payload: PipelineStatus }`
+- `{ type: 'azure/policyConfigurations', payload: PolicyConfiguration[] }`
+- `{ type: 'azure/policyEvaluations', payload: PolicyEvaluation[] }`
+- `{ type: 'azure/buildDetails', payload: BuildDetails }`
+- `{ type: 'azure/testResults', payload: TestResult[] }`
+- `{ type: 'azure/codeCoverage', payload: CodeCoverage }`
+- `{ type: 'azure/rebuildTriggered', payload: { buildId: number, url: string } }`
 
 **Events:**
 - `{ type: 'git/changed' }`
@@ -142,6 +158,54 @@ interface PipelineStatus {
   name: string;
   status: 'running' | 'succeeded' | 'failed' | 'canceled';
   url: string;
+}
+
+interface PolicyConfiguration {
+  id: number;
+  type: PolicyType;
+  isEnabled: boolean;
+  isBlocking: boolean;
+  settings: Record<string, unknown>;
+}
+
+type PolicyType = 
+  | 'minimumApprovers'
+  | 'workItemLinking'
+  | 'buildValidation'
+  | 'requiredReviewers'
+  | 'commentRequirements';
+
+interface PolicyEvaluation {
+  configurationId: number;
+  status: 'queued' | 'running' | 'approved' | 'rejected' | 'notApplicable';
+  context: string;
+}
+
+interface BuildDetails {
+  id: number;
+  buildNumber: string;
+  status: 'notStarted' | 'inProgress' | 'completed' | 'cancelling' | 'postponed';
+  result?: 'succeeded' | 'partiallySucceeded' | 'failed' | 'canceled' | 'none';
+  startTime?: string;
+  finishTime?: string;
+  sourceBranch: string;
+  sourceCommit: string;
+  definition: { id: number; name: string };
+  url: string;
+  logsUrl: string;
+}
+
+interface TestResult {
+  testName: string;
+  outcome: 'Passed' | 'Failed' | 'Skipped' | 'NotExecuted';
+  duration: number;
+  errorMessage?: string;
+}
+
+interface CodeCoverage {
+  lineCoverage: number;   // percentage 0-100
+  branchCoverage: number; // percentage 0-100
+  modules: { name: string; lineCoverage: number }[];
 }
 ```
 
