@@ -26,7 +26,7 @@
 | **Extension Host** | TypeScript | Type safety, VS Code native |
 | **UI Framework** | React | Component-based, ecosystem |
 | **State Management** | Zustand | Lightweight, TypeScript-first |
-| **Canvas Rendering** | React Flow | Graph visualization |
+| **Canvas Rendering** | @gitgraph/js | Git graph visualization (native branch/merge support) |
 | **Git Operations** | simple-git | Node.js Git wrapper |
 | **Azure API** | azure-devops-node-api | Official SDK |
 | **GitHub API** | @octokit/rest | Official SDK |

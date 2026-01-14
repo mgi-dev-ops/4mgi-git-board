@@ -481,7 +481,7 @@ Khi action = `reword` và user click "Start Rebase", hoặc double-click row:
 │  ┌──────────────────────────────────────────────────────────┐  │
 │  │ docs: Update README with installation guide              │  │
 │  │                                                          │  │
-│  │ - Added npm install instructions                         │  │
+│  │ - Added yarn install instructions                         │  │
 │  │ - Added configuration examples                           │  │
 │  │ - Fixed typos                                            │  │
 │  │                                                          │  │
@@ -701,6 +701,8 @@ Azure badge: Work Item linked indicator
 ## 4. Interaction Patterns
 
 ### 4.1 Drag and Drop
+
+> **Implementation Note:** @gitgraph/js không hỗ trợ drag-drop native. Cần custom implementation layer với HTML5 Drag and Drop API hoặc thư viện như `@dnd-kit/core` overlay trên graph canvas.
 
 | Action | Trigger | Preview | Result |
 |--------|---------|---------|--------|

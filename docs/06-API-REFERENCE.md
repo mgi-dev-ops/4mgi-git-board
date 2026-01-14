@@ -236,7 +236,7 @@ interface FileStatus {
 interface ExtensionConfig {
   'gitBoard.autoFetch': boolean;              // default: true
   'gitBoard.fetchInterval': number;           // default: 300 (seconds)
-  'gitBoard.commitLimit': number;             // default: 500
+  'gitBoard.commitLimit': number;             // default: 100
   'gitBoard.showRemoteBranches': boolean;     // default: true
   'gitBoard.graphOrientation': 'vertical' | 'horizontal';
   'gitBoard.confirmDestructive': boolean;     // default: true
