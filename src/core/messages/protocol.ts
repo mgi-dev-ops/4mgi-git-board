@@ -100,7 +100,10 @@ export class MessageProtocol {
 				message,
 				this.context,
 			);
-			this.send(response);
+			// Only send response if handler returned something (not null)
+			if (response !== null) {
+				this.send(response);
+			}
 		} catch (error) {
 			const errorMessage =
 				error instanceof Error ? error.message : 'Unknown error';
@@ -141,6 +144,7 @@ export class MessageProtocol {
 
 	/**
 	 * Register a simple handler (alias for on) with any payload type
+	 * If handler returns null, no auto-response is sent (handler manages its own response)
 	 */
 	registerHandler(
 		type: string,
@@ -151,6 +155,10 @@ export class MessageProtocol {
 			_context: HandlerContext,
 		) => {
 			const result = await handler(message);
+			// If handler returns null, it has sent its own response
+			if (result === null) {
+				return null;
+			}
 			return { type: `${type}.response`, payload: result };
 		};
 	}

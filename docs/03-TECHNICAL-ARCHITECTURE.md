@@ -66,32 +66,82 @@
 
 ## 4. Data Flow
 
-### 4.1 Message Flow (Extension ↔ Webview)
+### 4.1 Initialization Flow
 
-**Flow:**
+Khi webview được mở, quá trình khởi tạo diễn ra như sau:
+
+1. **Webview Load** (`index.tsx`)
+   - Setup theme listener
+   - Mount React app
+   - Gửi `webview-ready` message
+
+2. **Extension Response** (`extension.ts`)
+   - Nhận `webview-ready`
+   - Fetch initial data từ GitService
+   - Gửi `git/log`, `git/branches`, `repo/status`, `git/stashes`
+
+3. **React Initialization** (`App.tsx`)
+   - Setup `useMessageHandler` hook
+   - `useEffect` gọi `fetchAll()` (backup mechanism)
+   - Nhận data và map types
+
+### 4.2 Message Flow (Extension ↔ Webview)
+
+**Request Flow:**
 1. User Action (Webview)
-2. Dispatch Action (Store)
-3. Post Message to Extension
-4. Message Handler (Extension)
-5. Git Service / Provider API
-6. Post Result to Webview
-7. Update Store
-8. Re-render UI
+2. Store action gọi `postMessage()` (e.g., `git.getCommits`)
+3. Extension nhận qua `onDidReceiveMessage`
+4. `MessageProtocol.handleMessage()` dispatch to handler
+5. Handler thực thi Git/API operation
+6. Handler gọi `protocol.send()` với proper response type
+7. Webview nhận qua `useMessageHandler` hook
+8. Map API types → Store types
+9. Update Zustand store
+10. React re-render
 
-### 4.2 Message Types
+**Handler Pattern:**
+```typescript
+// Extension sends proper response types, not auto-generated
+protocol.registerHandler('git.getCommits', async (payload) => {
+    const commits = await git.getLog({ limit: payload.limit });
+    protocol.send({ type: 'git/log', payload: commits }); // Proper type
+    return null; // Don't send auto-response
+});
+```
+
+### 4.3 Message Types
 
 **Request Messages (Webview → Extension):**
-- `git/getLog` - Get commit history
-- `git/commit` - Create commit
-- `git/checkout` - Switch branch
-- `azure/getPRs` - Get Azure Repos PRs
-- `azure/getWorkItems` - Get linked Work Items
+- `git.getCommits` - Get commit history
+- `git.getBranches` - Get branches
+- `git.getStatus` - Get working tree status
+- `git.getStashes` - Get stash list
+- `git.checkout` - Switch branch
+- `azure.getPRs` - Get Azure Repos PRs
 
 **Response Messages (Extension → Webview):**
-- `git/log` - Commit list
-- `git/error` - Error information
-- `azure/prs` - PR list
-- `azure/workItems` - Work Items data
+- `git/log` - Commit list (Commit[])
+- `git/branches` - Branch list (Branch[])
+- `repo/status` - Repository status (StatusResult)
+- `git/stashes` - Stash list (Stash[])
+- `git/success` - Operation success
+- `error` - Error information
+
+**Event Messages (Extension → Webview):**
+- `git/changed` - Git state changed, trigger refresh
+
+### 4.4 Type Mapping
+
+Do có 2 type systems (API types trong `src/types/` và Store types trong `gitStore.ts`), cần mapping:
+
+| API Type | Store Type | Key Differences |
+|----------|------------|-----------------|
+| `Commit.sha` | `GitCommit.hash` | Property name |
+| `Commit.shortSha` | `GitCommit.shortHash` | Property name |
+| `Branch.current` | `GitBranch.isHead` | Property name |
+| `Branch.tracking` | `GitBranch.upstream` | Property name |
+
+Mapping functions trong `App.tsx`: `mapCommit()`, `mapBranch()`, `mapStash()`, `mapStatus()`
 
 ---
 

@@ -53,10 +53,32 @@ src/
 
 Extension và Webview giao tiếp qua message protocol (`postMessage`):
 
-1. **Webview** gửi request message (e.g., `git.getCommits`, `azure.getPRs`)
+**Initialization Flow:**
+1. `index.tsx` gửi `webview-ready` message khi webview load xong
+2. Extension nhận và gửi initial data (`git/log`, `git/branches`, `repo/status`, `git/stashes`)
+3. `App.tsx` mount, setup `useMessageHandler` hook để nhận messages
+4. `useEffect` trong `App.tsx` gọi `fetchAll()` để đảm bảo data được load
+
+**Request/Response Flow:**
+1. **Webview** gửi request message (e.g., `git.getCommits`, `git.getBranches`)
 2. **Extension** xử lý qua `MessageProtocol.registerHandler()` trong `extension.ts`
-3. **Extension** gửi response/event message về Webview
-4. **Webview** cập nhật Zustand store → React re-render
+3. **Extension** gửi response với proper message types (`git/log`, `git/branches`, etc.)
+4. **Webview** nhận qua `useMessageHandler` hook trong `App.tsx`
+5. **App.tsx** map API types → Store types và cập nhật Zustand store
+6. React re-render với data mới
+
+**Message Type Mapping:**
+- Request: `git.getCommits` → Response: `git/log`
+- Request: `git.getBranches` → Response: `git/branches`
+- Request: `git.getStatus` → Response: `repo/status`
+- Request: `git.getStashes` → Response: `git/stashes`
+
+**Type Mapping (API → Store):**
+Do có 2 type systems khác nhau, `App.tsx` chứa mapping functions:
+- `mapCommit()`: `Commit` (sha, shortSha) → `GitCommit` (hash, shortHash)
+- `mapBranch()`: `Branch` (current, tracking) → `GitBranch` (isHead, upstream)
+- `mapStash()`: `Stash` → `GitStash`
+- `mapStatus()`: `StatusResult` → `GitStatus`
 
 Message types defined in `src/core/messages/types.ts`.
 

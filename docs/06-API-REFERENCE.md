@@ -19,7 +19,30 @@
 
 ## 2. Message Protocol
 
-### 2.1 Request Messages (Webview → Extension)
+### 2.1 Internal Request Messages (Webview → Extension)
+
+Webview sử dụng simplified message format với dot notation. Extension handlers map sang proper response types.
+
+**Initialization:**
+- `{ type: 'webview-ready' }` - Webview đã load xong, trigger initial data fetch
+
+**Git Data (simplified format):**
+- `{ type: 'git.getCommits', limit?: number, offset?: number }` → Response: `git/log`
+- `{ type: 'git.getBranches' }` → Response: `git/branches`
+- `{ type: 'git.getStatus' }` → Response: `repo/status`
+- `{ type: 'git.getStashes' }` → Response: `git/stashes`
+
+**Git Operations:**
+- `{ type: 'git.checkout', ref: string }` → Response: `git/success`
+- `{ type: 'git.createBranch', name: string, startPoint?: string }` → Response: `git/success`
+- `{ type: 'git.deleteBranch', name: string, force?: boolean }` → Response: `git/success`
+- `{ type: 'git.merge', branch: string, noFf?: boolean }` → Response: `git/success`
+- `{ type: 'git.pull', remote?: string, branch?: string }` → Response: `git/success`
+- `{ type: 'git.push', remote?: string, branch?: string, force?: boolean }` → Response: `git/success`
+
+### 2.2 Formal Request Messages (Reference)
+
+Formal message types defined in `src/core/messages/types.ts`:
 
 **Repository:**
 - `{ type: 'repo/getInfo' }`
@@ -71,7 +94,7 @@
 **GitHub:**
 - `{ type: 'github/getPRs', payload: { branch?: string } }`
 
-### 2.2 Response Messages (Extension → Webview)
+### 2.3 Response Messages (Extension → Webview)
 
 **Success responses:**
 - `{ type: 'repo/info', payload: RepositoryInfo }`
@@ -79,6 +102,7 @@
 - `{ type: 'git/log', payload: Commit[] }`
 - `{ type: 'git/branches', payload: Branch[] }`
 - `{ type: 'git/stashes', payload: Stash[] }`
+- `{ type: 'git/success', payload: { operation: string, message?: string } }`
 - `{ type: 'azure/prs', payload: PullRequest[] }`
 - `{ type: 'azure/workItems', payload: WorkItem[] }`
 - `{ type: 'azure/pipelineStatus', payload: PipelineStatus }`
@@ -90,11 +114,37 @@
 - `{ type: 'azure/rebuildTriggered', payload: { buildId: number, url: string } }`
 
 **Events:**
-- `{ type: 'git/changed' }`
+- `{ type: 'git/changed' }` - Triggers data refresh in webview
 - `{ type: 'git/conflict', payload: ConflictInfo }`
 
 **Errors:**
-- `{ type: 'error', payload: { code: string, message: string } }`
+- `{ type: 'error', payload: { code: string, message: string, requestType?: string } }`
+
+### 2.4 Message Handling Architecture
+
+**Extension Side (`extension.ts`):**
+```typescript
+// Handlers send proper response types directly
+protocol.registerHandler('git.getCommits', async (payload) => {
+    const commits = await git.getLog({ limit: payload?.limit ?? 100 });
+    protocol.send({ type: 'git/log', payload: commits });
+    return null; // Suppress auto-response
+});
+```
+
+**Webview Side (`App.tsx`):**
+```typescript
+// useMessageHandler dispatches to callbacks
+useMessageHandler({
+    dispatchers: {
+        onGitLog: (payload) => {
+            setCommits(payload.map(mapCommit)); // Map API → Store types
+            setLoading(false);
+        },
+        onGitChanged: () => fetchAll(), // Refresh on git changes
+    },
+});
+```
 
 ---
 
@@ -130,6 +180,41 @@ interface Author {
   email: string;
 }
 ```
+
+### 3.1.1 Store Types (gitStore.ts)
+
+Webview uses different type names in Zustand store. Mapping required in `App.tsx`:
+
+```typescript
+// Store uses different property names
+interface GitCommit {
+  hash: string;        // API: sha
+  shortHash: string;   // API: shortSha
+  message: string;
+  body: string;
+  author: { name: string; email: string; date: string };
+  committer: { name: string; email: string; date: string };
+  parents: string[];
+  refs: string[];      // API: Ref[] → string[]
+  isMerge: boolean;    // Computed from parents.length > 1
+}
+
+interface GitBranch {
+  name: string;
+  isRemote: boolean;   // API: !!remote
+  isHead: boolean;     // API: current
+  upstream?: string;   // API: tracking
+  ahead?: number;
+  behind?: number;
+  lastCommitHash?: string; // API: commit
+}
+```
+
+**Mapping Functions (App.tsx):**
+- `mapCommit(commit: Commit): GitCommit`
+- `mapBranch(branch: Branch): GitBranch`
+- `mapStash(stash: Stash): GitStash`
+- `mapStatus(status: StatusResult): GitStatus`
 
 ### 3.2 Azure Repos Types
 

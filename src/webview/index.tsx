@@ -40,19 +40,16 @@ function handleThemeChange(): void {
 }
 
 /**
- * Setup message listener for communication with extension
+ * Setup message listener for theme changes only
+ * Main message handling is done by useMessageHandler hook in React components
  */
-function setupMessageListener(): void {
+function setupThemeMessageListener(): void {
 	window.addEventListener('message', (event) => {
 		const message = event.data;
 
-		switch (message.type) {
-			case 'theme-changed':
-				handleThemeChange();
-				break;
-			// Add more message handlers here
-			default:
-				console.log('Unknown message type:', message.type);
+		// Only handle theme-changed here, other messages are handled by useMessageHandler
+		if (message.type === 'theme-changed') {
+			handleThemeChange();
 		}
 	});
 }
@@ -64,8 +61,8 @@ function initialize(): void {
 	// Setup theme handling
 	handleThemeChange();
 
-	// Setup message listener
-	setupMessageListener();
+	// Setup theme message listener (main messages handled by useMessageHandler in React)
+	setupThemeMessageListener();
 
 	// Observe theme changes via MutationObserver
 	const observer = new MutationObserver((mutations) => {

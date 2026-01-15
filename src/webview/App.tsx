@@ -1,6 +1,88 @@
 import type React from 'react';
+import { useEffect, useCallback } from 'react';
 import { Layout } from './components/layout';
-import { useGitStore } from './stores/gitStore';
+import { useMessageHandler } from './hooks/useMessageHandler';
+import {
+	useGitStore,
+	type GitCommit,
+	type GitBranch,
+	type GitStash,
+	type GitStatus,
+} from './stores/gitStore';
+import type { Commit, Branch, Stash, StatusResult } from '../core/messages/types';
+
+// =============================================================================
+// Type Mapping Functions
+// Map between API types (Commit, Branch) and Store types (GitCommit, GitBranch)
+// =============================================================================
+
+function mapCommit(commit: Commit): GitCommit {
+	return {
+		hash: commit.sha,
+		shortHash: commit.shortSha,
+		message: commit.message,
+		body: commit.body ?? '',
+		author: {
+			name: commit.author.name,
+			email: commit.author.email,
+			date: commit.date,
+		},
+		committer: {
+			name: commit.author.name,
+			email: commit.author.email,
+			date: commit.date,
+		},
+		parents: commit.parents,
+		refs: commit.refs.map((r) => r.name),
+		isMerge: commit.parents.length > 1,
+	};
+}
+
+function mapBranch(branch: Branch): GitBranch {
+	return {
+		name: branch.name,
+		isRemote: !!branch.remote,
+		isHead: branch.current,
+		upstream: branch.tracking,
+		ahead: branch.ahead,
+		behind: branch.behind,
+		lastCommitHash: branch.commit,
+	};
+}
+
+function mapStash(stash: Stash): GitStash {
+	return {
+		index: stash.index,
+		message: stash.message,
+		branch: '', // Not provided in API type
+		hash: stash.hash,
+		date: stash.date,
+	};
+}
+
+function mapStatus(status: StatusResult): GitStatus {
+	return {
+		staged: status.staged.map((f) => ({
+			path: f.path,
+			status: f.status as GitStatus['staged'][0]['status'],
+			oldPath: f.oldPath,
+		})),
+		unstaged: status.unstaged.map((f) => ({
+			path: f.path,
+			status: f.status as GitStatus['unstaged'][0]['status'],
+			oldPath: f.oldPath,
+		})),
+		untracked: status.untracked,
+		conflicted: status.conflicted,
+		isClean:
+			status.staged.length === 0 &&
+			status.unstaged.length === 0 &&
+			status.untracked.length === 0,
+		isMerging: false, // Would need separate check
+		isRebasing: false,
+		isCherryPicking: false,
+	};
+}
 
 /**
  * Root component for 4MGI Git Board
@@ -12,6 +94,80 @@ export const App: React.FC = () => {
 	const error = useGitStore((state) => state.error);
 	const commits = useGitStore((state) => state.commits);
 	const status = useGitStore((state) => state.status);
+
+	// Git actions
+	const fetchAll = useGitStore((state) => state.fetchAll);
+	const setCommits = useGitStore((state) => state.setCommits);
+	const setBranches = useGitStore((state) => state.setBranches);
+	const setStatus = useGitStore((state) => state.setStatus);
+	const setStashes = useGitStore((state) => state.setStashes);
+	const setLoading = useGitStore((state) => state.setLoading);
+	const setError = useGitStore((state) => state.setError);
+
+	// Memoized handlers to avoid re-creating on every render
+	const handleGitLog = useCallback(
+		(payload: Commit[]) => {
+			setCommits(payload.map(mapCommit));
+			setLoading(false);
+		},
+		[setCommits, setLoading],
+	);
+
+	const handleGitBranches = useCallback(
+		(payload: Branch[]) => {
+			setBranches(payload.map(mapBranch));
+		},
+		[setBranches],
+	);
+
+	const handleGitStashes = useCallback(
+		(payload: Stash[]) => {
+			setStashes(payload.map(mapStash));
+		},
+		[setStashes],
+	);
+
+	const handleRepoStatus = useCallback(
+		(payload: StatusResult) => {
+			setStatus(mapStatus(payload));
+		},
+		[setStatus],
+	);
+
+	const handleGitChanged = useCallback(() => {
+		fetchAll();
+	}, [fetchAll]);
+
+	const handleGitSuccess = useCallback(() => {
+		setLoading(false);
+		fetchAll();
+	}, [setLoading, fetchAll]);
+
+	const handleError = useCallback(
+		(payload: { code: string; message: string }) => {
+			setError(payload.message);
+			setLoading(false);
+		},
+		[setError, setLoading],
+	);
+
+	// Setup message handler to receive data from extension
+	useMessageHandler({
+		dispatchers: {
+			onGitLog: handleGitLog,
+			onGitBranches: handleGitBranches,
+			onGitStashes: handleGitStashes,
+			onRepoStatus: handleRepoStatus,
+			onGitChanged: handleGitChanged,
+			onGitSuccess: handleGitSuccess,
+			onError: handleError,
+		},
+	});
+
+	// Fetch initial data on mount
+	useEffect(() => {
+		fetchAll();
+	}, [fetchAll]);
 
 	// Calculate unstaged/staged counts
 	const unstagedCount = status

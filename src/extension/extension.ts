@@ -138,100 +138,193 @@ function registerMessageHandlers(
 ): void {
 	const protocol = provider.getMessageProtocol();
 
-	// Git data requests
+	// Handle webview ready - send initial data
+	protocol.registerHandler('webview-ready', async () => {
+		// Send initial data when webview signals it's ready
+		const [commits, branches, status, stashes] = await Promise.all([
+			git.getLog({ limit: 100, all: true }),
+			git.getBranches(),
+			git.getStatus(),
+			git.stashList(),
+		]);
+
+		protocol.send({ type: 'git/log', payload: commits });
+		protocol.send({ type: 'git/branches', payload: branches });
+		protocol.send({ type: 'repo/status', payload: status });
+		protocol.send({ type: 'git/stashes', payload: stashes });
+		return null;
+	});
+
+	// Git data requests - using proper message types
 	protocol.registerHandler('git.getCommits', async (payload) => {
-		const limit = payload?.limit ?? 100;
+		const limit = (payload as { limit?: number })?.limit ?? 100;
 		const commits = await git.getLog({ limit, all: true });
-		return { commits };
+		// Send properly typed response
+		protocol.send({ type: 'git/log', payload: commits });
+		return null; // Don't send auto-response
 	});
 
 	protocol.registerHandler('git.getBranches', async () => {
 		const branches = await git.getBranches();
-		return { branches };
+		// Send properly typed response
+		protocol.send({ type: 'git/branches', payload: branches });
+		return null;
 	});
 
 	protocol.registerHandler('git.getStatus', async () => {
 		const status = await git.getStatus();
-		return { status };
+		// Send properly typed response
+		protocol.send({ type: 'repo/status', payload: status });
+		return null;
 	});
 
 	protocol.registerHandler('git.getStashes', async () => {
 		const stashes = await git.stashList();
-		return { stashes };
+		// Send properly typed response
+		protocol.send({ type: 'git/stashes', payload: stashes });
+		return null;
 	});
 
-	// Git operations
+	// Git operations - send git/success responses
 	protocol.registerHandler('git.checkout', async (payload) => {
-		await git.checkout(payload.ref);
-		return { success: true };
+		const p = payload as { ref: string };
+		await git.checkout(p.ref);
+		protocol.send({
+			type: 'git/success',
+			payload: { operation: 'checkout', message: `Checked out ${p.ref}` },
+		});
+		return null;
 	});
 
 	protocol.registerHandler('git.createBranch', async (payload) => {
-		await git.createBranch(payload.name, payload.startPoint);
-		return { success: true };
+		const p = payload as { name: string; startPoint?: string };
+		await git.createBranch(p.name, p.startPoint);
+		protocol.send({
+			type: 'git/success',
+			payload: { operation: 'createBranch', message: `Created branch ${p.name}` },
+		});
+		return null;
 	});
 
 	protocol.registerHandler('git.deleteBranch', async (payload) => {
-		await git.deleteBranch(payload.name, payload.force);
-		return { success: true };
+		const p = payload as { name: string; force?: boolean };
+		await git.deleteBranch(p.name, p.force);
+		protocol.send({
+			type: 'git/success',
+			payload: { operation: 'deleteBranch', message: `Deleted branch ${p.name}` },
+		});
+		return null;
 	});
 
 	protocol.registerHandler('git.merge', async (payload) => {
-		const result = await git.merge(payload.branch, {
-			noFastForward: payload.noFf,
+		const p = payload as { branch: string; noFf?: boolean };
+		await git.merge(p.branch, { noFastForward: p.noFf });
+		protocol.send({
+			type: 'git/success',
+			payload: { operation: 'merge', message: `Merged ${p.branch}` },
 		});
-		return result;
+		return null;
 	});
 
 	protocol.registerHandler('git.pull', async (payload) => {
-		await git.pull(payload?.remote, payload?.branch);
-		return { success: true };
+		const p = payload as { remote?: string; branch?: string } | undefined;
+		await git.pull(p?.remote, p?.branch);
+		protocol.send({
+			type: 'git/success',
+			payload: { operation: 'pull', message: 'Pull completed' },
+		});
+		return null;
 	});
 
 	protocol.registerHandler('git.push', async (payload) => {
-		await git.push(payload?.remote, payload?.branch, { force: payload?.force });
-		return { success: true };
+		const p = payload as { remote?: string; branch?: string; force?: boolean } | undefined;
+		await git.push(p?.remote, p?.branch, { force: p?.force });
+		protocol.send({
+			type: 'git/success',
+			payload: { operation: 'push', message: 'Push completed' },
+		});
+		return null;
 	});
 
 	protocol.registerHandler('git.fetch', async (payload) => {
-		await git.fetch(payload?.remote, payload?.prune);
-		return { success: true };
+		const p = payload as { remote?: string; prune?: boolean } | undefined;
+		await git.fetch(p?.remote, p?.prune);
+		protocol.send({
+			type: 'git/success',
+			payload: { operation: 'fetch', message: 'Fetch completed' },
+		});
+		return null;
 	});
 
 	protocol.registerHandler('git.stashSave', async (payload) => {
-		await git.stashCreate(payload?.message);
-		return { success: true };
+		const p = payload as { message?: string } | undefined;
+		await git.stashCreate(p?.message);
+		protocol.send({
+			type: 'git/success',
+			payload: { operation: 'stashSave', message: 'Stash created' },
+		});
+		return null;
 	});
 
 	protocol.registerHandler('git.stashApply', async (payload) => {
-		await git.stashApply(payload?.index ?? 0);
-		return { success: true };
+		const p = payload as { index?: number } | undefined;
+		await git.stashApply(p?.index ?? 0);
+		protocol.send({
+			type: 'git/success',
+			payload: { operation: 'stashApply', message: 'Stash applied' },
+		});
+		return null;
 	});
 
 	protocol.registerHandler('git.stashPop', async (payload) => {
-		await git.stashPop(payload?.index ?? 0);
-		return { success: true };
+		const p = payload as { index?: number } | undefined;
+		await git.stashPop(p?.index ?? 0);
+		protocol.send({
+			type: 'git/success',
+			payload: { operation: 'stashPop', message: 'Stash popped' },
+		});
+		return null;
 	});
 
 	protocol.registerHandler('git.stashDrop', async (payload) => {
-		await git.stashDrop(payload?.index ?? 0);
-		return { success: true };
+		const p = payload as { index?: number } | undefined;
+		await git.stashDrop(p?.index ?? 0);
+		protocol.send({
+			type: 'git/success',
+			payload: { operation: 'stashDrop', message: 'Stash dropped' },
+		});
+		return null;
 	});
 
 	protocol.registerHandler('git.cherryPick', async (payload) => {
-		await git.cherryPick(payload.hash);
-		return { success: true };
+		const p = payload as { hash: string };
+		await git.cherryPick(p.hash);
+		protocol.send({
+			type: 'git/success',
+			payload: { operation: 'cherryPick', message: 'Cherry-pick completed' },
+		});
+		return null;
 	});
 
 	protocol.registerHandler('git.revert', async (payload) => {
-		await git.cherryPick(payload.hash); // Note: should be revert, but GitService doesn't have it
-		return { success: true };
+		const p = payload as { hash: string };
+		await git.cherryPick(p.hash); // Note: should be revert, but GitService doesn't have it
+		protocol.send({
+			type: 'git/success',
+			payload: { operation: 'revert', message: 'Revert completed' },
+		});
+		return null;
 	});
 
 	protocol.registerHandler('git.reset', async (payload) => {
+		const p = payload as { hash: string };
 		// GitService doesn't have reset with mode, using raw git
-		await git.checkout(payload.hash); // Simplified - needs proper implementation
-		return { success: true };
+		await git.checkout(p.hash); // Simplified - needs proper implementation
+		protocol.send({
+			type: 'git/success',
+			payload: { operation: 'reset', message: 'Reset completed' },
+		});
+		return null;
 	});
 
 	protocol.registerHandler('git.getDiff', async (payload) => {
