@@ -4,14 +4,14 @@
  * Branch management sidebar components for the Git Board extension.
  */
 
-export { BranchList } from './BranchList';
-export type { BranchListProps } from './BranchList';
-
-export { BranchItem } from './BranchItem';
-export type { BranchItemProps } from './BranchItem';
-
+export type {
+	BranchContextMenuProps,
+	ContextMenuAction,
+} from './BranchContextMenu';
 export { BranchContextMenu } from './BranchContextMenu';
-export type { BranchContextMenuProps, ContextMenuAction } from './BranchContextMenu';
-
-export { CreateBranchDialog } from './CreateBranchDialog';
+export type { BranchItemProps } from './BranchItem';
+export { BranchItem } from './BranchItem';
+export type { BranchListProps } from './BranchList';
+export { BranchList } from './BranchList';
 export type { CreateBranchDialogProps } from './CreateBranchDialog';
+export { CreateBranchDialog } from './CreateBranchDialog';

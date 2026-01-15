@@ -12,6 +12,7 @@ Mục tiêu: VS Code Extension quản lý Git workflow bằng visual UI
 - GitHub API: @octokit/rest
 - Styling: CSS Modules
 - Build: esbuild
+- Lint/Format: Biome
 - Test: Vitest
 
 ## Cấu trúc:

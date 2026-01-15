@@ -10,59 +10,82 @@
    ============================================================================= */
 
 .commitNode {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm, 8px);
-  height: var(--commit-row-height, 32px);
-  padding: 0 var(--spacing-sm, 8px);
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: var(--radius-small, 2px);
-  cursor: pointer;
-  user-select: none;
-  transition:
-    background var(--animation-fast, 150ms) ease,
-    border-color var(--animation-fast, 150ms) ease,
-    transform var(--animation-fast, 150ms) ease,
-    opacity var(--animation-fast, 150ms) ease;
-  white-space: nowrap;
-  font-size: var(--font-size-md, 13px);
-  /* Node appear animation */
-  opacity: 0;
-  animation: nodeAppear var(--animation-normal, 250ms) var(--animation-ease, ease) forwards;
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm, 8px);
+	height: var(--commit-row-height, 32px);
+	padding: 0 var(--spacing-sm, 8px);
+	background: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--radius-small, 2px);
+	cursor: pointer;
+	user-select: none;
+	transition:
+		background var(--animation-fast, 150ms) ease,
+		border-color var(--animation-fast, 150ms) ease,
+		transform var(--animation-fast, 150ms) ease,
+		opacity var(--animation-fast, 150ms) ease;
+	white-space: nowrap;
+	font-size: var(--font-size-md, 13px);
+	/* Node appear animation */
+	opacity: 0;
+	animation: nodeAppear var(--animation-normal, 250ms)
+		var(--animation-ease, ease) forwards;
 }
 
 /* Staggered animation delays for nodes */
-.commitNode:nth-child(1) { animation-delay: 0ms; }
-.commitNode:nth-child(2) { animation-delay: 20ms; }
-.commitNode:nth-child(3) { animation-delay: 40ms; }
-.commitNode:nth-child(4) { animation-delay: 60ms; }
-.commitNode:nth-child(5) { animation-delay: 80ms; }
-.commitNode:nth-child(6) { animation-delay: 100ms; }
-.commitNode:nth-child(7) { animation-delay: 120ms; }
-.commitNode:nth-child(8) { animation-delay: 140ms; }
-.commitNode:nth-child(9) { animation-delay: 160ms; }
-.commitNode:nth-child(10) { animation-delay: 180ms; }
-.commitNode:nth-child(n+11) { animation-delay: 200ms; }
+.commitNode:nth-child(1) {
+	animation-delay: 0ms;
+}
+.commitNode:nth-child(2) {
+	animation-delay: 20ms;
+}
+.commitNode:nth-child(3) {
+	animation-delay: 40ms;
+}
+.commitNode:nth-child(4) {
+	animation-delay: 60ms;
+}
+.commitNode:nth-child(5) {
+	animation-delay: 80ms;
+}
+.commitNode:nth-child(6) {
+	animation-delay: 100ms;
+}
+.commitNode:nth-child(7) {
+	animation-delay: 120ms;
+}
+.commitNode:nth-child(8) {
+	animation-delay: 140ms;
+}
+.commitNode:nth-child(9) {
+	animation-delay: 160ms;
+}
+.commitNode:nth-child(10) {
+	animation-delay: 180ms;
+}
+.commitNode:nth-child(n + 11) {
+	animation-delay: 200ms;
+}
 
 @keyframes nodeAppear {
-  from {
-    opacity: 0;
-    transform: translateX(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+	from {
+		opacity: 0;
+		transform: translateX(-8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
 }
 
 .commitNode:hover {
-  background: var(--vscode-list-hoverBackground, rgba(255, 255, 255, 0.05));
+	background: var(--vscode-list-hoverBackground, rgba(255, 255, 255, 0.05));
 }
 
 .commitNode:focus {
-  outline: 1px solid var(--vscode-focusBorder, #007fd4);
-  outline-offset: -1px;
+	outline: 1px solid var(--vscode-focusBorder, #007fd4);
+	outline-offset: -1px;
 }
 
 /* =============================================================================
@@ -70,12 +93,15 @@
    ============================================================================= */
 
 .commitNode.selected {
-  background: var(--vscode-list-activeSelectionBackground, rgba(0, 127, 212, 0.3));
-  border-color: var(--vscode-focusBorder, #007fd4);
+	background: var(
+		--vscode-list-activeSelectionBackground,
+		rgba(0, 127, 212, 0.3)
+	);
+	border-color: var(--vscode-focusBorder, #007fd4);
 }
 
 .commitNode.hovered {
-  background: var(--vscode-list-hoverBackground, rgba(255, 255, 255, 0.05));
+	background: var(--vscode-list-hoverBackground, rgba(255, 255, 255, 0.05));
 }
 
 /* =============================================================================
@@ -83,23 +109,23 @@
    ============================================================================= */
 
 .commitNode.compact {
-  height: 24px;
-  padding: 0 var(--spacing-xs, 4px);
-  gap: var(--spacing-xs, 4px);
-  font-size: var(--font-size-sm, 12px);
+	height: 24px;
+	padding: 0 var(--spacing-xs, 4px);
+	gap: var(--spacing-xs, 4px);
+	font-size: var(--font-size-sm, 12px);
 }
 
 .commitNode.compact .typeBadge {
-  padding: 2px 4px;
+	padding: 2px 4px;
 }
 
 .commitNode.compact .message {
-  max-width: 200px;
+	max-width: 200px;
 }
 
 .commitNode.compact .author,
 .commitNode.compact .date {
-  display: none;
+	display: none;
 }
 
 /* =============================================================================
@@ -107,7 +133,7 @@
    ============================================================================= */
 
 .commitNode.merge {
-  font-style: italic;
+	font-style: italic;
 }
 
 /* =============================================================================
@@ -115,18 +141,18 @@
    ============================================================================= */
 
 .commitNode.collapsed {
-  justify-content: center;
-  color: var(--vscode-descriptionForeground, #808080);
-  font-style: italic;
-  cursor: pointer;
+	justify-content: center;
+	color: var(--vscode-descriptionForeground, #808080);
+	font-style: italic;
+	cursor: pointer;
 }
 
 .commitNode.collapsed:hover {
-  color: var(--vscode-textLink-foreground, #3794ff);
+	color: var(--vscode-textLink-foreground, #3794ff);
 }
 
 .collapsedMessage {
-  font-size: var(--font-size-sm, 12px);
+	font-size: var(--font-size-sm, 12px);
 }
 
 /* =============================================================================
@@ -134,28 +160,28 @@
    ============================================================================= */
 
 .typeBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-xs, 4px);
-  padding: 2px 6px;
-  border-radius: var(--radius-small, 2px);
-  font-size: var(--font-size-xs, 10px);
-  font-weight: 600;
-  color: #fff;
-  text-transform: lowercase;
-  flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	gap: var(--spacing-xs, 4px);
+	padding: 2px 6px;
+	border-radius: var(--radius-small, 2px);
+	font-size: var(--font-size-xs, 10px);
+	font-weight: 600;
+	color: #fff;
+	text-transform: lowercase;
+	flex-shrink: 0;
 }
 
 .typeBadge.compact {
-  padding: 2px 4px;
+	padding: 2px 4px;
 }
 
 .typeBadgeEmoji {
-  font-size: var(--font-size-sm, 12px);
+	font-size: var(--font-size-sm, 12px);
 }
 
 .typeBadgeLabel {
-  letter-spacing: 0.02em;
+	letter-spacing: 0.02em;
 }
 
 /* =============================================================================
@@ -163,11 +189,11 @@
    ============================================================================= */
 
 .message {
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: var(--vscode-editor-foreground, #d4d4d4);
+	flex: 1;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: var(--vscode-editor-foreground, #d4d4d4);
 }
 
 /* =============================================================================
@@ -175,31 +201,31 @@
    ============================================================================= */
 
 .refs {
-  display: inline-flex;
-  gap: var(--spacing-xs, 4px);
-  flex-shrink: 0;
+	display: inline-flex;
+	gap: var(--spacing-xs, 4px);
+	flex-shrink: 0;
 }
 
 .branchRef {
-  padding: 1px 4px;
-  border-radius: var(--radius-small, 2px);
-  font-size: var(--font-size-xs, 10px);
-  font-family: var(--vscode-editor-font-family, monospace);
+	padding: 1px 4px;
+	border-radius: var(--radius-small, 2px);
+	font-size: var(--font-size-xs, 10px);
+	font-family: var(--vscode-editor-font-family, monospace);
 }
 
 .branchRef.local {
-  background: var(--branch-main, #4caf50);
-  color: #fff;
+	background: var(--branch-main, #4caf50);
+	color: #fff;
 }
 
 .branchRef.remote {
-  background: var(--azure-pr-active, #0078d4);
-  color: #fff;
+	background: var(--azure-pr-active, #0078d4);
+	color: #fff;
 }
 
 .moreRefs {
-  font-size: var(--font-size-xs, 10px);
-  color: var(--vscode-descriptionForeground, #808080);
+	font-size: var(--font-size-xs, 10px);
+	color: var(--vscode-descriptionForeground, #808080);
 }
 
 /* =============================================================================
@@ -207,23 +233,23 @@
    ============================================================================= */
 
 .tags {
-  display: inline-flex;
-  gap: var(--spacing-xs, 4px);
-  flex-shrink: 0;
+	display: inline-flex;
+	gap: var(--spacing-xs, 4px);
+	flex-shrink: 0;
 }
 
 .tagRef {
-  padding: 1px 4px;
-  border-radius: var(--radius-small, 2px);
-  font-size: var(--font-size-xs, 10px);
-  font-family: var(--vscode-editor-font-family, monospace);
-  background: var(--badge-perf, #ff9800);
-  color: #000;
+	padding: 1px 4px;
+	border-radius: var(--radius-small, 2px);
+	font-size: var(--font-size-xs, 10px);
+	font-family: var(--vscode-editor-font-family, monospace);
+	background: var(--badge-perf, #ff9800);
+	color: #000;
 }
 
 .moreTags {
-  font-size: var(--font-size-xs, 10px);
-  color: var(--vscode-descriptionForeground, #808080);
+	font-size: var(--font-size-xs, 10px);
+	color: var(--vscode-descriptionForeground, #808080);
 }
 
 /* =============================================================================
@@ -231,38 +257,38 @@
    ============================================================================= */
 
 .buildStatus {
-  font-size: var(--font-size-sm, 12px);
-  flex-shrink: 0;
+	font-size: var(--font-size-sm, 12px);
+	flex-shrink: 0;
 }
 
 .buildRunning {
-  animation: pulse 1.5s infinite;
+	animation: pulse 1.5s infinite;
 }
 
 .buildSucceeded {
-  color: var(--pipeline-succeeded, #107c10);
+	color: var(--pipeline-succeeded, #107c10);
 }
 
 .buildFailed {
-  color: var(--pipeline-failed, #d13438);
+	color: var(--pipeline-failed, #d13438);
 }
 
 .buildCanceled {
-  color: var(--pipeline-canceled, #8a8886);
+	color: var(--pipeline-canceled, #8a8886);
 }
 
 .buildPartial {
-  color: var(--pipeline-partial, #ffb900);
+	color: var(--pipeline-partial, #ffb900);
 }
 
 @keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
 }
 
 /* =============================================================================
@@ -270,22 +296,22 @@
    ============================================================================= */
 
 .workItems {
-  display: inline-flex;
-  gap: var(--spacing-xs, 4px);
-  flex-shrink: 0;
+	display: inline-flex;
+	gap: var(--spacing-xs, 4px);
+	flex-shrink: 0;
 }
 
 .workItemBadge {
-  padding: 1px 4px;
-  border-radius: var(--radius-small, 2px);
-  font-size: var(--font-size-xs, 10px);
-  background: var(--azure-workitem, #009ccc);
-  color: #fff;
-  cursor: pointer;
+	padding: 1px 4px;
+	border-radius: var(--radius-small, 2px);
+	font-size: var(--font-size-xs, 10px);
+	background: var(--azure-workitem, #009ccc);
+	color: #fff;
+	cursor: pointer;
 }
 
 .workItemBadge:hover {
-  background: var(--azure-pr-active, #0078d4);
+	background: var(--azure-pr-active, #0078d4);
 }
 
 /* =============================================================================
@@ -293,13 +319,13 @@
    ============================================================================= */
 
 .author {
-  width: 100px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: var(--vscode-descriptionForeground, #808080);
-  font-size: var(--font-size-sm, 12px);
-  flex-shrink: 0;
-  text-align: right;
+	width: 100px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: var(--vscode-descriptionForeground, #808080);
+	font-size: var(--font-size-sm, 12px);
+	flex-shrink: 0;
+	text-align: right;
 }
 
 /* =============================================================================
@@ -307,11 +333,11 @@
    ============================================================================= */
 
 .date {
-  width: 50px;
-  color: var(--vscode-descriptionForeground, #808080);
-  font-size: var(--font-size-sm, 12px);
-  flex-shrink: 0;
-  text-align: right;
+	width: 50px;
+	color: var(--vscode-descriptionForeground, #808080);
+	font-size: var(--font-size-sm, 12px);
+	flex-shrink: 0;
+	text-align: right;
 }
 
 /* =============================================================================
@@ -319,31 +345,31 @@
    ============================================================================= */
 
 @media (max-width: 800px) {
-  .refs {
-    display: none;
-  }
+	.refs {
+		display: none;
+	}
 
-  .tags {
-    display: none;
-  }
+	.tags {
+		display: none;
+	}
 
-  .author {
-    width: 80px;
-  }
+	.author {
+		width: 80px;
+	}
 }
 
 @media (max-width: 600px) {
-  .commitNode {
-    gap: var(--spacing-xs, 4px);
-  }
+	.commitNode {
+		gap: var(--spacing-xs, 4px);
+	}
 
-  .author {
-    display: none;
-  }
+	.author {
+		display: none;
+	}
 
-  .message {
-    max-width: 200px;
-  }
+	.message {
+		max-width: 200px;
+	}
 }
 
 /* =============================================================================
@@ -351,13 +377,13 @@
    ============================================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .commitNode {
-    transition: none;
-  }
+	.commitNode {
+		transition: none;
+	}
 
-  .buildRunning {
-    animation: none;
-  }
+	.buildRunning {
+		animation: none;
+	}
 }
 
 /* =============================================================================
@@ -365,21 +391,21 @@
    ============================================================================= */
 
 @media (prefers-contrast: high) {
-  .commitNode {
-    border-width: 2px;
-  }
+	.commitNode {
+		border-width: 2px;
+	}
 
-  .commitNode.selected {
-    border-width: 2px;
-  }
+	.commitNode.selected {
+		border-width: 2px;
+	}
 
-  .typeBadge {
-    border: 1px solid currentColor;
-  }
+	.typeBadge {
+		border: 1px solid currentColor;
+	}
 
-  .branchRef,
-  .tagRef,
-  .workItemBadge {
-    border: 1px solid currentColor;
-  }
+	.branchRef,
+	.tagRef,
+	.workItemBadge {
+		border: 1px solid currentColor;
+	}
 }

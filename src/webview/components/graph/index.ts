@@ -4,57 +4,48 @@
  * Export all graph-related components and utilities
  */
 
-// Components
-export { GitGraph, default as GitGraphDefault } from './GitGraph';
-export type { GitGraphProps } from './GitGraph';
-
+export type { BuildStatus, CommitNodeProps, WorkItem } from './CommitNode';
 export { CommitNode, default as CommitNodeDefault } from './CommitNode';
-export type { CommitNodeProps, BuildStatus, WorkItem } from './CommitNode';
+export type { GitGraphProps } from './GitGraph';
+// Components
+export { default as GitGraphDefault, GitGraph } from './GitGraph';
 
 // Utilities
 export {
-  // Types
-  type CommitType,
-  type CommitTypeConfig,
-  type ParsedCommit,
-  type GraphCommit,
-  type BranchNode,
-  type CollapsedCommits,
-  type GitGraphTemplateOptions,
-
-  // Constants
-  COMMIT_TYPE_CONFIG,
-  BRANCH_COLORS,
-  GRAPH_LINE_COLORS,
-
-  // Parsing Functions
-  parseCommitType,
-  getCommitTypeConfig,
-
-  // Color Functions
-  getBranchColor,
-  generateBranchColorMap,
-
-  // Date Formatting
-  formatRelativeDate,
-  formatFullDate,
-
-  // Commit Conversion
-  convertToGraphCommit,
-  convertCommitsToGraphFormat,
-
-  // Collapsed Commits
-  createCollapsedCommitsPlaceholder,
-  isCollapsedCommits,
-  collapseLinearCommits,
-
-  // Graph Layout Helpers
-  buildCommitToBranchMap,
-  extractBranchNames,
-  extractTagNames,
-  truncateMessage,
-
-  // @gitgraph/js Integration
-  getDefaultTemplateOptions,
-  buildBranchHierarchy,
+	BRANCH_COLORS,
+	type BranchNode,
+	buildBranchHierarchy,
+	// Graph Layout Helpers
+	buildCommitToBranchMap,
+	// Constants
+	COMMIT_TYPE_CONFIG,
+	type CollapsedCommits,
+	// Types
+	type CommitType,
+	type CommitTypeConfig,
+	collapseLinearCommits,
+	convertCommitsToGraphFormat,
+	// Commit Conversion
+	convertToGraphCommit,
+	// Collapsed Commits
+	createCollapsedCommitsPlaceholder,
+	extractBranchNames,
+	extractTagNames,
+	formatFullDate,
+	// Date Formatting
+	formatRelativeDate,
+	type GitGraphTemplateOptions,
+	GRAPH_LINE_COLORS,
+	type GraphCommit,
+	generateBranchColorMap,
+	// Color Functions
+	getBranchColor,
+	getCommitTypeConfig,
+	// @gitgraph/js Integration
+	getDefaultTemplateOptions,
+	isCollapsedCommits,
+	type ParsedCommit,
+	// Parsing Functions
+	parseCommitType,
+	truncateMessage,
 } from './graphUtils';

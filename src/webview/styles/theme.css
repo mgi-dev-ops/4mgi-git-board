@@ -4,125 +4,125 @@
  */
 
 :root {
-  /* ===== Background Colors ===== */
-  --bg-primary: var(--vscode-editor-background);
-  --bg-secondary: var(--vscode-sideBar-background);
-  --bg-tertiary: var(--vscode-panel-background);
-  --bg-hover: var(--vscode-list-hoverBackground);
-  --bg-active: var(--vscode-list-activeSelectionBackground);
-  --bg-inactive: var(--vscode-list-inactiveSelectionBackground);
+	/* ===== Background Colors ===== */
+	--bg-primary: var(--vscode-editor-background);
+	--bg-secondary: var(--vscode-sideBar-background);
+	--bg-tertiary: var(--vscode-panel-background);
+	--bg-hover: var(--vscode-list-hoverBackground);
+	--bg-active: var(--vscode-list-activeSelectionBackground);
+	--bg-inactive: var(--vscode-list-inactiveSelectionBackground);
 
-  /* ===== Text Colors ===== */
-  --text-primary: var(--vscode-editor-foreground);
-  --text-secondary: var(--vscode-descriptionForeground);
-  --text-muted: var(--vscode-disabledForeground);
-  --text-link: var(--vscode-textLink-foreground);
-  --text-link-active: var(--vscode-textLink-activeForeground);
-  --text-error: var(--vscode-errorForeground);
+	/* ===== Text Colors ===== */
+	--text-primary: var(--vscode-editor-foreground);
+	--text-secondary: var(--vscode-descriptionForeground);
+	--text-muted: var(--vscode-disabledForeground);
+	--text-link: var(--vscode-textLink-foreground);
+	--text-link-active: var(--vscode-textLink-activeForeground);
+	--text-error: var(--vscode-errorForeground);
 
-  /* ===== Button Styles ===== */
-  --button-bg: var(--vscode-button-background);
-  --button-fg: var(--vscode-button-foreground);
-  --button-hover-bg: var(--vscode-button-hoverBackground);
-  --button-secondary-bg: var(--vscode-button-secondaryBackground);
-  --button-secondary-fg: var(--vscode-button-secondaryForeground);
-  --button-secondary-hover-bg: var(--vscode-button-secondaryHoverBackground);
+	/* ===== Button Styles ===== */
+	--button-bg: var(--vscode-button-background);
+	--button-fg: var(--vscode-button-foreground);
+	--button-hover-bg: var(--vscode-button-hoverBackground);
+	--button-secondary-bg: var(--vscode-button-secondaryBackground);
+	--button-secondary-fg: var(--vscode-button-secondaryForeground);
+	--button-secondary-hover-bg: var(--vscode-button-secondaryHoverBackground);
 
-  /* ===== Input Styles ===== */
-  --input-bg: var(--vscode-input-background);
-  --input-fg: var(--vscode-input-foreground);
-  --input-border: var(--vscode-input-border);
-  --input-placeholder: var(--vscode-input-placeholderForeground);
-  --input-active-border: var(--vscode-focusBorder);
+	/* ===== Input Styles ===== */
+	--input-bg: var(--vscode-input-background);
+	--input-fg: var(--vscode-input-foreground);
+	--input-border: var(--vscode-input-border);
+	--input-placeholder: var(--vscode-input-placeholderForeground);
+	--input-active-border: var(--vscode-focusBorder);
 
-  /* ===== Border Colors ===== */
-  --border-primary: var(--vscode-panel-border);
-  --border-focus: var(--vscode-focusBorder);
-  --border-widget: var(--vscode-widget-border);
-  --border-separator: var(--vscode-sideBarSectionHeader-border);
+	/* ===== Border Colors ===== */
+	--border-primary: var(--vscode-panel-border);
+	--border-focus: var(--vscode-focusBorder);
+	--border-widget: var(--vscode-widget-border);
+	--border-separator: var(--vscode-sideBarSectionHeader-border);
 
-  /* ===== Scrollbar ===== */
-  --scrollbar-bg: var(--vscode-scrollbarSlider-background);
-  --scrollbar-hover: var(--vscode-scrollbarSlider-hoverBackground);
-  --scrollbar-active: var(--vscode-scrollbarSlider-activeBackground);
+	/* ===== Scrollbar ===== */
+	--scrollbar-bg: var(--vscode-scrollbarSlider-background);
+	--scrollbar-hover: var(--vscode-scrollbarSlider-hoverBackground);
+	--scrollbar-active: var(--vscode-scrollbarSlider-activeBackground);
 
-  /* ===== Dropdown ===== */
-  --dropdown-bg: var(--vscode-dropdown-background);
-  --dropdown-fg: var(--vscode-dropdown-foreground);
-  --dropdown-border: var(--vscode-dropdown-border);
-  --dropdown-list-bg: var(--vscode-dropdown-listBackground);
+	/* ===== Dropdown ===== */
+	--dropdown-bg: var(--vscode-dropdown-background);
+	--dropdown-fg: var(--vscode-dropdown-foreground);
+	--dropdown-border: var(--vscode-dropdown-border);
+	--dropdown-list-bg: var(--vscode-dropdown-listBackground);
 
-  /* ===== Badge ===== */
-  --badge-bg: var(--vscode-badge-background);
-  --badge-fg: var(--vscode-badge-foreground);
+	/* ===== Badge ===== */
+	--badge-bg: var(--vscode-badge-background);
+	--badge-fg: var(--vscode-badge-foreground);
 
-  /* ===== Tab ===== */
-  --tab-active-bg: var(--vscode-tab-activeBackground);
-  --tab-active-fg: var(--vscode-tab-activeForeground);
-  --tab-inactive-bg: var(--vscode-tab-inactiveBackground);
-  --tab-inactive-fg: var(--vscode-tab-inactiveForeground);
-  --tab-border: var(--vscode-tab-border);
+	/* ===== Tab ===== */
+	--tab-active-bg: var(--vscode-tab-activeBackground);
+	--tab-active-fg: var(--vscode-tab-activeForeground);
+	--tab-inactive-bg: var(--vscode-tab-inactiveBackground);
+	--tab-inactive-fg: var(--vscode-tab-inactiveForeground);
+	--tab-border: var(--vscode-tab-border);
 
-  /* ===== List ===== */
-  --list-hover-bg: var(--vscode-list-hoverBackground);
-  --list-hover-fg: var(--vscode-list-hoverForeground);
-  --list-active-bg: var(--vscode-list-activeSelectionBackground);
-  --list-active-fg: var(--vscode-list-activeSelectionForeground);
-  --list-inactive-bg: var(--vscode-list-inactiveSelectionBackground);
-  --list-inactive-fg: var(--vscode-list-inactiveSelectionForeground);
-  --list-focus-outline: var(--vscode-list-focusOutline);
+	/* ===== List ===== */
+	--list-hover-bg: var(--vscode-list-hoverBackground);
+	--list-hover-fg: var(--vscode-list-hoverForeground);
+	--list-active-bg: var(--vscode-list-activeSelectionBackground);
+	--list-active-fg: var(--vscode-list-activeSelectionForeground);
+	--list-inactive-bg: var(--vscode-list-inactiveSelectionBackground);
+	--list-inactive-fg: var(--vscode-list-inactiveSelectionForeground);
+	--list-focus-outline: var(--vscode-list-focusOutline);
 
-  /* ===== Editor Widgets ===== */
-  --widget-bg: var(--vscode-editorWidget-background);
-  --widget-fg: var(--vscode-editorWidget-foreground);
-  --widget-border: var(--vscode-editorWidget-border);
+	/* ===== Editor Widgets ===== */
+	--widget-bg: var(--vscode-editorWidget-background);
+	--widget-fg: var(--vscode-editorWidget-foreground);
+	--widget-border: var(--vscode-editorWidget-border);
 
-  /* ===== Progress Bar ===== */
-  --progress-bg: var(--vscode-progressBar-background);
+	/* ===== Progress Bar ===== */
+	--progress-bg: var(--vscode-progressBar-background);
 
-  /* ===== Notification ===== */
-  --notification-bg: var(--vscode-notifications-background);
-  --notification-fg: var(--vscode-notifications-foreground);
-  --notification-border: var(--vscode-notifications-border);
+	/* ===== Notification ===== */
+	--notification-bg: var(--vscode-notifications-background);
+	--notification-fg: var(--vscode-notifications-foreground);
+	--notification-border: var(--vscode-notifications-border);
 
-  /* ===== Git Decorations ===== */
-  --git-added: var(--vscode-gitDecoration-addedResourceForeground);
-  --git-modified: var(--vscode-gitDecoration-modifiedResourceForeground);
-  --git-deleted: var(--vscode-gitDecoration-deletedResourceForeground);
-  --git-untracked: var(--vscode-gitDecoration-untrackedResourceForeground);
-  --git-ignored: var(--vscode-gitDecoration-ignoredResourceForeground);
-  --git-conflict: var(--vscode-gitDecoration-conflictingResourceForeground);
-  --git-submodule: var(--vscode-gitDecoration-submoduleResourceForeground);
+	/* ===== Git Decorations ===== */
+	--git-added: var(--vscode-gitDecoration-addedResourceForeground);
+	--git-modified: var(--vscode-gitDecoration-modifiedResourceForeground);
+	--git-deleted: var(--vscode-gitDecoration-deletedResourceForeground);
+	--git-untracked: var(--vscode-gitDecoration-untrackedResourceForeground);
+	--git-ignored: var(--vscode-gitDecoration-ignoredResourceForeground);
+	--git-conflict: var(--vscode-gitDecoration-conflictingResourceForeground);
+	--git-submodule: var(--vscode-gitDecoration-submoduleResourceForeground);
 
-  /* ===== Diff Editor ===== */
-  --diff-inserted-bg: var(--vscode-diffEditor-insertedTextBackground);
-  --diff-inserted-line-bg: var(--vscode-diffEditor-insertedLineBackground);
-  --diff-removed-bg: var(--vscode-diffEditor-removedTextBackground);
-  --diff-removed-line-bg: var(--vscode-diffEditor-removedLineBackground);
+	/* ===== Diff Editor ===== */
+	--diff-inserted-bg: var(--vscode-diffEditor-insertedTextBackground);
+	--diff-inserted-line-bg: var(--vscode-diffEditor-insertedLineBackground);
+	--diff-removed-bg: var(--vscode-diffEditor-removedTextBackground);
+	--diff-removed-line-bg: var(--vscode-diffEditor-removedLineBackground);
 
-  /* ===== Icon Colors ===== */
-  --icon-fg: var(--vscode-icon-foreground);
+	/* ===== Icon Colors ===== */
+	--icon-fg: var(--vscode-icon-foreground);
 
-  /* ===== Chart Colors ===== */
-  --chart-red: var(--vscode-charts-red);
-  --chart-blue: var(--vscode-charts-blue);
-  --chart-yellow: var(--vscode-charts-yellow);
-  --chart-orange: var(--vscode-charts-orange);
-  --chart-green: var(--vscode-charts-green);
-  --chart-purple: var(--vscode-charts-purple);
+	/* ===== Chart Colors ===== */
+	--chart-red: var(--vscode-charts-red);
+	--chart-blue: var(--vscode-charts-blue);
+	--chart-yellow: var(--vscode-charts-yellow);
+	--chart-orange: var(--vscode-charts-orange);
+	--chart-green: var(--vscode-charts-green);
+	--chart-purple: var(--vscode-charts-purple);
 
-  /* ===== Shadow ===== */
-  --shadow-widget: var(--vscode-widget-shadow);
+	/* ===== Shadow ===== */
+	--shadow-widget: var(--vscode-widget-shadow);
 }
 
 /* High Contrast Theme Adjustments */
 @media (forced-colors: active) {
-  :root {
-    --border-primary: CanvasText;
-    --border-focus: Highlight;
-    --text-primary: CanvasText;
-    --bg-primary: Canvas;
-    --button-bg: ButtonFace;
-    --button-fg: ButtonText;
-  }
+	:root {
+		--border-primary: CanvasText;
+		--border-focus: Highlight;
+		--text-primary: CanvasText;
+		--bg-primary: Canvas;
+		--button-bg: ButtonFace;
+		--button-fg: ButtonText;
+	}
 }

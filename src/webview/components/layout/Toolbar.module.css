@@ -1,334 +1,334 @@
 /* Toolbar.module.css */
 
 .toolbar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  flex-wrap: wrap;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	width: 100%;
+	flex-wrap: wrap;
 }
 
 /* Base Button Styles */
 .toolbarButton {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 8px;
-  background-color: var(--vscode-button-secondaryBackground);
-  color: var(--vscode-button-secondaryForeground);
-  border: 1px solid var(--vscode-button-border, transparent);
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 12px;
-  white-space: nowrap;
-  transition: background-color 150ms ease;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	padding: 4px 8px;
+	background-color: var(--vscode-button-secondaryBackground);
+	color: var(--vscode-button-secondaryForeground);
+	border: 1px solid var(--vscode-button-border, transparent);
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 12px;
+	white-space: nowrap;
+	transition: background-color 150ms ease;
 }
 
 .toolbarButton:hover {
-  background-color: var(--vscode-button-secondaryHoverBackground);
+	background-color: var(--vscode-button-secondaryHoverBackground);
 }
 
 .toolbarButton:focus {
-  outline: 1px solid var(--vscode-focusBorder);
-  outline-offset: 1px;
+	outline: 1px solid var(--vscode-focusBorder);
+	outline-offset: 1px;
 }
 
 .icon {
-  font-size: 14px;
-  line-height: 1;
+	font-size: 14px;
+	line-height: 1;
 }
 
 .buttonText {
-  font-size: 12px;
+	font-size: 12px;
 }
 
 /* Branch Selector */
 .branchSelector {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  background-color: var(--vscode-dropdown-background);
-  color: var(--vscode-dropdown-foreground);
-  border: 1px solid var(--vscode-dropdown-border);
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 12px;
-  min-width: 120px;
-  max-width: 200px;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 10px;
+	background-color: var(--vscode-dropdown-background);
+	color: var(--vscode-dropdown-foreground);
+	border: 1px solid var(--vscode-dropdown-border);
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 12px;
+	min-width: 120px;
+	max-width: 200px;
 }
 
 .branchSelector:hover {
-  background-color: var(--vscode-list-hoverBackground);
+	background-color: var(--vscode-list-hoverBackground);
 }
 
 .branchSelector:focus {
-  outline: 1px solid var(--vscode-focusBorder);
-  outline-offset: 1px;
+	outline: 1px solid var(--vscode-focusBorder);
+	outline-offset: 1px;
 }
 
 .branchIcon {
-  font-size: 14px;
-  color: var(--vscode-gitDecoration-addedResourceForeground);
+	font-size: 14px;
+	color: var(--vscode-gitDecoration-addedResourceForeground);
 }
 
 .branchName {
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: left;
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: left;
 }
 
 .dropdownArrow {
-  font-size: 8px;
-  opacity: 0.7;
+	font-size: 8px;
+	opacity: 0.7;
 }
 
 /* Dropdown Container */
 .dropdownContainer {
-  position: relative;
+	position: relative;
 }
 
 .dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 100;
-  min-width: 200px;
-  max-height: 300px;
-  overflow-y: auto;
-  margin: 4px 0 0 0;
-  padding: 4px 0;
-  list-style: none;
-  background-color: var(--vscode-dropdown-background);
-  border: 1px solid var(--vscode-dropdown-border);
-  border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 100;
+	min-width: 200px;
+	max-height: 300px;
+	overflow-y: auto;
+	margin: 4px 0 0 0;
+	padding: 4px 0;
+	list-style: none;
+	background-color: var(--vscode-dropdown-background);
+	border: 1px solid var(--vscode-dropdown-border);
+	border-radius: 4px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .dropdownItem {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  cursor: pointer;
-  font-size: 12px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 12px;
+	cursor: pointer;
+	font-size: 12px;
 }
 
 .dropdownItem:hover {
-  background-color: var(--vscode-list-hoverBackground);
+	background-color: var(--vscode-list-hoverBackground);
 }
 
 .dropdownItem[aria-selected="true"],
 .currentBranch {
-  background-color: var(--vscode-list-activeSelectionBackground);
-  color: var(--vscode-list-activeSelectionForeground);
+	background-color: var(--vscode-list-activeSelectionBackground);
+	color: var(--vscode-list-activeSelectionForeground);
 }
 
 .dropdownItemEmpty {
-  padding: 8px 12px;
-  color: var(--vscode-disabledForeground);
-  font-style: italic;
-  font-size: 12px;
+	padding: 8px 12px;
+	color: var(--vscode-disabledForeground);
+	font-style: italic;
+	font-size: 12px;
 }
 
 .branchItemIcon {
-  font-size: 12px;
-  opacity: 0.8;
+	font-size: 12px;
+	opacity: 0.8;
 }
 
 .branchItemName {
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .protectedIcon {
-  font-size: 10px;
-  margin-left: auto;
+	font-size: 10px;
+	margin-left: auto;
 }
 
 /* Search Container */
 .searchContainer {
-  display: flex;
-  align-items: center;
-  position: relative;
-  flex: 1;
-  max-width: 300px;
-  min-width: 150px;
+	display: flex;
+	align-items: center;
+	position: relative;
+	flex: 1;
+	max-width: 300px;
+	min-width: 150px;
 }
 
 .searchIcon {
-  position: absolute;
-  left: 8px;
-  font-size: 12px;
-  pointer-events: none;
-  opacity: 0.7;
+	position: absolute;
+	left: 8px;
+	font-size: 12px;
+	pointer-events: none;
+	opacity: 0.7;
 }
 
 .searchInput {
-  width: 100%;
-  padding: 6px 28px 6px 28px;
-  background-color: var(--vscode-input-background);
-  color: var(--vscode-input-foreground);
-  border: 1px solid var(--vscode-input-border);
-  border-radius: 4px;
-  font-size: 12px;
-  outline: none;
+	width: 100%;
+	padding: 6px 28px 6px 28px;
+	background-color: var(--vscode-input-background);
+	color: var(--vscode-input-foreground);
+	border: 1px solid var(--vscode-input-border);
+	border-radius: 4px;
+	font-size: 12px;
+	outline: none;
 }
 
 .searchInput::placeholder {
-  color: var(--vscode-input-placeholderForeground);
+	color: var(--vscode-input-placeholderForeground);
 }
 
 .searchInput:focus {
-  border-color: var(--vscode-focusBorder);
+	border-color: var(--vscode-focusBorder);
 }
 
 .searchClear {
-  position: absolute;
-  right: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  padding: 0;
-  background: transparent;
-  border: none;
-  border-radius: 2px;
-  color: var(--vscode-input-foreground);
-  cursor: pointer;
-  font-size: 14px;
-  opacity: 0.7;
+	position: absolute;
+	right: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	padding: 0;
+	background: transparent;
+	border: none;
+	border-radius: 2px;
+	color: var(--vscode-input-foreground);
+	cursor: pointer;
+	font-size: 14px;
+	opacity: 0.7;
 }
 
 .searchClear:hover {
-  opacity: 1;
-  background-color: var(--vscode-toolbar-hoverBackground);
+	opacity: 1;
+	background-color: var(--vscode-toolbar-hoverBackground);
 }
 
 /* Stash Item */
 .stashItem {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--vscode-panel-border);
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 8px 12px;
+	border-bottom: 1px solid var(--vscode-panel-border);
 }
 
 .stashItem:last-child {
-  border-bottom: none;
+	border-bottom: none;
 }
 
 .stashItem:hover {
-  background-color: var(--vscode-list-hoverBackground);
+	background-color: var(--vscode-list-hoverBackground);
 }
 
 .stashInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
 }
 
 .stashIndex {
-  font-size: 11px;
-  font-family: var(--vscode-editor-font-family);
-  color: var(--vscode-textLink-foreground);
+	font-size: 11px;
+	font-family: var(--vscode-editor-font-family);
+	color: var(--vscode-textLink-foreground);
 }
 
 .stashMessage {
-  font-size: 12px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+	font-size: 12px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .stashActions {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
+	display: flex;
+	gap: 4px;
+	margin-top: 4px;
 }
 
 .stashActionButton {
-  padding: 2px 6px;
-  font-size: 10px;
-  background-color: var(--vscode-button-secondaryBackground);
-  color: var(--vscode-button-secondaryForeground);
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
+	padding: 2px 6px;
+	font-size: 10px;
+	background-color: var(--vscode-button-secondaryBackground);
+	color: var(--vscode-button-secondaryForeground);
+	border: none;
+	border-radius: 2px;
+	cursor: pointer;
 }
 
 .stashActionButton:hover {
-  background-color: var(--vscode-button-secondaryHoverBackground);
+	background-color: var(--vscode-button-secondaryHoverBackground);
 }
 
 .stashActionDanger {
-  color: var(--vscode-errorForeground);
+	color: var(--vscode-errorForeground);
 }
 
 .stashActionDanger:hover {
-  background-color: rgba(244, 67, 54, 0.2);
+	background-color: rgba(244, 67, 54, 0.2);
 }
 
 /* Spacer */
 .spacer {
-  flex: 1;
+	flex: 1;
 }
 
 /* Toggle Group */
 .toggleGroup {
-  display: flex;
-  border: 1px solid var(--vscode-button-border, var(--vscode-panel-border));
-  border-radius: 4px;
-  overflow: hidden;
+	display: flex;
+	border: 1px solid var(--vscode-button-border, var(--vscode-panel-border));
+	border-radius: 4px;
+	overflow: hidden;
 }
 
 .toggleButton {
-  padding: 4px 10px;
-  background-color: transparent;
-  color: var(--vscode-foreground);
-  border: none;
-  border-right: 1px solid var(--vscode-panel-border);
-  cursor: pointer;
-  font-size: 11px;
-  opacity: 0.7;
-  transition: all 150ms ease;
+	padding: 4px 10px;
+	background-color: transparent;
+	color: var(--vscode-foreground);
+	border: none;
+	border-right: 1px solid var(--vscode-panel-border);
+	cursor: pointer;
+	font-size: 11px;
+	opacity: 0.7;
+	transition: all 150ms ease;
 }
 
 .toggleButton:last-child {
-  border-right: none;
+	border-right: none;
 }
 
 .toggleButton:hover {
-  background-color: var(--vscode-toolbar-hoverBackground);
-  opacity: 1;
+	background-color: var(--vscode-toolbar-hoverBackground);
+	opacity: 1;
 }
 
 .toggleActive {
-  background-color: var(--vscode-button-background);
-  color: var(--vscode-button-foreground);
-  opacity: 1;
+	background-color: var(--vscode-button-background);
+	color: var(--vscode-button-foreground);
+	opacity: 1;
 }
 
 .toggleActive:hover {
-  background-color: var(--vscode-button-hoverBackground);
+	background-color: var(--vscode-button-hoverBackground);
 }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .buttonText {
-    display: none;
-  }
+	.buttonText {
+		display: none;
+	}
 
-  .searchContainer {
-    min-width: 100px;
-  }
+	.searchContainer {
+		min-width: 100px;
+	}
 
-  .toggleGroup {
-    display: none;
-  }
+	.toggleGroup {
+		display: none;
+	}
 }

@@ -6,247 +6,251 @@
 
 /* Overlay */
 .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1100;
-  animation: overlayFade var(--animation-fast) ease-out;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1100;
+	animation: overlayFade var(--animation-fast) ease-out;
 }
 
 @keyframes overlayFade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 /* Dialog */
 .dialog {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  max-width: 600px;
-  max-height: 80vh;
-  background-color: var(--bg-primary);
-  border: 1px solid var(--border-primary);
-  border-radius: var(--radius-large);
-  box-shadow: 0 8px 32px var(--shadow-widget);
-  animation: dialogSlide var(--animation-normal) ease-out;
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	max-width: 600px;
+	max-height: 80vh;
+	background-color: var(--bg-primary);
+	border: 1px solid var(--border-primary);
+	border-radius: var(--radius-large);
+	box-shadow: 0 8px 32px var(--shadow-widget);
+	animation: dialogSlide var(--animation-normal) ease-out;
 }
 
 @keyframes dialogSlide {
-  from {
-    opacity: 0;
-    transform: translateY(-20px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(-20px) scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
 }
 
 /* Header */
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--spacing-md) var(--spacing-lg);
-  background-color: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-primary);
-  border-radius: var(--radius-large) var(--radius-large) 0 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--spacing-md) var(--spacing-lg);
+	background-color: var(--bg-secondary);
+	border-bottom: 1px solid var(--border-primary);
+	border-radius: var(--radius-large) var(--radius-large) 0 0;
 }
 
 .title {
-  margin: 0;
-  font-size: var(--font-size-lg);
-  font-weight: 600;
-  color: var(--text-primary);
+	margin: 0;
+	font-size: var(--font-size-lg);
+	font-weight: 600;
+	color: var(--text-primary);
 }
 
 .closeButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  background: transparent;
-  border: none;
-  border-radius: var(--radius-small);
-  color: var(--text-secondary);
-  font-size: 20px;
-  cursor: pointer;
-  transition: background-color var(--animation-fast), color var(--animation-fast);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	background: transparent;
+	border: none;
+	border-radius: var(--radius-small);
+	color: var(--text-secondary);
+	font-size: 20px;
+	cursor: pointer;
+	transition:
+		background-color var(--animation-fast),
+		color var(--animation-fast);
 }
 
 .closeButton:hover {
-  background-color: var(--bg-hover);
-  color: var(--text-primary);
+	background-color: var(--bg-hover);
+	color: var(--text-primary);
 }
 
 .closeButton:focus {
-  outline: 1px solid var(--border-focus);
+	outline: 1px solid var(--border-focus);
 }
 
 /* Commit info */
 .commitInfo {
-  padding: var(--spacing-md) var(--spacing-lg);
-  background-color: var(--bg-tertiary);
-  border-bottom: 1px solid var(--border-primary);
+	padding: var(--spacing-md) var(--spacing-lg);
+	background-color: var(--bg-tertiary);
+	border-bottom: 1px solid var(--border-primary);
 }
 
 .commitSha {
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
-  margin-bottom: var(--spacing-xs);
+	font-size: var(--font-size-sm);
+	color: var(--text-secondary);
+	margin-bottom: var(--spacing-xs);
 }
 
 .commitSha code {
-  font-family: var(--vscode-editor-font-family, monospace);
-  color: var(--text-link);
-  background-color: var(--bg-secondary);
-  padding: 1px 4px;
-  border-radius: var(--radius-small);
+	font-family: var(--vscode-editor-font-family, monospace);
+	color: var(--text-link);
+	background-color: var(--bg-secondary);
+	padding: 1px 4px;
+	border-radius: var(--radius-small);
 }
 
 .originalMessage {
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
+	font-size: var(--font-size-sm);
+	color: var(--text-secondary);
 }
 
 .originalMessage span {
-  color: var(--text-primary);
+	color: var(--text-primary);
 }
 
 /* Editor container */
 .editorContainer {
-  flex: 1;
-  padding: var(--spacing-lg);
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-  overflow: hidden;
+	flex: 1;
+	padding: var(--spacing-lg);
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-xs);
+	overflow: hidden;
 }
 
 .editor {
-  flex: 1;
-  width: 100%;
-  min-height: 200px;
-  padding: var(--spacing-md);
-  background-color: var(--input-bg);
-  border: 1px solid var(--input-border);
-  border-radius: var(--radius-medium);
-  color: var(--input-fg);
-  font-family: var(--vscode-editor-font-family, monospace);
-  font-size: var(--font-size-md);
-  line-height: 1.5;
-  resize: vertical;
-  transition: border-color var(--animation-fast);
+	flex: 1;
+	width: 100%;
+	min-height: 200px;
+	padding: var(--spacing-md);
+	background-color: var(--input-bg);
+	border: 1px solid var(--input-border);
+	border-radius: var(--radius-medium);
+	color: var(--input-fg);
+	font-family: var(--vscode-editor-font-family, monospace);
+	font-size: var(--font-size-md);
+	line-height: 1.5;
+	resize: vertical;
+	transition: border-color var(--animation-fast);
 }
 
 .editor::placeholder {
-  color: var(--input-placeholder);
+	color: var(--input-placeholder);
 }
 
 .editor:focus {
-  outline: none;
-  border-color: var(--input-active-border);
+	outline: none;
+	border-color: var(--input-active-border);
 }
 
 /* Character count */
 .charCount {
-  font-size: var(--font-size-xs);
-  color: var(--text-muted);
-  text-align: right;
+	font-size: var(--font-size-xs);
+	color: var(--text-muted);
+	text-align: right;
 }
 
 .charCountWarning {
-  color: var(--warning-yellow);
+	color: var(--warning-yellow);
 }
 
 /* Help text */
 .helpText {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  padding: 0 var(--spacing-lg) var(--spacing-md);
-  font-size: var(--font-size-sm);
-  color: var(--text-muted);
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-xs);
+	padding: 0 var(--spacing-lg) var(--spacing-md);
+	font-size: var(--font-size-sm);
+	color: var(--text-muted);
 }
 
 .helpIcon {
-  flex-shrink: 0;
+	flex-shrink: 0;
 }
 
 /* Footer */
 .footer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-md) var(--spacing-lg);
-  background-color: var(--bg-secondary);
-  border-top: 1px solid var(--border-primary);
-  border-radius: 0 0 var(--radius-large) var(--radius-large);
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: var(--spacing-sm);
+	padding: var(--spacing-md) var(--spacing-lg);
+	background-color: var(--bg-secondary);
+	border-top: 1px solid var(--border-primary);
+	border-radius: 0 0 var(--radius-large) var(--radius-large);
 }
 
 .cancelButton,
 .saveButton {
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border: none;
-  border-radius: var(--radius-medium);
-  font-size: var(--font-size-md);
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color var(--animation-fast), opacity var(--animation-fast);
+	padding: var(--spacing-sm) var(--spacing-lg);
+	border: none;
+	border-radius: var(--radius-medium);
+	font-size: var(--font-size-md);
+	font-weight: 500;
+	cursor: pointer;
+	transition:
+		background-color var(--animation-fast),
+		opacity var(--animation-fast);
 }
 
 .cancelButton {
-  background-color: var(--button-secondary-bg);
-  color: var(--button-secondary-fg);
+	background-color: var(--button-secondary-bg);
+	color: var(--button-secondary-fg);
 }
 
 .cancelButton:hover {
-  background-color: var(--button-secondary-hover-bg);
+	background-color: var(--button-secondary-hover-bg);
 }
 
 .saveButton {
-  background-color: var(--button-bg);
-  color: var(--button-fg);
+	background-color: var(--button-bg);
+	color: var(--button-fg);
 }
 
 .saveButton:hover {
-  background-color: var(--button-hover-bg);
+	background-color: var(--button-hover-bg);
 }
 
 .saveButton:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+	opacity: 0.5;
+	cursor: not-allowed;
 }
 
 .cancelButton:focus,
 .saveButton:focus {
-  outline: 2px solid var(--border-focus);
-  outline-offset: 2px;
+	outline: 2px solid var(--border-focus);
+	outline-offset: 2px;
 }
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .overlay,
-  .dialog,
-  .closeButton,
-  .editor,
-  .cancelButton,
-  .saveButton {
-    animation: none;
-    transition: none;
-  }
+	.overlay,
+	.dialog,
+	.closeButton,
+	.editor,
+	.cancelButton,
+	.saveButton {
+		animation: none;
+		transition: none;
+	}
 }

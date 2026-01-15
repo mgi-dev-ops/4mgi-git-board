@@ -2,13 +2,19 @@
  * Services barrel export
  */
 
-export { GitService, createGitService } from "./GitService";
-export { GitError, GitErrorCode, parseGitError, isGitError, hasConflicts } from "./GitError";
+export {
+	GitError,
+	GitErrorCode,
+	hasConflicts,
+	isGitError,
+	parseGitError,
+} from './GitError';
+export { createGitService, GitService } from './GitService';
 export type {
-  SimpleGitLogEntry,
-  SimpleGitBranchSummary,
-  SimpleGitStatusResult,
-  SimpleGitDiffSummary,
-  SimpleGitRemote,
-  SimpleGitStashEntry,
-} from "./GitService.types";
+	SimpleGitBranchSummary,
+	SimpleGitDiffSummary,
+	SimpleGitLogEntry,
+	SimpleGitRemote,
+	SimpleGitStashEntry,
+	SimpleGitStatusResult,
+} from './GitService.types';

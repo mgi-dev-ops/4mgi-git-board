@@ -1,82 +1,84 @@
 /* Tooltip.module.css - Tooltip component styles */
 
 .tooltip {
-  position: fixed;
-  z-index: 10002;
-  max-width: 300px;
-  padding: var(--spacing-xs) var(--spacing-sm);
-  font-family: var(--vscode-font-family);
-  font-size: var(--font-size-sm);
-  line-height: 1.4;
-  color: var(--vscode-editorWidget-foreground);
-  background-color: var(--vscode-editorWidget-background);
-  border: 1px solid var(--vscode-editorWidget-border, var(--vscode-panel-border));
-  border-radius: var(--radius-small);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  pointer-events: none;
-  animation: fadeIn var(--animation-fast) ease;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+	position: fixed;
+	z-index: 10002;
+	max-width: 300px;
+	padding: var(--spacing-xs) var(--spacing-sm);
+	font-family: var(--vscode-font-family);
+	font-size: var(--font-size-sm);
+	line-height: 1.4;
+	color: var(--vscode-editorWidget-foreground);
+	background-color: var(--vscode-editorWidget-background);
+	border: 1px solid
+		var(--vscode-editorWidget-border, var(--vscode-panel-border));
+	border-radius: var(--radius-small);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	pointer-events: none;
+	animation: fadeIn var(--animation-fast) ease;
+	white-space: pre-wrap;
+	word-wrap: break-word;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 /* Arrow */
 .arrow {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background-color: var(--vscode-editorWidget-background);
-  border: 1px solid var(--vscode-editorWidget-border, var(--vscode-panel-border));
-  transform: rotate(45deg);
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	background-color: var(--vscode-editorWidget-background);
+	border: 1px solid
+		var(--vscode-editorWidget-border, var(--vscode-panel-border));
+	transform: rotate(45deg);
 }
 
 /* Position: Top */
 .top .arrow {
-  bottom: -5px;
-  left: 50%;
-  margin-left: -4px;
-  border-top: none;
-  border-left: none;
+	bottom: -5px;
+	left: 50%;
+	margin-left: -4px;
+	border-top: none;
+	border-left: none;
 }
 
 /* Position: Bottom */
 .bottom .arrow {
-  top: -5px;
-  left: 50%;
-  margin-left: -4px;
-  border-bottom: none;
-  border-right: none;
+	top: -5px;
+	left: 50%;
+	margin-left: -4px;
+	border-bottom: none;
+	border-right: none;
 }
 
 /* Position: Left */
 .left .arrow {
-  right: -5px;
-  top: 50%;
-  margin-top: -4px;
-  border-bottom: none;
-  border-left: none;
+	right: -5px;
+	top: 50%;
+	margin-top: -4px;
+	border-bottom: none;
+	border-left: none;
 }
 
 /* Position: Right */
 .right .arrow {
-  left: -5px;
-  top: 50%;
-  margin-top: -4px;
-  border-top: none;
-  border-right: none;
+	left: -5px;
+	top: 50%;
+	margin-top: -4px;
+	border-top: none;
+	border-right: none;
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .tooltip {
-    animation: none;
-  }
+	.tooltip {
+		animation: none;
+	}
 }

@@ -1,210 +1,212 @@
 /* GitHub PR Badge Styles */
 
 .badge {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 10px 12px;
-  border-radius: 6px;
-  background-color: var(--vscode-editor-background);
-  border: 1px solid var(--vscode-panel-border);
-  font-size: 13px;
-  color: var(--vscode-foreground);
-  transition: border-color 0.15s ease, background-color 0.15s ease;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding: 10px 12px;
+	border-radius: 6px;
+	background-color: var(--vscode-editor-background);
+	border: 1px solid var(--vscode-panel-border);
+	font-size: 13px;
+	color: var(--vscode-foreground);
+	transition:
+		border-color 0.15s ease,
+		background-color 0.15s ease;
 }
 
 .badge.clickable {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .badge.clickable:hover {
-  border-color: var(--vscode-focusBorder);
-  background-color: var(--vscode-list-hoverBackground);
+	border-color: var(--vscode-focusBorder);
+	background-color: var(--vscode-list-hoverBackground);
 }
 
 .badge.clickable:focus {
-  outline: none;
-  border-color: var(--vscode-focusBorder);
-  box-shadow: 0 0 0 1px var(--vscode-focusBorder);
+	outline: none;
+	border-color: var(--vscode-focusBorder);
+	box-shadow: 0 0 0 1px var(--vscode-focusBorder);
 }
 
 /* Compact mode */
 .badge.compact {
-  flex-direction: row;
-  align-items: center;
-  gap: 4px;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 12px;
+	flex-direction: row;
+	align-items: center;
+	gap: 4px;
+	padding: 2px 6px;
+	border-radius: 4px;
+	font-size: 12px;
 }
 
 /* Status colors */
 .badge.open {
-  border-left: 3px solid #238636;
+	border-left: 3px solid #238636;
 }
 
 .badge.open .icon {
-  color: #238636;
+	color: #238636;
 }
 
 .badge.merged {
-  border-left: 3px solid #a371f7;
+	border-left: 3px solid #a371f7;
 }
 
 .badge.merged .icon {
-  color: #a371f7;
+	color: #a371f7;
 }
 
 .badge.closed {
-  border-left: 3px solid #f85149;
+	border-left: 3px solid #f85149;
 }
 
 .badge.closed .icon {
-  color: #f85149;
+	color: #f85149;
 }
 
 .badge.draft {
-  border-left: 3px solid #768390;
+	border-left: 3px solid #768390;
 }
 
 .badge.draft .icon {
-  color: #768390;
+	color: #768390;
 }
 
 /* Compact status colors */
 .badge.compact.open {
-  border-left: none;
-  background-color: rgba(35, 134, 54, 0.15);
+	border-left: none;
+	background-color: rgba(35, 134, 54, 0.15);
 }
 
 .badge.compact.merged {
-  border-left: none;
-  background-color: rgba(163, 113, 247, 0.15);
+	border-left: none;
+	background-color: rgba(163, 113, 247, 0.15);
 }
 
 .badge.compact.closed {
-  border-left: none;
-  background-color: rgba(248, 81, 73, 0.15);
+	border-left: none;
+	background-color: rgba(248, 81, 73, 0.15);
 }
 
 .badge.compact.draft {
-  border-left: none;
-  background-color: rgba(118, 131, 144, 0.15);
+	border-left: none;
+	background-color: rgba(118, 131, 144, 0.15);
 }
 
 /* Header row */
 .header {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+	display: flex;
+	align-items: center;
+	gap: 6px;
 }
 
 .icon {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
 }
 
 .number {
-  font-weight: 600;
-  color: var(--vscode-foreground);
+	font-weight: 600;
+	color: var(--vscode-foreground);
 }
 
 .status {
-  font-size: 11px;
-  padding: 1px 6px;
-  border-radius: 10px;
-  background-color: var(--vscode-badge-background);
-  color: var(--vscode-badge-foreground);
-  text-transform: capitalize;
+	font-size: 11px;
+	padding: 1px 6px;
+	border-radius: 10px;
+	background-color: var(--vscode-badge-background);
+	color: var(--vscode-badge-foreground);
+	text-transform: capitalize;
 }
 
 /* Title */
 .title {
-  font-weight: 500;
-  line-height: 1.4;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+	font-weight: 500;
+	line-height: 1.4;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
 }
 
 /* Meta info */
 .meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 12px;
-  color: var(--vscode-descriptionForeground);
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-size: 12px;
+	color: var(--vscode-descriptionForeground);
 }
 
 .author {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+	display: flex;
+	align-items: center;
+	gap: 4px;
 }
 
 .avatar {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
 }
 
 .branches {
-  font-family: var(--vscode-editor-font-family);
-  font-size: 11px;
-  opacity: 0.8;
+	font-family: var(--vscode-editor-font-family);
+	font-size: 11px;
+	opacity: 0.8;
 }
 
 /* Reviews */
 .reviews {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 12px;
 }
 
 .reviewIcon {
-  width: 12px;
-  height: 12px;
+	width: 12px;
+	height: 12px;
 }
 
 .reviewApproved {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  color: #238636;
+	display: flex;
+	align-items: center;
+	gap: 2px;
+	color: #238636;
 }
 
 .reviewChanges {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  color: #f85149;
+	display: flex;
+	align-items: center;
+	gap: 2px;
+	color: #f85149;
 }
 
 /* Labels */
 .labels {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 2px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	margin-top: 2px;
 }
 
 .label {
-  display: inline-block;
-  padding: 0 6px;
-  font-size: 11px;
-  font-weight: 500;
-  line-height: 18px;
-  border-radius: 10px;
-  color: #fff;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+	display: inline-block;
+	padding: 0 6px;
+	font-size: 11px;
+	font-weight: 500;
+	line-height: 18px;
+	border-radius: 10px;
+	color: #fff;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 .labelMore {
-  font-size: 11px;
-  color: var(--vscode-descriptionForeground);
-  padding: 0 4px;
+	font-size: 11px;
+	color: var(--vscode-descriptionForeground);
+	padding: 0 4px;
 }

@@ -4,124 +4,124 @@
  */
 
 :root {
-  /* ========================================
+	/* ========================================
    * Branch Colors
    * ======================================== */
-  --branch-main: #4caf50;
-  --branch-develop: #2196f3;
-  --branch-feature: #9c27b0;
-  --branch-hotfix: #f44336;
-  --branch-release: #ff9800;
+	--branch-main: #4caf50;
+	--branch-develop: #2196f3;
+	--branch-feature: #9c27b0;
+	--branch-hotfix: #f44336;
+	--branch-release: #ff9800;
 
-  /* ========================================
+	/* ========================================
    * Graph Line Colors
    * ======================================== */
-  --graph-line-1: #4caf50; /* main/master - green */
-  --graph-line-2: #2196f3; /* develop - blue */
-  --graph-line-3: #9c27b0; /* feature branches - purple */
-  --graph-line-4: #ff9800; /* release - orange */
-  --graph-line-5: #f44336; /* hotfix - red */
-  --graph-line-6: #00bcd4; /* other - cyan */
+	--graph-line-1: #4caf50; /* main/master - green */
+	--graph-line-2: #2196f3; /* develop - blue */
+	--graph-line-3: #9c27b0; /* feature branches - purple */
+	--graph-line-4: #ff9800; /* release - orange */
+	--graph-line-5: #f44336; /* hotfix - red */
+	--graph-line-6: #00bcd4; /* other - cyan */
 
-  /* ========================================
+	/* ========================================
    * File Status Colors
    * ======================================== */
-  --status-added: #4caf50;
-  --status-modified: #ff9800;
-  --status-deleted: #f44336;
-  --status-conflict: #e91e63;
+	--status-added: #4caf50;
+	--status-modified: #ff9800;
+	--status-deleted: #f44336;
+	--status-conflict: #e91e63;
 
-  /* ========================================
+	/* ========================================
    * Commit Type Badge Colors
    * ======================================== */
-  --badge-feat: #4caf50; /* green - new feature */
-  --badge-fix: #f44336; /* red - bug fix */
-  --badge-chore: #9e9e9e; /* gray - maintenance */
-  --badge-refactor: #2196f3; /* blue - code refactor */
-  --badge-docs: #9c27b0; /* purple - documentation */
-  --badge-style: #e91e63; /* pink - styling */
-  --badge-test: #00bcd4; /* cyan - tests */
-  --badge-perf: #ff9800; /* orange - performance */
+	--badge-feat: #4caf50; /* green - new feature */
+	--badge-fix: #f44336; /* red - bug fix */
+	--badge-chore: #9e9e9e; /* gray - maintenance */
+	--badge-refactor: #2196f3; /* blue - code refactor */
+	--badge-docs: #9c27b0; /* purple - documentation */
+	--badge-style: #e91e63; /* pink - styling */
+	--badge-test: #00bcd4; /* cyan - tests */
+	--badge-perf: #ff9800; /* orange - performance */
 
-  /* ========================================
+	/* ========================================
    * Azure DevOps Colors
    * ======================================== */
-  --azure-pr-active: #0078d4;
-  --azure-pr-approved: #107c10;
-  --azure-workitem: #009ccc;
+	--azure-pr-active: #0078d4;
+	--azure-pr-approved: #107c10;
+	--azure-workitem: #009ccc;
 
-  /* ========================================
+	/* ========================================
    * Pipeline Status Colors
    * ======================================== */
-  --pipeline-running: #0078d4;
-  --pipeline-succeeded: #107c10;
-  --pipeline-failed: #d13438;
-  --pipeline-canceled: #8a8886;
-  --pipeline-partial: #ffb900;
+	--pipeline-running: #0078d4;
+	--pipeline-succeeded: #107c10;
+	--pipeline-failed: #d13438;
+	--pipeline-canceled: #8a8886;
+	--pipeline-partial: #ffb900;
 
-  /* ========================================
+	/* ========================================
    * Policy Status Colors
    * ======================================== */
-  --policy-approved: #107c10;
-  --policy-rejected: #d13438;
-  --policy-pending: #ffb900;
+	--policy-approved: #107c10;
+	--policy-rejected: #d13438;
+	--policy-pending: #ffb900;
 
-  /* ========================================
+	/* ========================================
    * Semantic Colors
    * ======================================== */
-  --info-blue: #2196f3;
-  --warning-yellow: #ffc107;
-  --error-red: #f44336;
-  --success-green: #4caf50;
+	--info-blue: #2196f3;
+	--warning-yellow: #ffc107;
+	--error-red: #f44336;
+	--success-green: #4caf50;
 
-  /* ========================================
+	/* ========================================
    * Interactive Rebase Visual States
    * ======================================== */
-  --rebase-pick-bg: transparent;
-  --rebase-reword-border: var(--info-blue);
-  --rebase-edit-bg: rgba(255, 193, 7, 0.1);
-  --rebase-edit-border: var(--warning-yellow);
-  --rebase-squash-border: var(--graph-line-2);
-  --rebase-fixup-border: var(--graph-line-2);
-  --rebase-drop-bg: rgba(244, 67, 54, 0.1);
+	--rebase-pick-bg: transparent;
+	--rebase-reword-border: var(--info-blue);
+	--rebase-edit-bg: rgba(255, 193, 7, 0.1);
+	--rebase-edit-border: var(--warning-yellow);
+	--rebase-squash-border: var(--graph-line-2);
+	--rebase-fixup-border: var(--graph-line-2);
+	--rebase-drop-bg: rgba(244, 67, 54, 0.1);
 
-  /* ========================================
+	/* ========================================
    * Layout Dimensions
    * ======================================== */
-  --sidebar-width: 280px;
-  --toolbar-height: 40px;
-  --commit-row-height: 32px;
-  --graph-column-width: 50px;
+	--sidebar-width: 280px;
+	--toolbar-height: 40px;
+	--commit-row-height: 32px;
+	--graph-column-width: 50px;
 
-  /* ========================================
+	/* ========================================
    * Animation Durations
    * ======================================== */
-  --animation-fast: 200ms;
-  --animation-normal: 300ms;
-  --animation-slow: 500ms;
+	--animation-fast: 200ms;
+	--animation-normal: 300ms;
+	--animation-slow: 500ms;
 
-  /* ========================================
+	/* ========================================
    * Border Radius
    * ======================================== */
-  --radius-small: 2px;
-  --radius-medium: 4px;
-  --radius-large: 8px;
+	--radius-small: 2px;
+	--radius-medium: 4px;
+	--radius-large: 8px;
 
-  /* ========================================
+	/* ========================================
    * Spacing
    * ======================================== */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 12px;
-  --spacing-lg: 16px;
-  --spacing-xl: 24px;
+	--spacing-xs: 4px;
+	--spacing-sm: 8px;
+	--spacing-md: 12px;
+	--spacing-lg: 16px;
+	--spacing-xl: 24px;
 
-  /* ========================================
+	/* ========================================
    * Font Sizes
    * ======================================== */
-  --font-size-xs: 10px;
-  --font-size-sm: 12px;
-  --font-size-md: 13px;
-  --font-size-lg: 14px;
-  --font-size-xl: 16px;
+	--font-size-xs: 10px;
+	--font-size-sm: 12px;
+	--font-size-md: 13px;
+	--font-size-lg: 14px;
+	--font-size-xl: 16px;
 }

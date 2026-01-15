@@ -3,7 +3,7 @@
  */
 
 export {
-  GitBoardWebviewProvider,
-  createGitBoardWebviewProvider,
-  registerWebviewProvider,
+	createGitBoardWebviewProvider,
+	GitBoardWebviewProvider,
+	registerWebviewProvider,
 } from './WebviewProvider';

@@ -3,21 +3,21 @@
  */
 
 interface VsCodeApi {
-  /**
-   * Post a message to the VS Code extension host
-   */
-  postMessage(message: unknown): void;
+	/**
+	 * Post a message to the VS Code extension host
+	 */
+	postMessage(message: unknown): void;
 
-  /**
-   * Get the current state stored for this webview
-   */
-  getState<T = unknown>(): T | undefined;
+	/**
+	 * Get the current state stored for this webview
+	 */
+	getState<T = unknown>(): T | undefined;
 
-  /**
-   * Set the state for this webview
-   * This state persists even when the webview becomes hidden
-   */
-  setState<T>(newState: T): T;
+	/**
+	 * Set the state for this webview
+	 * This state persists even when the webview becomes hidden
+	 */
+	setState<T>(newState: T): T;
 }
 
 /**
@@ -30,27 +30,27 @@ declare function acquireVsCodeApi(): VsCodeApi;
  * Message types for communication between webview and extension
  */
 interface WebviewMessage {
-  type: string;
-  payload?: unknown;
+	type: string;
+	payload?: unknown;
 }
 
 /**
  * Theme kind from VS Code
  */
-declare const enum ThemeKind {
-  Light = 1,
-  Dark = 2,
-  HighContrast = 3,
-  HighContrastLight = 4,
+declare enum ThemeKind {
+	Light = 1,
+	Dark = 2,
+	HighContrast = 3,
+	HighContrastLight = 4,
 }
 
 /**
  * Global window extensions for VS Code webview
  */
 declare global {
-  interface Window {
-    acquireVsCodeApi: typeof acquireVsCodeApi;
-  }
+	interface Window {
+		acquireVsCodeApi: typeof acquireVsCodeApi;
+	}
 }
 
 export { VsCodeApi, WebviewMessage, ThemeKind };

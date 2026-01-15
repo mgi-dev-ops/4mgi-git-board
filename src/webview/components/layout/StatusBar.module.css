@@ -1,178 +1,178 @@
 /* StatusBar.module.css */
 
 .statusBar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  font-size: 12px;
-  color: var(--vscode-statusBar-foreground);
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	width: 100%;
+	font-size: 12px;
+	color: var(--vscode-statusBar-foreground);
 }
 
 /* Branch Indicator */
 .branchIndicator {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 2px 8px;
-  background: transparent;
-  border: none;
-  border-radius: 3px;
-  color: var(--vscode-statusBar-foreground);
-  cursor: pointer;
-  font-size: 12px;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 2px 8px;
+	background: transparent;
+	border: none;
+	border-radius: 3px;
+	color: var(--vscode-statusBar-foreground);
+	cursor: pointer;
+	font-size: 12px;
 }
 
 .branchIndicator:hover {
-  background-color: var(--vscode-statusBarItem-hoverBackground);
+	background-color: var(--vscode-statusBarItem-hoverBackground);
 }
 
 .branchIndicator:focus {
-  outline: 1px solid var(--vscode-focusBorder);
+	outline: 1px solid var(--vscode-focusBorder);
 }
 
 .branchIcon {
-  font-size: 10px;
-  color: var(--vscode-gitDecoration-addedResourceForeground);
+	font-size: 10px;
+	color: var(--vscode-gitDecoration-addedResourceForeground);
 }
 
 .branchName {
-  font-weight: 500;
-  max-width: 150px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+	font-weight: 500;
+	max-width: 150px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 /* Sync Status */
 .syncStatus {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 2px 8px;
-  border-radius: 3px;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 2px 8px;
+	border-radius: 3px;
 }
 
 .syncIcon {
-  font-size: 12px;
-  line-height: 1;
+	font-size: 12px;
+	line-height: 1;
 }
 
 .syncIconLoading {
-  animation: spin 1s linear infinite;
+	animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 .syncText {
-  font-size: 11px;
+	font-size: 11px;
 }
 
 .statusSynced {
-  color: #4caf50;
+	color: #4caf50;
 }
 
 .statusSynced .syncIcon {
-  color: #4caf50;
+	color: #4caf50;
 }
 
 .statusAhead {
-  color: #2196f3;
+	color: #2196f3;
 }
 
 .statusAhead .syncIcon {
-  color: #2196f3;
+	color: #2196f3;
 }
 
 .statusBehind {
-  color: #ff9800;
+	color: #ff9800;
 }
 
 .statusBehind .syncIcon {
-  color: #ff9800;
+	color: #ff9800;
 }
 
 .statusLoading {
-  color: var(--vscode-descriptionForeground);
+	color: var(--vscode-descriptionForeground);
 }
 
 .syncButton {
-  padding: 1px 6px;
-  margin-left: 4px;
-  background-color: var(--vscode-button-secondaryBackground);
-  color: var(--vscode-button-secondaryForeground);
-  border: none;
-  border-radius: 3px;
-  font-size: 10px;
-  cursor: pointer;
+	padding: 1px 6px;
+	margin-left: 4px;
+	background-color: var(--vscode-button-secondaryBackground);
+	color: var(--vscode-button-secondaryForeground);
+	border: none;
+	border-radius: 3px;
+	font-size: 10px;
+	cursor: pointer;
 }
 
 .syncButton:hover {
-  background-color: var(--vscode-button-secondaryHoverBackground);
+	background-color: var(--vscode-button-secondaryHoverBackground);
 }
 
 /* Commit Count */
 .commitCount {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 2px 8px;
-  color: var(--vscode-descriptionForeground);
-  font-size: 11px;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	padding: 2px 8px;
+	color: var(--vscode-descriptionForeground);
+	font-size: 11px;
 }
 
 .commitIcon {
-  font-size: 10px;
+	font-size: 10px;
 }
 
 /* Spacer */
 .spacer {
-  flex: 1;
+	flex: 1;
 }
 
 /* Last Fetched */
 .lastFetched {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 2px 8px;
-  color: var(--vscode-descriptionForeground);
-  font-size: 11px;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	padding: 2px 8px;
+	color: var(--vscode-descriptionForeground);
+	font-size: 11px;
 }
 
 .lastFetchedLabel {
-  opacity: 0.7;
+	opacity: 0.7;
 }
 
 .lastFetchedTime {
-  font-family: var(--vscode-editor-font-family);
+	font-family: var(--vscode-editor-font-family);
 }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .lastFetched {
-    display: none;
-  }
+	.lastFetched {
+		display: none;
+	}
 
-  .commitCount {
-    display: none;
-  }
+	.commitCount {
+		display: none;
+	}
 
-  .syncText {
-    display: none;
-  }
+	.syncText {
+		display: none;
+	}
 }
 
 /* Accessibility - reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .syncIconLoading {
-    animation: none;
-  }
+	.syncIconLoading {
+		animation: none;
+	}
 }

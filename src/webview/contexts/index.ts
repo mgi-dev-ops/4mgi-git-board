@@ -3,8 +3,8 @@
  */
 
 export {
-  ShortcutProvider,
-  useShortcuts,
-  useRegisterShortcut,
-  useShortcutContext,
+	ShortcutProvider,
+	useRegisterShortcut,
+	useShortcutContext,
+	useShortcuts,
 } from './ShortcutContext';

@@ -13,10 +13,10 @@ import * as vscode from 'vscode';
 // =============================================================================
 
 export interface ShortcutCommand {
-  /** Command ID (must match package.json) */
-  id: string;
-  /** Handler function */
-  handler: () => void | Promise<void>;
+	/** Command ID (must match package.json) */
+	id: string;
+	/** Handler function */
+	handler: () => void | Promise<void>;
 }
 
 // =============================================================================
@@ -27,67 +27,67 @@ export interface ShortcutCommand {
  * Context key manager for enabling/disabling shortcuts
  */
 export class ShortcutContextManager {
-  private static instance: ShortcutContextManager;
-  private contextKeys: Map<string, boolean> = new Map();
+	private static instance: ShortcutContextManager;
+	private contextKeys: Map<string, boolean> = new Map();
 
-  private constructor() {}
+	private constructor() {}
 
-  static getInstance(): ShortcutContextManager {
-    if (!ShortcutContextManager.instance) {
-      ShortcutContextManager.instance = new ShortcutContextManager();
-    }
-    return ShortcutContextManager.instance;
-  }
+	static getInstance(): ShortcutContextManager {
+		if (!ShortcutContextManager.instance) {
+			ShortcutContextManager.instance = new ShortcutContextManager();
+		}
+		return ShortcutContextManager.instance;
+	}
 
-  /**
-   * Set a context key value
-   */
-  setContext(key: string, value: boolean): void {
-    this.contextKeys.set(key, value);
-    vscode.commands.executeCommand('setContext', key, value);
-  }
+	/**
+	 * Set a context key value
+	 */
+	setContext(key: string, value: boolean): void {
+		this.contextKeys.set(key, value);
+		vscode.commands.executeCommand('setContext', key, value);
+	}
 
-  /**
-   * Get a context key value
-   */
-  getContext(key: string): boolean {
-    return this.contextKeys.get(key) ?? false;
-  }
+	/**
+	 * Get a context key value
+	 */
+	getContext(key: string): boolean {
+		return this.contextKeys.get(key) ?? false;
+	}
 
-  /**
-   * Set Git Board as active/focused
-   */
-  setGitBoardActive(active: boolean): void {
-    this.setContext('gitBoard.active', active);
-  }
+	/**
+	 * Set Git Board as active/focused
+	 */
+	setGitBoardActive(active: boolean): void {
+		this.setContext('gitBoard.active', active);
+	}
 
-  /**
-   * Set rebase mode
-   */
-  setRebaseMode(active: boolean): void {
-    this.setContext('gitBoard.rebaseMode', active);
-  }
+	/**
+	 * Set rebase mode
+	 */
+	setRebaseMode(active: boolean): void {
+		this.setContext('gitBoard.rebaseMode', active);
+	}
 
-  /**
-   * Set commit dialog open
-   */
-  setCommitDialogOpen(open: boolean): void {
-    this.setContext('gitBoard.commitDialogOpen', open);
-  }
+	/**
+	 * Set commit dialog open
+	 */
+	setCommitDialogOpen(open: boolean): void {
+		this.setContext('gitBoard.commitDialogOpen', open);
+	}
 
-  /**
-   * Set search focused
-   */
-  setSearchFocused(focused: boolean): void {
-    this.setContext('gitBoard.searchFocused', focused);
-  }
+	/**
+	 * Set search focused
+	 */
+	setSearchFocused(focused: boolean): void {
+		this.setContext('gitBoard.searchFocused', focused);
+	}
 
-  /**
-   * Set modal open
-   */
-  setModalOpen(open: boolean): void {
-    this.setContext('gitBoard.modalOpen', open);
-  }
+	/**
+	 * Set modal open
+	 */
+	setModalOpen(open: boolean): void {
+		this.setContext('gitBoard.modalOpen', open);
+	}
 }
 
 // =============================================================================
@@ -98,177 +98,177 @@ export class ShortcutContextManager {
  * Create shortcut commands for Git Board
  */
 export function createShortcutCommands(
-  webviewPanel: vscode.WebviewPanel | undefined,
-  contextManager: ShortcutContextManager
+	webviewPanel: vscode.WebviewPanel | undefined,
+	contextManager: ShortcutContextManager,
 ): ShortcutCommand[] {
-  /**
-   * Send message to webview
-   */
-  const sendToWebview = (type: string, payload?: unknown): void => {
-    if (webviewPanel?.webview) {
-      webviewPanel.webview.postMessage({ type, payload });
-    }
-  };
+	/**
+	 * Send message to webview
+	 */
+	const sendToWebview = (type: string, payload?: unknown): void => {
+		if (webviewPanel?.webview) {
+			webviewPanel.webview.postMessage({ type, payload });
+		}
+	};
 
-  return [
-    // =========================================================================
-    // Graph Navigation
-    // =========================================================================
-    {
-      id: 'gitBoard.toggleExpandCommit',
-      handler: () => {
-        sendToWebview('shortcut:toggle-expand-commit');
-      },
-    },
-    {
-      id: 'gitBoard.checkoutOrOpen',
-      handler: () => {
-        sendToWebview('shortcut:checkout-or-open');
-      },
-    },
-    {
-      id: 'gitBoard.focusSearch',
-      handler: () => {
-        sendToWebview('shortcut:focus-search');
-      },
-    },
-    {
-      id: 'gitBoard.navigateUp',
-      handler: () => {
-        sendToWebview('shortcut:navigate-up');
-      },
-    },
-    {
-      id: 'gitBoard.navigateDown',
-      handler: () => {
-        sendToWebview('shortcut:navigate-down');
-      },
-    },
+	return [
+		// =========================================================================
+		// Graph Navigation
+		// =========================================================================
+		{
+			id: 'gitBoard.toggleExpandCommit',
+			handler: () => {
+				sendToWebview('shortcut:toggle-expand-commit');
+			},
+		},
+		{
+			id: 'gitBoard.checkoutOrOpen',
+			handler: () => {
+				sendToWebview('shortcut:checkout-or-open');
+			},
+		},
+		{
+			id: 'gitBoard.focusSearch',
+			handler: () => {
+				sendToWebview('shortcut:focus-search');
+			},
+		},
+		{
+			id: 'gitBoard.navigateUp',
+			handler: () => {
+				sendToWebview('shortcut:navigate-up');
+			},
+		},
+		{
+			id: 'gitBoard.navigateDown',
+			handler: () => {
+				sendToWebview('shortcut:navigate-down');
+			},
+		},
 
-    // =========================================================================
-    // Git Operations
-    // =========================================================================
-    {
-      id: 'gitBoard.openCommitDialog',
-      handler: () => {
-        contextManager.setCommitDialogOpen(true);
-        sendToWebview('shortcut:open-commit-dialog');
-      },
-    },
-    {
-      id: 'gitBoard.push',
-      handler: () => {
-        sendToWebview('shortcut:push');
-      },
-    },
-    {
-      id: 'gitBoard.fetch',
-      handler: () => {
-        sendToWebview('shortcut:fetch');
-      },
-    },
-    {
-      id: 'gitBoard.undo',
-      handler: () => {
-        sendToWebview('shortcut:undo');
-      },
-    },
-    {
-      id: 'gitBoard.linkWorkItem',
-      handler: () => {
-        sendToWebview('shortcut:link-work-item');
-      },
-    },
+		// =========================================================================
+		// Git Operations
+		// =========================================================================
+		{
+			id: 'gitBoard.openCommitDialog',
+			handler: () => {
+				contextManager.setCommitDialogOpen(true);
+				sendToWebview('shortcut:open-commit-dialog');
+			},
+		},
+		{
+			id: 'gitBoard.push',
+			handler: () => {
+				sendToWebview('shortcut:push');
+			},
+		},
+		{
+			id: 'gitBoard.fetch',
+			handler: () => {
+				sendToWebview('shortcut:fetch');
+			},
+		},
+		{
+			id: 'gitBoard.undo',
+			handler: () => {
+				sendToWebview('shortcut:undo');
+			},
+		},
+		{
+			id: 'gitBoard.linkWorkItem',
+			handler: () => {
+				sendToWebview('shortcut:link-work-item');
+			},
+		},
 
-    // =========================================================================
-    // Interactive Rebase
-    // =========================================================================
-    {
-      id: 'gitBoard.rebase.pick',
-      handler: () => {
-        sendToWebview('shortcut:rebase-pick');
-      },
-    },
-    {
-      id: 'gitBoard.rebase.reword',
-      handler: () => {
-        sendToWebview('shortcut:rebase-reword');
-      },
-    },
-    {
-      id: 'gitBoard.rebase.edit',
-      handler: () => {
-        sendToWebview('shortcut:rebase-edit');
-      },
-    },
-    {
-      id: 'gitBoard.rebase.squash',
-      handler: () => {
-        sendToWebview('shortcut:rebase-squash');
-      },
-    },
-    {
-      id: 'gitBoard.rebase.fixup',
-      handler: () => {
-        sendToWebview('shortcut:rebase-fixup');
-      },
-    },
-    {
-      id: 'gitBoard.rebase.drop',
-      handler: () => {
-        sendToWebview('shortcut:rebase-drop');
-      },
-    },
-    {
-      id: 'gitBoard.rebase.moveUp',
-      handler: () => {
-        sendToWebview('shortcut:rebase-move-up');
-      },
-    },
-    {
-      id: 'gitBoard.rebase.moveDown',
-      handler: () => {
-        sendToWebview('shortcut:rebase-move-down');
-      },
-    },
-    {
-      id: 'gitBoard.rebase.editMessage',
-      handler: () => {
-        sendToWebview('shortcut:rebase-edit-message');
-      },
-    },
-    {
-      id: 'gitBoard.rebase.cancel',
-      handler: () => {
-        contextManager.setRebaseMode(false);
-        sendToWebview('shortcut:rebase-cancel');
-      },
-    },
-    {
-      id: 'gitBoard.rebase.start',
-      handler: () => {
-        sendToWebview('shortcut:rebase-start');
-      },
-    },
+		// =========================================================================
+		// Interactive Rebase
+		// =========================================================================
+		{
+			id: 'gitBoard.rebase.pick',
+			handler: () => {
+				sendToWebview('shortcut:rebase-pick');
+			},
+		},
+		{
+			id: 'gitBoard.rebase.reword',
+			handler: () => {
+				sendToWebview('shortcut:rebase-reword');
+			},
+		},
+		{
+			id: 'gitBoard.rebase.edit',
+			handler: () => {
+				sendToWebview('shortcut:rebase-edit');
+			},
+		},
+		{
+			id: 'gitBoard.rebase.squash',
+			handler: () => {
+				sendToWebview('shortcut:rebase-squash');
+			},
+		},
+		{
+			id: 'gitBoard.rebase.fixup',
+			handler: () => {
+				sendToWebview('shortcut:rebase-fixup');
+			},
+		},
+		{
+			id: 'gitBoard.rebase.drop',
+			handler: () => {
+				sendToWebview('shortcut:rebase-drop');
+			},
+		},
+		{
+			id: 'gitBoard.rebase.moveUp',
+			handler: () => {
+				sendToWebview('shortcut:rebase-move-up');
+			},
+		},
+		{
+			id: 'gitBoard.rebase.moveDown',
+			handler: () => {
+				sendToWebview('shortcut:rebase-move-down');
+			},
+		},
+		{
+			id: 'gitBoard.rebase.editMessage',
+			handler: () => {
+				sendToWebview('shortcut:rebase-edit-message');
+			},
+		},
+		{
+			id: 'gitBoard.rebase.cancel',
+			handler: () => {
+				contextManager.setRebaseMode(false);
+				sendToWebview('shortcut:rebase-cancel');
+			},
+		},
+		{
+			id: 'gitBoard.rebase.start',
+			handler: () => {
+				sendToWebview('shortcut:rebase-start');
+			},
+		},
 
-    // =========================================================================
-    // General
-    // =========================================================================
-    {
-      id: 'gitBoard.showShortcutHelp',
-      handler: () => {
-        sendToWebview('shortcut:show-help');
-      },
-    },
-    {
-      id: 'gitBoard.escape',
-      handler: () => {
-        contextManager.setModalOpen(false);
-        contextManager.setCommitDialogOpen(false);
-        sendToWebview('shortcut:escape');
-      },
-    },
-  ];
+		// =========================================================================
+		// General
+		// =========================================================================
+		{
+			id: 'gitBoard.showShortcutHelp',
+			handler: () => {
+				sendToWebview('shortcut:show-help');
+			},
+		},
+		{
+			id: 'gitBoard.escape',
+			handler: () => {
+				contextManager.setModalOpen(false);
+				contextManager.setCommitDialogOpen(false);
+				sendToWebview('shortcut:escape');
+			},
+		},
+	];
 }
 
 // =============================================================================
@@ -279,48 +279,51 @@ export function createShortcutCommands(
  * Register all shortcut commands
  */
 export function registerShortcutCommands(
-  context: vscode.ExtensionContext,
-  webviewPanel: vscode.WebviewPanel | undefined
+	_context: vscode.ExtensionContext,
+	webviewPanel: vscode.WebviewPanel | undefined,
 ): vscode.Disposable[] {
-  const contextManager = ShortcutContextManager.getInstance();
-  const commands = createShortcutCommands(webviewPanel, contextManager);
-  const disposables: vscode.Disposable[] = [];
+	const contextManager = ShortcutContextManager.getInstance();
+	const commands = createShortcutCommands(webviewPanel, contextManager);
+	const disposables: vscode.Disposable[] = [];
 
-  for (const command of commands) {
-    const disposable = vscode.commands.registerCommand(command.id, command.handler);
-    disposables.push(disposable);
-  }
+	for (const command of commands) {
+		const disposable = vscode.commands.registerCommand(
+			command.id,
+			command.handler,
+		);
+		disposables.push(disposable);
+	}
 
-  return disposables;
+	return disposables;
 }
 
 /**
  * Update webview panel reference for shortcuts
  */
 export function updateShortcutWebviewPanel(
-  context: vscode.ExtensionContext,
-  webviewPanel: vscode.WebviewPanel | undefined
+	_context: vscode.ExtensionContext,
+	webviewPanel: vscode.WebviewPanel | undefined,
 ): void {
-  const contextManager = ShortcutContextManager.getInstance();
+	const contextManager = ShortcutContextManager.getInstance();
 
-  if (webviewPanel) {
-    contextManager.setGitBoardActive(true);
+	if (webviewPanel) {
+		contextManager.setGitBoardActive(true);
 
-    // Handle panel disposal
-    webviewPanel.onDidDispose(() => {
-      contextManager.setGitBoardActive(false);
-      contextManager.setRebaseMode(false);
-      contextManager.setCommitDialogOpen(false);
-      contextManager.setModalOpen(false);
-    });
+		// Handle panel disposal
+		webviewPanel.onDidDispose(() => {
+			contextManager.setGitBoardActive(false);
+			contextManager.setRebaseMode(false);
+			contextManager.setCommitDialogOpen(false);
+			contextManager.setModalOpen(false);
+		});
 
-    // Handle panel visibility change
-    webviewPanel.onDidChangeViewState((e) => {
-      contextManager.setGitBoardActive(e.webviewPanel.visible);
-    });
-  } else {
-    contextManager.setGitBoardActive(false);
-  }
+		// Handle panel visibility change
+		webviewPanel.onDidChangeViewState((e) => {
+			contextManager.setGitBoardActive(e.webviewPanel.visible);
+		});
+	} else {
+		contextManager.setGitBoardActive(false);
+	}
 }
 
 // =============================================================================

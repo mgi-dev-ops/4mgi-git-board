@@ -1,167 +1,168 @@
 /* Button.module.css - Button component styles */
 
 .button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-xs);
-  border: 1px solid transparent;
-  border-radius: var(--radius-small);
-  cursor: pointer;
-  font-family: var(--vscode-font-family);
-  font-size: var(--font-size-md);
-  font-weight: 400;
-  line-height: 1;
-  text-align: center;
-  white-space: nowrap;
-  transition: background-color var(--animation-fast) ease,
-    border-color var(--animation-fast) ease,
-    color var(--animation-fast) ease,
-    opacity var(--animation-fast) ease;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--spacing-xs);
+	border: 1px solid transparent;
+	border-radius: var(--radius-small);
+	cursor: pointer;
+	font-family: var(--vscode-font-family);
+	font-size: var(--font-size-md);
+	font-weight: 400;
+	line-height: 1;
+	text-align: center;
+	white-space: nowrap;
+	transition:
+		background-color var(--animation-fast) ease,
+		border-color var(--animation-fast) ease,
+		color var(--animation-fast) ease,
+		opacity var(--animation-fast) ease;
 }
 
 .button:focus {
-  outline: 1px solid var(--vscode-focusBorder);
-  outline-offset: 1px;
+	outline: 1px solid var(--vscode-focusBorder);
+	outline-offset: 1px;
 }
 
 .button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+	cursor: not-allowed;
+	opacity: 0.5;
 }
 
 /* Variants */
 .primary {
-  background-color: var(--vscode-button-background);
-  color: var(--vscode-button-foreground);
-  border-color: var(--vscode-button-border, transparent);
+	background-color: var(--vscode-button-background);
+	color: var(--vscode-button-foreground);
+	border-color: var(--vscode-button-border, transparent);
 }
 
 .primary:hover:not(:disabled) {
-  background-color: var(--vscode-button-hoverBackground);
+	background-color: var(--vscode-button-hoverBackground);
 }
 
 .secondary {
-  background-color: var(--vscode-button-secondaryBackground);
-  color: var(--vscode-button-secondaryForeground);
-  border-color: var(--vscode-button-border, transparent);
+	background-color: var(--vscode-button-secondaryBackground);
+	color: var(--vscode-button-secondaryForeground);
+	border-color: var(--vscode-button-border, transparent);
 }
 
 .secondary:hover:not(:disabled) {
-  background-color: var(--vscode-button-secondaryHoverBackground);
+	background-color: var(--vscode-button-secondaryHoverBackground);
 }
 
 .danger {
-  background-color: var(--error-red);
-  color: #ffffff;
-  border-color: transparent;
+	background-color: var(--error-red);
+	color: #ffffff;
+	border-color: transparent;
 }
 
 .danger:hover:not(:disabled) {
-  background-color: #d32f2f;
+	background-color: #d32f2f;
 }
 
 .icon {
-  background-color: transparent;
-  color: var(--vscode-icon-foreground, var(--vscode-foreground));
-  border-color: transparent;
-  padding: var(--spacing-xs);
+	background-color: transparent;
+	color: var(--vscode-icon-foreground, var(--vscode-foreground));
+	border-color: transparent;
+	padding: var(--spacing-xs);
 }
 
 .icon:hover:not(:disabled) {
-  background-color: var(--vscode-toolbar-hoverBackground);
+	background-color: var(--vscode-toolbar-hoverBackground);
 }
 
 /* Sizes */
 .small {
-  padding: var(--spacing-xs) var(--spacing-sm);
-  font-size: var(--font-size-sm);
-  min-height: 24px;
+	padding: var(--spacing-xs) var(--spacing-sm);
+	font-size: var(--font-size-sm);
+	min-height: 24px;
 }
 
 .medium {
-  padding: var(--spacing-sm) var(--spacing-md);
-  font-size: var(--font-size-md);
-  min-height: 28px;
+	padding: var(--spacing-sm) var(--spacing-md);
+	font-size: var(--font-size-md);
+	min-height: 28px;
 }
 
 .large {
-  padding: var(--spacing-sm) var(--spacing-lg);
-  font-size: var(--font-size-lg);
-  min-height: 32px;
+	padding: var(--spacing-sm) var(--spacing-lg);
+	font-size: var(--font-size-lg);
+	min-height: 32px;
 }
 
 /* Icon only button */
 .iconOnly {
-  padding: var(--spacing-xs);
-  min-width: auto;
+	padding: var(--spacing-xs);
+	min-width: auto;
 }
 
 .iconOnly.small {
-  min-height: 24px;
-  min-width: 24px;
+	min-height: 24px;
+	min-width: 24px;
 }
 
 .iconOnly.medium {
-  min-height: 28px;
-  min-width: 28px;
+	min-height: 28px;
+	min-width: 28px;
 }
 
 .iconOnly.large {
-  min-height: 32px;
-  min-width: 32px;
+	min-height: 32px;
+	min-width: 32px;
 }
 
 /* Loading state */
 .loading {
-  position: relative;
-  pointer-events: none;
+	position: relative;
+	pointer-events: none;
 }
 
 .spinner {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .spinnerIcon {
-  width: 14px;
-  height: 14px;
-  animation: spin 1s linear infinite;
+	width: 14px;
+	height: 14px;
+	animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 /* Content and icon */
 .content {
-  display: inline-block;
+	display: inline-block;
 }
 
 .icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .icon svg {
-  width: 16px;
-  height: 16px;
+	width: 16px;
+	height: 16px;
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .button {
-    transition: none;
-  }
+	.button {
+		transition: none;
+	}
 
-  .spinnerIcon {
-    animation: none;
-  }
+	.spinnerIcon {
+		animation: none;
+	}
 }

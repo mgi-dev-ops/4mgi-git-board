@@ -1,25 +1,25 @@
 /* Icon.module.css - Icon component styles */
 
 .icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: currentColor;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	color: currentColor;
 }
 
 /* Size variants */
 .small {
-  width: 12px;
-  height: 12px;
+	width: 12px;
+	height: 12px;
 }
 
 .medium {
-  width: 16px;
-  height: 16px;
+	width: 16px;
+	height: 16px;
 }
 
 .large {
-  width: 24px;
-  height: 24px;
+	width: 24px;
+	height: 24px;
 }

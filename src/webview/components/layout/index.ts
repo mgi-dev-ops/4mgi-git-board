@@ -1,22 +1,18 @@
 // Layout components barrel export
 
-export { Layout } from "./Layout";
+export type { DetailPanelProps } from './DetailPanel';
+export { DetailPanel } from './DetailPanel';
 export type {
-  LayoutProps,
-  SelectedCommit,
-  FileChange,
-  Branch,
-  Stash,
-} from "./Layout";
-
-export { Toolbar } from "./Toolbar";
-export type { ToolbarProps } from "./Toolbar";
-
-export { Sidebar } from "./Sidebar";
-export type { SidebarProps, WorkItem } from "./Sidebar";
-
-export { DetailPanel } from "./DetailPanel";
-export type { DetailPanelProps } from "./DetailPanel";
-
-export { StatusBar } from "./StatusBar";
-export type { StatusBarProps } from "./StatusBar";
+	Branch,
+	FileChange,
+	LayoutProps,
+	SelectedCommit,
+	Stash,
+} from './Layout';
+export { Layout } from './Layout';
+export type { SidebarProps, WorkItem } from './Sidebar';
+export { Sidebar } from './Sidebar';
+export type { StatusBarProps } from './StatusBar';
+export { StatusBar } from './StatusBar';
+export type { ToolbarProps } from './Toolbar';
+export { Toolbar } from './Toolbar';

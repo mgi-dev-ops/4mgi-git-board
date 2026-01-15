@@ -8,22 +8,22 @@
  * ============================================================================ */
 
 .dndContainer {
-  position: relative;
-  width: 100%;
-  height: 100%;
+	position: relative;
+	width: 100%;
+	height: 100%;
 }
 
 .dndContainer.isDragging {
-  cursor: grabbing;
-  user-select: none;
+	cursor: grabbing;
+	user-select: none;
 }
 
 .dndContainer.validDrop {
-  /* Global valid drop state */
+	/* Global valid drop state */
 }
 
 .dndContainer.invalidDrop {
-  /* Global invalid drop state */
+	/* Global invalid drop state */
 }
 
 /* ============================================================================
@@ -31,15 +31,15 @@
  * ============================================================================ */
 
 .srOnly {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
 }
 
 /* ============================================================================
@@ -47,33 +47,33 @@
  * ============================================================================ */
 
 .draggable {
-  position: relative;
-  cursor: grab;
-  touch-action: none;
-  transition:
-    transform var(--animation-fast) ease,
-    opacity var(--animation-fast) ease,
-    box-shadow var(--animation-fast) ease;
+	position: relative;
+	cursor: grab;
+	touch-action: none;
+	transition:
+		transform var(--animation-fast) ease,
+		opacity var(--animation-fast) ease,
+		box-shadow var(--animation-fast) ease;
 }
 
 .draggable:hover:not(.disabled) {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .draggable:focus-visible {
-  outline: 2px solid var(--vscode-focusBorder);
-  outline-offset: 2px;
+	outline: 2px solid var(--vscode-focusBorder);
+	outline-offset: 2px;
 }
 
 .draggable.dragging {
-  cursor: grabbing;
-  opacity: 0.5;
-  z-index: 1000;
+	cursor: grabbing;
+	opacity: 0.5;
+	z-index: 1000;
 }
 
 .draggable.disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+	cursor: not-allowed;
+	opacity: 0.5;
 }
 
 /* ============================================================================
@@ -81,16 +81,16 @@
  * ============================================================================ */
 
 .draggableCommit {
-  border-radius: var(--radius-medium);
-  background-color: var(--vscode-editor-background);
+	border-radius: var(--radius-medium);
+	background-color: var(--vscode-editor-background);
 }
 
 .draggableCommit:hover:not(.disabled):not(.dragging) {
-  background-color: var(--vscode-list-hoverBackground);
+	background-color: var(--vscode-list-hoverBackground);
 }
 
 .draggableCommit.dragging {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 /* ============================================================================
@@ -98,25 +98,25 @@
  * ============================================================================ */
 
 .draggableCommitGroup {
-  position: relative;
+	position: relative;
 }
 
 .dragBadge {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  min-width: 20px;
-  height: 20px;
-  padding: 0 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--vscode-badge-background);
-  color: var(--vscode-badge-foreground);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  border-radius: 10px;
-  z-index: 1;
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	min-width: 20px;
+	height: 20px;
+	padding: 0 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--vscode-badge-background);
+	color: var(--vscode-badge-foreground);
+	font-size: var(--font-size-xs);
+	font-weight: 600;
+	border-radius: 10px;
+	z-index: 1;
 }
 
 /* ============================================================================
@@ -124,17 +124,17 @@
  * ============================================================================ */
 
 .draggableBranch {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--radius-small);
-  background-color: var(--vscode-editor-background);
-  border: 1px solid var(--vscode-widget-border);
+	display: inline-flex;
+	align-items: center;
+	gap: var(--spacing-xs);
+	padding: var(--spacing-xs) var(--spacing-sm);
+	border-radius: var(--radius-small);
+	background-color: var(--vscode-editor-background);
+	border: 1px solid var(--vscode-widget-border);
 }
 
 .draggableBranch:hover:not(.disabled):not(.dragging) {
-  border-color: var(--vscode-focusBorder);
+	border-color: var(--vscode-focusBorder);
 }
 
 /* ============================================================================
@@ -142,16 +142,16 @@
  * ============================================================================ */
 
 .droppable {
-  position: relative;
-  transition:
-    background-color var(--animation-fast) ease,
-    border-color var(--animation-fast) ease,
-    box-shadow var(--animation-fast) ease;
+	position: relative;
+	transition:
+		background-color var(--animation-fast) ease,
+		border-color var(--animation-fast) ease,
+		box-shadow var(--animation-fast) ease;
 }
 
 .droppable.disabled {
-  opacity: 0.5;
-  pointer-events: none;
+	opacity: 0.5;
+	pointer-events: none;
 }
 
 /* ============================================================================
@@ -159,23 +159,23 @@
  * ============================================================================ */
 
 .droppableBranch {
-  position: relative;
-  border-radius: var(--radius-medium);
-  border: 2px dashed transparent;
+	position: relative;
+	border-radius: var(--radius-medium);
+	border: 2px dashed transparent;
 }
 
 .droppableBranch.dropTargetActive {
-  border-color: var(--vscode-focusBorder);
+	border-color: var(--vscode-focusBorder);
 }
 
 .droppableBranch.dropTargetValid {
-  border-color: var(--success-green);
-  background-color: rgba(76, 175, 80, 0.1);
+	border-color: var(--success-green);
+	background-color: rgba(76, 175, 80, 0.1);
 }
 
 .droppableBranch.dropTargetInvalid {
-  border-color: var(--error-red);
-  background-color: rgba(244, 67, 54, 0.1);
+	border-color: var(--error-red);
+	background-color: rgba(244, 67, 54, 0.1);
 }
 
 /* ============================================================================
@@ -183,34 +183,34 @@
  * ============================================================================ */
 
 .dropIndicator {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  margin-top: var(--spacing-xs);
-  background-color: var(--vscode-editorWidget-background);
-  border: 1px solid var(--vscode-widget-border);
-  border-radius: var(--radius-small);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  white-space: nowrap;
-  z-index: 100;
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-xs);
+	padding: var(--spacing-xs) var(--spacing-sm);
+	margin-top: var(--spacing-xs);
+	background-color: var(--vscode-editorWidget-background);
+	border: 1px solid var(--vscode-widget-border);
+	border-radius: var(--radius-small);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	white-space: nowrap;
+	z-index: 100;
 }
 
 .dropIndicatorIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 16px;
+	height: 16px;
 }
 
 .dropIndicatorText {
-  font-size: var(--font-size-sm);
-  color: var(--vscode-foreground);
+	font-size: var(--font-size-sm);
+	color: var(--vscode-foreground);
 }
 
 /* ============================================================================
@@ -218,21 +218,22 @@
  * ============================================================================ */
 
 .dropHighlight {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(76, 175, 80, 0.15);
-  border-radius: inherit;
-  pointer-events: none;
-  animation: pulseHighlight 1.5s ease-in-out infinite;
+	position: absolute;
+	inset: 0;
+	background-color: rgba(76, 175, 80, 0.15);
+	border-radius: inherit;
+	pointer-events: none;
+	animation: pulseHighlight 1.5s ease-in-out infinite;
 }
 
 @keyframes pulseHighlight {
-  0%, 100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
+	0%,
+	100% {
+		opacity: 0.5;
+	}
+	50% {
+		opacity: 1;
+	}
 }
 
 /* ============================================================================
@@ -240,114 +241,114 @@
  * ============================================================================ */
 
 .dropZone {
-  position: relative;
-  min-height: 40px;
-  border-radius: var(--radius-medium);
-  border: 2px dashed var(--vscode-widget-border);
-  transition: all var(--animation-fast) ease;
+	position: relative;
+	min-height: 40px;
+	border-radius: var(--radius-medium);
+	border: 2px dashed var(--vscode-widget-border);
+	transition: all var(--animation-fast) ease;
 }
 
 .dropZone--empty-space {
-  min-height: 60px;
-  background-color: transparent;
+	min-height: 60px;
+	background-color: transparent;
 }
 
 .dropZone--position {
-  min-height: 20px;
-  min-width: 100%;
-  margin: var(--spacing-xs) 0;
+	min-height: 20px;
+	min-width: 100%;
+	margin: var(--spacing-xs) 0;
 }
 
 .dropZone--commit {
-  border-style: solid;
+	border-style: solid;
 }
 
 .dropZone--branch {
-  border-style: dashed;
+	border-style: dashed;
 }
 
 /* Drop Zone States */
 .dropZone--idle {
-  border-color: transparent;
+	border-color: transparent;
 }
 
 .dropZone--potential {
-  border-color: var(--vscode-widget-border);
-  background-color: rgba(128, 128, 128, 0.05);
+	border-color: var(--vscode-widget-border);
+	background-color: rgba(128, 128, 128, 0.05);
 }
 
 .dropZone--hover {
-  border-color: var(--vscode-focusBorder);
-  background-color: rgba(128, 128, 128, 0.1);
+	border-color: var(--vscode-focusBorder);
+	background-color: rgba(128, 128, 128, 0.1);
 }
 
 .dropZone--accept {
-  border-color: var(--success-green);
-  background-color: rgba(76, 175, 80, 0.15);
+	border-color: var(--success-green);
+	background-color: rgba(76, 175, 80, 0.15);
 }
 
 .dropZone--reject {
-  border-color: var(--error-red);
-  background-color: rgba(244, 67, 54, 0.1);
+	border-color: var(--error-red);
+	background-color: rgba(244, 67, 54, 0.1);
 }
 
 /* Drop Zone Content */
 .dropZoneContent {
-  position: relative;
-  z-index: 1;
+	position: relative;
+	z-index: 1;
 }
 
 .dropZoneEmpty {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: inherit;
-  color: var(--vscode-descriptionForeground);
-  font-size: var(--font-size-sm);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: inherit;
+	color: var(--vscode-descriptionForeground);
+	font-size: var(--font-size-sm);
 }
 
 .dropZoneHoverContent {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  z-index: 10;
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: white;
+	z-index: 10;
 }
 
 .dropZoneFeedback {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: var(--spacing-xs);
-  z-index: 100;
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-bottom: var(--spacing-xs);
+	z-index: 100;
 }
 
 /* Drop Zone Border */
 .dropZoneBorder {
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  border: 2px solid transparent;
-  pointer-events: none;
-  transition: border-color var(--animation-fast) ease;
+	position: absolute;
+	inset: -2px;
+	border-radius: inherit;
+	border: 2px solid transparent;
+	pointer-events: none;
+	transition: border-color var(--animation-fast) ease;
 }
 
 .dropZoneBorder.borderAccept {
-  border-color: var(--success-green);
-  box-shadow: 0 0 8px var(--success-green);
+	border-color: var(--success-green);
+	box-shadow: 0 0 8px var(--success-green);
 }
 
 .dropZoneBorder.borderReject {
-  border-color: var(--error-red);
+	border-color: var(--error-red);
 }
 
 .dropZoneBorder.borderPotential {
-  border-color: var(--vscode-focusBorder);
-  border-style: dashed;
+	border-color: var(--vscode-focusBorder);
+	border-style: dashed;
 }
 
 /* ============================================================================
@@ -355,49 +356,49 @@
  * ============================================================================ */
 
 .feedbackIndicator {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  background-color: var(--vscode-editorWidget-background);
-  border: 1px solid var(--vscode-widget-border);
-  border-radius: var(--radius-small);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  font-size: var(--font-size-sm);
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-xs);
+	padding: var(--spacing-xs) var(--spacing-sm);
+	background-color: var(--vscode-editorWidget-background);
+	border: 1px solid var(--vscode-widget-border);
+	border-radius: var(--radius-small);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	font-size: var(--font-size-sm);
 }
 
 .feedback--accept {
-  border-color: var(--success-green);
-  color: var(--success-green);
+	border-color: var(--success-green);
+	color: var(--success-green);
 }
 
 .feedback--reject {
-  border-color: var(--error-red);
-  color: var(--error-red);
+	border-color: var(--error-red);
+	color: var(--error-red);
 }
 
 .feedback--hover {
-  border-color: var(--vscode-focusBorder);
+	border-color: var(--vscode-focusBorder);
 }
 
 .feedbackIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 16px;
+	height: 16px;
 }
 
 .feedbackMessage {
-  white-space: nowrap;
+	white-space: nowrap;
 }
 
 .feedbackOperation {
-  padding: 2px 6px;
-  background-color: rgba(128, 128, 128, 0.2);
-  border-radius: var(--radius-small);
-  font-size: var(--font-size-xs);
-  text-transform: capitalize;
+	padding: 2px 6px;
+	background-color: rgba(128, 128, 128, 0.2);
+	border-radius: var(--radius-small);
+	font-size: var(--font-size-xs);
+	text-transform: capitalize;
 }
 
 /* ============================================================================
@@ -405,24 +406,24 @@
  * ============================================================================ */
 
 .emptySpaceDropZone {
-  position: absolute;
-  border-radius: var(--radius-large);
-  opacity: 0;
-  transition: opacity var(--animation-fast) ease;
+	position: absolute;
+	border-radius: var(--radius-large);
+	opacity: 0;
+	transition: opacity var(--animation-fast) ease;
 }
 
 .dndContainer.isDragging .emptySpaceDropZone {
-  opacity: 1;
+	opacity: 1;
 }
 
 .emptySpacePlaceholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  color: var(--vscode-descriptionForeground);
-  font-size: var(--font-size-sm);
-  font-style: italic;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	color: var(--vscode-descriptionForeground);
+	font-size: var(--font-size-sm);
+	font-style: italic;
 }
 
 /* ============================================================================
@@ -430,17 +431,17 @@
  * ============================================================================ */
 
 .positionDropZone {
-  height: 4px;
-  min-height: 4px;
-  margin: 2px 0;
-  border-radius: 2px;
-  transition: all var(--animation-fast) ease;
+	height: 4px;
+	min-height: 4px;
+	margin: 2px 0;
+	border-radius: 2px;
+	transition: all var(--animation-fast) ease;
 }
 
 .positionDropZone.dropZone--hover,
 .positionDropZone.dropZone--accept {
-  height: 8px;
-  min-height: 8px;
+	height: 8px;
+	min-height: 8px;
 }
 
 /* ============================================================================
@@ -448,67 +449,67 @@
  * ============================================================================ */
 
 .dragOverlay {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-sm);
-  background-color: var(--vscode-editorWidget-background);
-  border: 1px solid var(--vscode-widget-border);
-  border-radius: var(--radius-medium);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  cursor: grabbing;
-  min-width: 200px;
-  max-width: 300px;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-sm);
+	padding: var(--spacing-sm);
+	background-color: var(--vscode-editorWidget-background);
+	border: 1px solid var(--vscode-widget-border);
+	border-radius: var(--radius-medium);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+	cursor: grabbing;
+	min-width: 200px;
+	max-width: 300px;
 }
 
 .dragOverlay.dragOverlayValid {
-  border-color: var(--success-green);
+	border-color: var(--success-green);
 }
 
 .dragOverlay.dragOverlayInvalid {
-  border-color: var(--error-red);
+	border-color: var(--error-red);
 }
 
 .dragOverlaySource {
-  /* Source content styling */
+	/* Source content styling */
 }
 
 .dragOverlayOperation {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--radius-small);
-  font-size: var(--font-size-sm);
-  font-weight: 500;
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-xs);
+	padding: var(--spacing-xs) var(--spacing-sm);
+	border-radius: var(--radius-small);
+	font-size: var(--font-size-sm);
+	font-weight: 500;
 }
 
 .dragOverlayOperation.operationValid {
-  background-color: rgba(76, 175, 80, 0.15);
-  color: var(--success-green);
+	background-color: rgba(76, 175, 80, 0.15);
+	color: var(--success-green);
 }
 
 .dragOverlayOperation.operationInvalid {
-  background-color: rgba(244, 67, 54, 0.15);
-  color: var(--error-red);
+	background-color: rgba(244, 67, 54, 0.15);
+	color: var(--error-red);
 }
 
 .operationIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 16px;
+	height: 16px;
 }
 
 .operationLabel {
-  text-transform: capitalize;
+	text-transform: capitalize;
 }
 
 .dragOverlayHint {
-  font-size: var(--font-size-sm);
-  color: var(--vscode-descriptionForeground);
-  font-style: italic;
+	font-size: var(--font-size-sm);
+	color: var(--vscode-descriptionForeground);
+	font-style: italic;
 }
 
 /* ============================================================================
@@ -516,48 +517,48 @@
  * ============================================================================ */
 
 .commitPreview {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-xs);
 }
 
 .commitPreviewHeader {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm);
 }
 
 .commitHash {
-  font-family: var(--vscode-editor-font-family);
-  font-size: var(--font-size-sm);
-  color: var(--info-blue);
-  font-weight: 600;
+	font-family: var(--vscode-editor-font-family);
+	font-size: var(--font-size-sm);
+	color: var(--info-blue);
+	font-weight: 600;
 }
 
 .commitBranch {
-  font-size: var(--font-size-xs);
-  color: var(--vscode-descriptionForeground);
-  padding: 2px 6px;
-  background-color: rgba(128, 128, 128, 0.15);
-  border-radius: var(--radius-small);
+	font-size: var(--font-size-xs);
+	color: var(--vscode-descriptionForeground);
+	padding: 2px 6px;
+	background-color: rgba(128, 128, 128, 0.15);
+	border-radius: var(--radius-small);
 }
 
 .commitMessage {
-  font-size: var(--font-size-sm);
-  color: var(--vscode-foreground);
-  line-height: 1.4;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+	font-size: var(--font-size-sm);
+	color: var(--vscode-foreground);
+	line-height: 1.4;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .commitMeta {
-  font-size: var(--font-size-xs);
-  color: var(--vscode-descriptionForeground);
+	font-size: var(--font-size-xs);
+	color: var(--vscode-descriptionForeground);
 }
 
 .commitAuthor {
-  font-weight: 500;
+	font-weight: 500;
 }
 
 /* ============================================================================
@@ -565,32 +566,32 @@
  * ============================================================================ */
 
 .branchPreview {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-xs);
 }
 
 .branchIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-  color: var(--branch-feature);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 16px;
+	height: 16px;
+	color: var(--branch-feature);
 }
 
 .branchName {
-  font-family: var(--vscode-editor-font-family);
-  font-size: var(--font-size-sm);
-  font-weight: 500;
+	font-family: var(--vscode-editor-font-family);
+	font-size: var(--font-size-sm);
+	font-weight: 500;
 }
 
 .remoteBadge {
-  font-size: var(--font-size-xs);
-  padding: 2px 6px;
-  background-color: rgba(255, 152, 0, 0.15);
-  color: var(--branch-release);
-  border-radius: var(--radius-small);
+	font-size: var(--font-size-xs);
+	padding: 2px 6px;
+	background-color: rgba(255, 152, 0, 0.15);
+	color: var(--branch-release);
+	border-radius: var(--radius-small);
 }
 
 /* ============================================================================
@@ -598,14 +599,14 @@
  * ============================================================================ */
 
 .branchPointerPreview {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-xs);
 }
 
 .pointerArrow {
-  color: var(--vscode-descriptionForeground);
-  font-family: var(--vscode-editor-font-family);
+	color: var(--vscode-descriptionForeground);
+	font-family: var(--vscode-editor-font-family);
 }
 
 /* ============================================================================
@@ -613,25 +614,25 @@
  * ============================================================================ */
 
 .tagPreview {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-xs);
 }
 
 .tagIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-  color: var(--branch-release);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 16px;
+	height: 16px;
+	color: var(--branch-release);
 }
 
 .tagName {
-  font-family: var(--vscode-editor-font-family);
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  color: var(--branch-release);
+	font-family: var(--vscode-editor-font-family);
+	font-size: var(--font-size-sm);
+	font-weight: 500;
+	color: var(--branch-release);
 }
 
 /* ============================================================================
@@ -639,295 +640,295 @@
  * ============================================================================ */
 
 .operationPreviewOverlay {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 10000;
-  animation: fadeIn var(--animation-fast) ease;
+	position: fixed;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 10000;
+	animation: fadeIn var(--animation-fast) ease;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 .operationPreviewModal {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-lg);
-  width: 90%;
-  max-width: 600px;
-  max-height: 90vh;
-  padding: var(--spacing-lg);
-  background-color: var(--vscode-editor-background);
-  border: 1px solid var(--vscode-widget-border);
-  border-radius: var(--radius-large);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  animation: slideUp var(--animation-normal) ease;
-  overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-lg);
+	width: 90%;
+	max-width: 600px;
+	max-height: 90vh;
+	padding: var(--spacing-lg);
+	background-color: var(--vscode-editor-background);
+	border: 1px solid var(--vscode-widget-border);
+	border-radius: var(--radius-large);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+	animation: slideUp var(--animation-normal) ease;
+	overflow-y: auto;
 }
 
 @keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 /* Preview Header */
 .previewHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .previewTitle {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  margin: 0;
-  font-size: var(--font-size-xl);
-  font-weight: 600;
-  color: var(--vscode-foreground);
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm);
+	margin: 0;
+	font-size: var(--font-size-xl);
+	font-weight: 600;
+	color: var(--vscode-foreground);
 }
 
 .operationTypeIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  color: var(--info-blue);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	color: var(--info-blue);
 }
 
 .previewCloseButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  background: none;
-  border: none;
-  border-radius: var(--radius-small);
-  cursor: pointer;
-  color: var(--vscode-foreground);
-  transition: background-color var(--animation-fast) ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	background: none;
+	border: none;
+	border-radius: var(--radius-small);
+	cursor: pointer;
+	color: var(--vscode-foreground);
+	transition: background-color var(--animation-fast) ease;
 }
 
 .previewCloseButton:hover:not(:disabled) {
-  background-color: var(--vscode-toolbar-hoverBackground);
+	background-color: var(--vscode-toolbar-hoverBackground);
 }
 
 .previewCloseButton:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+	opacity: 0.5;
+	cursor: not-allowed;
 }
 
 /* Preview Description */
 .previewDescription {
-  font-size: var(--font-size-md);
-  color: var(--vscode-foreground);
-  line-height: 1.5;
+	font-size: var(--font-size-md);
+	color: var(--vscode-foreground);
+	line-height: 1.5;
 }
 
 .previewDescription p {
-  margin: 0;
+	margin: 0;
 }
 
 /* Preview Warning */
 .previewWarning {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-md);
-  background-color: rgba(255, 193, 7, 0.1);
-  border: 1px solid var(--warning-yellow);
-  border-radius: var(--radius-medium);
-  font-size: var(--font-size-sm);
-  color: var(--vscode-foreground);
+	display: flex;
+	align-items: flex-start;
+	gap: var(--spacing-sm);
+	padding: var(--spacing-md);
+	background-color: rgba(255, 193, 7, 0.1);
+	border: 1px solid var(--warning-yellow);
+	border-radius: var(--radius-medium);
+	font-size: var(--font-size-sm);
+	color: var(--vscode-foreground);
 }
 
 .previewWarning.warningDanger {
-  background-color: rgba(244, 67, 54, 0.1);
-  border-color: var(--error-red);
+	background-color: rgba(244, 67, 54, 0.1);
+	border-color: var(--error-red);
 }
 
 .previewWarning svg {
-  flex-shrink: 0;
-  width: 16px;
-  height: 16px;
-  color: var(--warning-yellow);
+	flex-shrink: 0;
+	width: 16px;
+	height: 16px;
+	color: var(--warning-yellow);
 }
 
 .previewWarning.warningDanger svg {
-  color: var(--error-red);
+	color: var(--error-red);
 }
 
 /* Preview Visualization */
 .previewVisualization {
-  display: flex;
-  align-items: stretch;
-  gap: var(--spacing-md);
+	display: flex;
+	align-items: stretch;
+	gap: var(--spacing-md);
 }
 
 .visualizationPane {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-md);
-  background-color: var(--vscode-editor-inactiveSelectionBackground);
-  border-radius: var(--radius-medium);
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-sm);
+	padding: var(--spacing-md);
+	background-color: var(--vscode-editor-inactiveSelectionBackground);
+	border-radius: var(--radius-medium);
 }
 
 .visualizationTitle {
-  margin: 0;
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  color: var(--vscode-descriptionForeground);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+	margin: 0;
+	font-size: var(--font-size-sm);
+	font-weight: 600;
+	color: var(--vscode-descriptionForeground);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
 }
 
 .visualizationContent {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 80px;
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 80px;
 }
 
 .visualizationArrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--vscode-descriptionForeground);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--vscode-descriptionForeground);
 }
 
 /* Mini Graph */
 .miniGraph {
-  width: 100%;
-  height: auto;
+	width: 100%;
+	height: auto;
 }
 
 .graphPreview {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
 }
 
 .previewPlaceholder {
-  font-size: var(--font-size-sm);
-  color: var(--vscode-descriptionForeground);
-  font-style: italic;
+	font-size: var(--font-size-sm);
+	color: var(--vscode-descriptionForeground);
+	font-style: italic;
 }
 
 /* Preview Command */
 .previewCommand {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-md);
-  background-color: var(--vscode-textCodeBlock-background);
-  border-radius: var(--radius-medium);
-  overflow-x: auto;
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm);
+	padding: var(--spacing-md);
+	background-color: var(--vscode-textCodeBlock-background);
+	border-radius: var(--radius-medium);
+	overflow-x: auto;
 }
 
 .commandLabel {
-  font-size: var(--font-size-sm);
-  color: var(--vscode-descriptionForeground);
-  white-space: nowrap;
+	font-size: var(--font-size-sm);
+	color: var(--vscode-descriptionForeground);
+	white-space: nowrap;
 }
 
 .commandCode {
-  font-family: var(--vscode-editor-font-family);
-  font-size: var(--font-size-sm);
-  color: var(--vscode-textPreformat-foreground);
+	font-family: var(--vscode-editor-font-family);
+	font-size: var(--font-size-sm);
+	color: var(--vscode-textPreformat-foreground);
 }
 
 /* Preview Actions */
 .previewActions {
-  display: flex;
-  justify-content: flex-end;
-  gap: var(--spacing-sm);
-  padding-top: var(--spacing-md);
-  border-top: 1px solid var(--vscode-widget-border);
+	display: flex;
+	justify-content: flex-end;
+	gap: var(--spacing-sm);
+	padding-top: var(--spacing-md);
+	border-top: 1px solid var(--vscode-widget-border);
 }
 
 .cancelButton,
 .confirmButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border: none;
-  border-radius: var(--radius-small);
-  font-size: var(--font-size-md);
-  font-weight: 500;
-  cursor: pointer;
-  transition:
-    background-color var(--animation-fast) ease,
-    opacity var(--animation-fast) ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--spacing-xs);
+	padding: var(--spacing-sm) var(--spacing-lg);
+	border: none;
+	border-radius: var(--radius-small);
+	font-size: var(--font-size-md);
+	font-weight: 500;
+	cursor: pointer;
+	transition:
+		background-color var(--animation-fast) ease,
+		opacity var(--animation-fast) ease;
 }
 
 .cancelButton {
-  background-color: var(--vscode-button-secondaryBackground);
-  color: var(--vscode-button-secondaryForeground);
+	background-color: var(--vscode-button-secondaryBackground);
+	color: var(--vscode-button-secondaryForeground);
 }
 
 .cancelButton:hover:not(:disabled) {
-  background-color: var(--vscode-button-secondaryHoverBackground);
+	background-color: var(--vscode-button-secondaryHoverBackground);
 }
 
 .confirmButton {
-  background-color: var(--vscode-button-background);
-  color: var(--vscode-button-foreground);
+	background-color: var(--vscode-button-background);
+	color: var(--vscode-button-foreground);
 }
 
 .confirmButton:hover:not(:disabled) {
-  background-color: var(--vscode-button-hoverBackground);
+	background-color: var(--vscode-button-hoverBackground);
 }
 
 .confirmButton.confirmDanger {
-  background-color: var(--error-red);
+	background-color: var(--error-red);
 }
 
 .confirmButton.confirmDanger:hover:not(:disabled) {
-  background-color: #d32f2f;
+	background-color: #d32f2f;
 }
 
 .cancelButton:disabled,
 .confirmButton:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+	opacity: 0.5;
+	cursor: not-allowed;
 }
 
 /* Loading Spinner */
 .spinner {
-  animation: spin 1s linear infinite;
+	animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 /* ============================================================================
@@ -935,20 +936,20 @@
  * ============================================================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .draggable,
-  .droppable,
-  .dropZone,
-  .dropHighlight,
-  .operationPreviewOverlay,
-  .operationPreviewModal,
-  .feedbackIndicator,
-  .dragOverlay,
-  .spinner {
-    transition: none;
-    animation: none;
-  }
+	.draggable,
+	.droppable,
+	.dropZone,
+	.dropHighlight,
+	.operationPreviewOverlay,
+	.operationPreviewModal,
+	.feedbackIndicator,
+	.dragOverlay,
+	.spinner {
+		transition: none;
+		animation: none;
+	}
 
-  .dropHighlight {
-    opacity: 0.75;
-  }
+	.dropHighlight {
+		opacity: 0.75;
+	}
 }

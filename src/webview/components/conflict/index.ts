@@ -3,28 +3,27 @@
  * Export all conflict-related components for easy importing
  */
 
-export { ConflictResolutionView } from "./ConflictResolutionView";
 export type {
-  ConflictResolutionViewProps,
-  ConflictStateInfo,
-  ThreeWayDiffData,
-} from "./ConflictResolutionView";
-
-export { ConflictFileList } from "./ConflictFileList";
+	ConflictActionsProps,
+	ConflictOperation,
+} from './ConflictActions';
+export { ConflictActions } from './ConflictActions';
 export type {
-  ConflictFileListProps,
-  ConflictedFileInfo,
-} from "./ConflictFileList";
-
-export { ThreeWayDiff } from "./ThreeWayDiff";
+	ConflictedFileInfo,
+	ConflictFileListProps,
+} from './ConflictFileList';
+export { ConflictFileList } from './ConflictFileList';
 export type {
-  ThreeWayDiffProps,
-  DiffLine,
-  ConflictHunkDisplay,
-} from "./ThreeWayDiff";
-
-export { HunkActions } from "./HunkActions";
-export type { HunkActionsProps, HunkResolution } from "./HunkActions";
-
-export { ConflictActions } from "./ConflictActions";
-export type { ConflictActionsProps, ConflictOperation } from "./ConflictActions";
+	ConflictResolutionViewProps,
+	ConflictStateInfo,
+	ThreeWayDiffData,
+} from './ConflictResolutionView';
+export { ConflictResolutionView } from './ConflictResolutionView';
+export type { HunkActionsProps, HunkResolution } from './HunkActions';
+export { HunkActions } from './HunkActions';
+export type {
+	ConflictHunkDisplay,
+	DiffLine,
+	ThreeWayDiffProps,
+} from './ThreeWayDiff';
+export { ThreeWayDiff } from './ThreeWayDiff';

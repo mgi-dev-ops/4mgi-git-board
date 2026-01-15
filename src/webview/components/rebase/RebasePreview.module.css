@@ -6,139 +6,139 @@
 
 /* Container */
 .container {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--border-primary);
-  border-radius: var(--radius-medium);
-  overflow: hidden;
-  max-height: 250px;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid var(--border-primary);
+	border-radius: var(--radius-medium);
+	overflow: hidden;
+	max-height: 250px;
 }
 
 /* Header */
 .header {
-  padding: var(--spacing-sm) var(--spacing-md);
-  background-color: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-primary);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  color: var(--text-secondary);
-  letter-spacing: 0.5px;
+	padding: var(--spacing-sm) var(--spacing-md);
+	background-color: var(--bg-secondary);
+	border-bottom: 1px solid var(--border-primary);
+	font-size: var(--font-size-sm);
+	font-weight: 600;
+	color: var(--text-secondary);
+	letter-spacing: 0.5px;
 }
 
 /* Subheader */
 .subheader {
-  padding: var(--spacing-xs) var(--spacing-md);
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
-  background-color: var(--bg-tertiary);
-  border-bottom: 1px solid var(--border-primary);
+	padding: var(--spacing-xs) var(--spacing-md);
+	font-size: var(--font-size-sm);
+	color: var(--text-secondary);
+	background-color: var(--bg-tertiary);
+	border-bottom: 1px solid var(--border-primary);
 }
 
 /* Commit list */
 .commitList {
-  flex: 1;
-  overflow-y: auto;
-  padding: var(--spacing-sm) 0;
+	flex: 1;
+	overflow-y: auto;
+	padding: var(--spacing-sm) 0;
 }
 
 /* Commit item */
 .commitItem {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-xs) var(--spacing-md);
-  font-size: var(--font-size-sm);
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm);
+	padding: var(--spacing-xs) var(--spacing-md);
+	font-size: var(--font-size-sm);
 }
 
 /* Status-based styling */
 .status-kept {
-  color: var(--text-primary);
+	color: var(--text-primary);
 }
 
 .status-kept .icon {
-  color: var(--success-green);
+	color: var(--success-green);
 }
 
 .status-squashed {
-  color: var(--text-secondary);
-  padding-left: calc(var(--spacing-md) + 16px);
+	color: var(--text-secondary);
+	padding-left: calc(var(--spacing-md) + 16px);
 }
 
 .status-squashed .icon {
-  color: var(--graph-line-2);
+	color: var(--graph-line-2);
 }
 
 .status-reworded {
-  color: var(--text-primary);
+	color: var(--text-primary);
 }
 
 .status-reworded .icon {
-  color: var(--info-blue);
+	color: var(--info-blue);
 }
 
 .status-edited {
-  color: var(--text-primary);
+	color: var(--text-primary);
 }
 
 .status-edited .icon {
-  color: var(--warning-yellow);
+	color: var(--warning-yellow);
 }
 
 .status-dropped {
-  color: var(--text-muted);
-  text-decoration: line-through;
+	color: var(--text-muted);
+	text-decoration: line-through;
 }
 
 .status-dropped .icon {
-  color: var(--status-deleted);
+	color: var(--status-deleted);
 }
 
 /* Icon */
 .icon {
-  flex-shrink: 0;
-  width: 16px;
-  text-align: center;
-  font-size: var(--font-size-sm);
+	flex-shrink: 0;
+	width: 16px;
+	text-align: center;
+	font-size: var(--font-size-sm);
 }
 
 /* SHA */
 .sha {
-  flex-shrink: 0;
-  font-family: var(--vscode-editor-font-family, monospace);
-  font-size: var(--font-size-xs);
-  color: var(--text-link);
+	flex-shrink: 0;
+	font-family: var(--vscode-editor-font-family, monospace);
+	font-size: var(--font-size-xs);
+	color: var(--text-link);
 }
 
 /* Message */
 .message {
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 /* Note (status description) */
 .note {
-  flex-shrink: 0;
-  font-size: var(--font-size-xs);
-  color: var(--text-muted);
-  font-style: italic;
+	flex-shrink: 0;
+	font-size: var(--font-size-xs);
+	color: var(--text-muted);
+	font-style: italic;
 }
 
 /* Scrollbar */
 .commitList::-webkit-scrollbar {
-  width: 6px;
+	width: 6px;
 }
 
 .commitList::-webkit-scrollbar-track {
-  background: transparent;
+	background: transparent;
 }
 
 .commitList::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-bg);
-  border-radius: 3px;
+	background-color: var(--scrollbar-bg);
+	border-radius: 3px;
 }
 
 .commitList::-webkit-scrollbar-thumb:hover {
-  background-color: var(--scrollbar-hover);
+	background-color: var(--scrollbar-hover);
 }

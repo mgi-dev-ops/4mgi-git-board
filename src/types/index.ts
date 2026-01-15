@@ -3,165 +3,159 @@
  * Re-exports all types from individual modules
  */
 
-// Git types
-export type {
-  // Core entities
-  Author,
-  Ref,
-  Commit,
-  Branch,
-  Stash,
-  // Status types
-  FileStatusType,
-  FileStatus,
-  StatusResult,
-  // Repository info
-  RepositoryInfo,
-  RemoteInfo,
-  // Operation results
-  MergeResult,
-  DiffResult,
-  DiffFile,
-  // Options
-  LogOptions,
-  CommitOptions,
-  MergeOptions,
-  RebaseOptions,
-  // Repository states
-  RepositoryState,
-  ConflictInfo,
-} from './git';
-
 // Azure DevOps types
 export type {
-  Reviewer,
-  PullRequestStatus,
-  PullRequest,
-  WorkItem,
-  PipelineStatusValue,
-  PipelineStatus,
-  PolicyType,
-  PolicyConfiguration,
-  PolicyEvaluationStatus,
-  PolicyEvaluation,
-  BuildStatus,
-  BuildResult,
-  BuildDefinition,
-  BuildDetails,
-  TestOutcome,
-  TestResult,
-  ModuleCoverage,
-  CodeCoverage,
+	BuildDefinition,
+	BuildDetails,
+	BuildResult,
+	BuildStatus,
+	CodeCoverage,
+	ModuleCoverage,
+	PipelineStatus,
+	PipelineStatusValue,
+	PolicyConfiguration,
+	PolicyEvaluation,
+	PolicyEvaluationStatus,
+	PolicyType,
+	PullRequest,
+	PullRequestStatus,
+	Reviewer,
+	TestOutcome,
+	TestResult,
+	WorkItem,
 } from './azure';
-
-// GitHub types
-export type {
-  GitProvider,
-  GitHubReviewer,
-  GitHubPullRequestStatus,
-  GitHubPullRequestState,
-  GitHubMergeableState,
-  GitHubPullRequest,
-  GitHubLabel,
-  GitHubRepository,
-  GitHubUser,
-  GitHubCheckStatus,
-  GitHubCheckConclusion,
-  GitHubCheckRun,
-  GitHubCommitStatusState,
-  GitHubCommitStatus,
-  GitHubCombinedStatus,
-  GitHubAuthResult,
-  GitHubApiError,
-} from './github';
-
-// Message protocol types
-export type {
-  // Request messages
-  RepoGetInfoRequest,
-  RepoGetStatusRequest,
-  GitGetLogRequest,
-  GitCommitRequest,
-  GitAmendRequest,
-  GitGetBranchesRequest,
-  GitCheckoutRequest,
-  GitCreateBranchRequest,
-  GitDeleteBranchRequest,
-  GitMergeRequest,
-  GitRebaseRequest,
-  GitCherryPickRequest,
-  GitStageRequest,
-  GitUnstageRequest,
-  GitStashListRequest,
-  GitStashCreateRequest,
-  GitStashApplyRequest,
-  GitStashDropRequest,
-  AzureGetPRsRequest,
-  AzureCreatePRRequest,
-  AzureGetWorkItemsRequest,
-  AzureLinkWorkItemRequest,
-  AzureGetPipelineStatusRequest,
-  AzureGetPolicyConfigurationsRequest,
-  AzureGetPolicyEvaluationsRequest,
-  AzureGetBuildDetailsRequest,
-  AzureGetTestResultsRequest,
-  AzureGetCodeCoverageRequest,
-  AzureTriggerRebuildRequest,
-  // GitHub requests
-  GitHubGetPRsRequest,
-  GitHubGetPRRequest,
-  GitHubAuthenticateRequest,
-  GitHubSignOutRequest,
-  GitHubGetAuthStatusRequest,
-  GitHubGetCommitStatusRequest,
-  GitHubCreatePRRequest,
-  WebviewToExtensionMessage,
-  // Response messages
-  RepoInfoResponse,
-  RepoStatusResponse,
-  GitLogResponse,
-  GitBranchesResponse,
-  GitStashesResponse,
-  AzurePRsResponse,
-  AzureWorkItemsResponse,
-  AzurePipelineStatusResponse,
-  AzurePolicyConfigurationsResponse,
-  AzurePolicyEvaluationsResponse,
-  AzureBuildDetailsResponse,
-  AzureTestResultsResponse,
-  AzureCodeCoverageResponse,
-  AzureRebuildTriggeredResponse,
-  // GitHub responses
-  GitHubPRsResponse,
-  GitHubPRResponse,
-  GitHubAuthStatusResponse,
-  GitHubAuthResultResponse,
-  GitHubCommitStatusResponse,
-  GitHubPRCreatedResponse,
-  // Provider
-  ProviderDetectedResponse,
-  // Events
-  GitChangedEvent,
-  GitConflictEvent,
-  ErrorResponse,
-  ExtensionToWebviewMessage,
-  Message,
-} from './messages';
-
-// Message type guards
-export {
-  isRequestMessage,
-  isResponseMessage,
-  isErrorMessage,
-} from './messages';
-
 // Configuration types
 export type {
-  GraphOrientation,
-  DefaultProvider,
-  ExtensionConfig,
-  ConfigKey,
-  PartialConfig,
+	ConfigKey,
+	DefaultProvider,
+	ExtensionConfig,
+	GraphOrientation,
+	PartialConfig,
 } from './config';
-
 export { DEFAULT_CONFIG } from './config';
+// Git types
+export type {
+	// Core entities
+	Author,
+	Branch,
+	Commit,
+	CommitOptions,
+	ConflictInfo,
+	DiffFile,
+	DiffResult,
+	FileStatus,
+	// Status types
+	FileStatusType,
+	// Options
+	LogOptions,
+	MergeOptions,
+	// Operation results
+	MergeResult,
+	RebaseOptions,
+	Ref,
+	RemoteInfo,
+	// Repository info
+	RepositoryInfo,
+	// Repository states
+	RepositoryState,
+	Stash,
+	StatusResult,
+} from './git';
+// GitHub types
+export type {
+	GitHubApiError,
+	GitHubAuthResult,
+	GitHubCheckConclusion,
+	GitHubCheckRun,
+	GitHubCheckStatus,
+	GitHubCombinedStatus,
+	GitHubCommitStatus,
+	GitHubCommitStatusState,
+	GitHubLabel,
+	GitHubMergeableState,
+	GitHubPullRequest,
+	GitHubPullRequestState,
+	GitHubPullRequestStatus,
+	GitHubRepository,
+	GitHubReviewer,
+	GitHubUser,
+	GitProvider,
+} from './github';
+// Message protocol types
+export type {
+	AzureBuildDetailsResponse,
+	AzureCodeCoverageResponse,
+	AzureCreatePRRequest,
+	AzureGetBuildDetailsRequest,
+	AzureGetCodeCoverageRequest,
+	AzureGetPipelineStatusRequest,
+	AzureGetPolicyConfigurationsRequest,
+	AzureGetPolicyEvaluationsRequest,
+	AzureGetPRsRequest,
+	AzureGetTestResultsRequest,
+	AzureGetWorkItemsRequest,
+	AzureLinkWorkItemRequest,
+	AzurePipelineStatusResponse,
+	AzurePolicyConfigurationsResponse,
+	AzurePolicyEvaluationsResponse,
+	AzurePRsResponse,
+	AzureRebuildTriggeredResponse,
+	AzureTestResultsResponse,
+	AzureTriggerRebuildRequest,
+	AzureWorkItemsResponse,
+	ErrorResponse,
+	ExtensionToWebviewMessage,
+	GitAmendRequest,
+	GitBranchesResponse,
+	// Events
+	GitChangedEvent,
+	GitCheckoutRequest,
+	GitCherryPickRequest,
+	GitCommitRequest,
+	GitConflictEvent,
+	GitCreateBranchRequest,
+	GitDeleteBranchRequest,
+	GitGetBranchesRequest,
+	GitGetLogRequest,
+	GitHubAuthenticateRequest,
+	GitHubAuthResultResponse,
+	GitHubAuthStatusResponse,
+	GitHubCommitStatusResponse,
+	GitHubCreatePRRequest,
+	GitHubGetAuthStatusRequest,
+	GitHubGetCommitStatusRequest,
+	GitHubGetPRRequest,
+	// GitHub requests
+	GitHubGetPRsRequest,
+	GitHubPRCreatedResponse,
+	GitHubPRResponse,
+	// GitHub responses
+	GitHubPRsResponse,
+	GitHubSignOutRequest,
+	GitLogResponse,
+	GitMergeRequest,
+	GitRebaseRequest,
+	GitStageRequest,
+	GitStashApplyRequest,
+	GitStashCreateRequest,
+	GitStashDropRequest,
+	GitStashesResponse,
+	GitStashListRequest,
+	GitUnstageRequest,
+	Message,
+	// Provider
+	ProviderDetectedResponse,
+	// Request messages
+	RepoGetInfoRequest,
+	RepoGetStatusRequest,
+	// Response messages
+	RepoInfoResponse,
+	RepoStatusResponse,
+	WebviewToExtensionMessage,
+} from './messages';
+// Message type guards
+export {
+	isErrorMessage,
+	isRequestMessage,
+	isResponseMessage,
+} from './messages';

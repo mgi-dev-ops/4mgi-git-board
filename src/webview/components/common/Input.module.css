@@ -1,159 +1,161 @@
 /* Input.module.css - Input component styles */
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-  width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-xs);
+	width: 100%;
 }
 
 .label {
-  font-size: var(--font-size-sm);
-  color: var(--vscode-foreground);
-  font-weight: 500;
+	font-size: var(--font-size-sm);
+	color: var(--vscode-foreground);
+	font-weight: 500;
 }
 
 .inputContainer {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 100%;
 }
 
 .input,
 .textarea {
-  width: 100%;
-  padding: var(--spacing-sm) var(--spacing-sm);
-  font-family: var(--vscode-font-family);
-  font-size: var(--font-size-md);
-  color: var(--vscode-input-foreground);
-  background-color: var(--vscode-input-background);
-  border: 1px solid var(--vscode-input-border, transparent);
-  border-radius: var(--radius-small);
-  outline: none;
-  transition: border-color var(--animation-fast) ease,
-    box-shadow var(--animation-fast) ease;
+	width: 100%;
+	padding: var(--spacing-sm) var(--spacing-sm);
+	font-family: var(--vscode-font-family);
+	font-size: var(--font-size-md);
+	color: var(--vscode-input-foreground);
+	background-color: var(--vscode-input-background);
+	border: 1px solid var(--vscode-input-border, transparent);
+	border-radius: var(--radius-small);
+	outline: none;
+	transition:
+		border-color var(--animation-fast) ease,
+		box-shadow var(--animation-fast) ease;
 }
 
 .input::placeholder,
 .textarea::placeholder {
-  color: var(--vscode-input-placeholderForeground);
+	color: var(--vscode-input-placeholderForeground);
 }
 
 .input:focus,
 .textarea:focus {
-  border-color: var(--vscode-focusBorder);
+	border-color: var(--vscode-focusBorder);
 }
 
 .input:disabled,
 .textarea:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+	opacity: 0.5;
+	cursor: not-allowed;
 }
 
 /* Search input */
 .searchInput .input {
-  padding-left: calc(var(--spacing-sm) + 20px);
+	padding-left: calc(var(--spacing-sm) + 20px);
 }
 
 /* Left/right icon adjustments */
 .hasLeftIcon .input {
-  padding-left: calc(var(--spacing-sm) + 20px);
+	padding-left: calc(var(--spacing-sm) + 20px);
 }
 
 .hasRightIcon .input {
-  padding-right: calc(var(--spacing-sm) + 24px);
+	padding-right: calc(var(--spacing-sm) + 24px);
 }
 
 /* Icon positioning */
 .leftIcon,
 .rightIcon {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--vscode-input-placeholderForeground);
-  pointer-events: none;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--vscode-input-placeholderForeground);
+	pointer-events: none;
 }
 
 .leftIcon {
-  left: var(--spacing-sm);
+	left: var(--spacing-sm);
 }
 
 .rightIcon {
-  right: var(--spacing-sm);
+	right: var(--spacing-sm);
 }
 
 /* Clear button */
 .clearButton {
-  position: absolute;
-  right: var(--spacing-xs);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  padding: 0;
-  background: transparent;
-  border: none;
-  border-radius: var(--radius-small);
-  color: var(--vscode-input-placeholderForeground);
-  cursor: pointer;
-  transition: color var(--animation-fast) ease,
-    background-color var(--animation-fast) ease;
+	position: absolute;
+	right: var(--spacing-xs);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	padding: 0;
+	background: transparent;
+	border: none;
+	border-radius: var(--radius-small);
+	color: var(--vscode-input-placeholderForeground);
+	cursor: pointer;
+	transition:
+		color var(--animation-fast) ease,
+		background-color var(--animation-fast) ease;
 }
 
 .clearButton:hover {
-  color: var(--vscode-foreground);
-  background-color: var(--vscode-toolbar-hoverBackground);
+	color: var(--vscode-foreground);
+	background-color: var(--vscode-toolbar-hoverBackground);
 }
 
 /* Textarea specific */
 .textarea {
-  min-height: 80px;
-  line-height: 1.4;
+	min-height: 80px;
+	line-height: 1.4;
 }
 
 /* Error state */
 .hasError .input,
 .hasError .textarea {
-  border-color: var(--error-red);
+	border-color: var(--error-red);
 }
 
 .hasError .input:focus,
 .hasError .textarea:focus {
-  border-color: var(--error-red);
-  box-shadow: 0 0 0 1px var(--error-red);
+	border-color: var(--error-red);
+	box-shadow: 0 0 0 1px var(--error-red);
 }
 
 /* Helper and error text */
 .helperText {
-  font-size: var(--font-size-xs);
-  color: var(--vscode-descriptionForeground);
+	font-size: var(--font-size-xs);
+	color: var(--vscode-descriptionForeground);
 }
 
 .errorText {
-  font-size: var(--font-size-xs);
-  color: var(--error-red);
+	font-size: var(--font-size-xs);
+	color: var(--error-red);
 }
 
 /* Disabled state */
 .disabled {
-  opacity: 0.5;
-  pointer-events: none;
+	opacity: 0.5;
+	pointer-events: none;
 }
 
 /* Hide native search clear button */
 .input[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-  appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .input,
-  .textarea,
-  .clearButton {
-    transition: none;
-  }
+	.input,
+	.textarea,
+	.clearButton {
+		transition: none;
+	}
 }

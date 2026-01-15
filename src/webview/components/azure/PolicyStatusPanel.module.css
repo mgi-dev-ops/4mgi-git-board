@@ -1,310 +1,311 @@
 /* PolicyStatusPanel.module.css - Policy status panel styles */
 
 .panel {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  padding: var(--spacing-md);
-  background-color: var(--vscode-sideBar-background);
-  border-left: 1px solid var(--vscode-sideBar-border);
-  height: 100%;
-  overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-md);
+	padding: var(--spacing-md);
+	background-color: var(--vscode-sideBar-background);
+	border-left: 1px solid var(--vscode-sideBar-border);
+	height: 100%;
+	overflow-y: auto;
 }
 
 /* Header */
 .header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-sm);
 }
 
 .headerTop {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .title {
-  margin: 0;
-  font-size: var(--font-size-lg);
-  font-weight: 600;
-  color: var(--vscode-foreground);
+	margin: 0;
+	font-size: var(--font-size-lg);
+	font-weight: 600;
+	color: var(--vscode-foreground);
 }
 
 .closeButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  color: var(--vscode-icon-foreground);
-  cursor: pointer;
-  border-radius: var(--radius-small);
-  transition: background-color var(--animation-fast) ease;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	padding: 0;
+	border: none;
+	background: transparent;
+	color: var(--vscode-icon-foreground);
+	cursor: pointer;
+	border-radius: var(--radius-small);
+	transition: background-color var(--animation-fast) ease;
 }
 
 .closeButton:hover {
-  background-color: var(--vscode-toolbar-hoverBackground);
+	background-color: var(--vscode-toolbar-hoverBackground);
 }
 
 .closeButton:focus {
-  outline: 1px solid var(--vscode-focusBorder);
-  outline-offset: 1px;
+	outline: 1px solid var(--vscode-focusBorder);
+	outline-offset: 1px;
 }
 
 .closeButton svg {
-  width: 16px;
-  height: 16px;
+	width: 16px;
+	height: 16px;
 }
 
 .branchName {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 10px;
-  background-color: var(--vscode-badge-background);
-  color: var(--vscode-badge-foreground);
-  border-radius: var(--radius-small);
-  font-family: var(--vscode-editor-font-family, monospace);
-  font-size: var(--font-size-md);
-  width: fit-content;
+	display: inline-flex;
+	align-items: center;
+	padding: 4px 10px;
+	background-color: var(--vscode-badge-background);
+	color: var(--vscode-badge-foreground);
+	border-radius: var(--radius-small);
+	font-family: var(--vscode-editor-font-family, monospace);
+	font-size: var(--font-size-md);
+	width: fit-content;
 }
 
 /* Summary */
 .summary {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-md);
-  background-color: var(--vscode-editor-background);
-  border-radius: var(--radius-medium);
-  border: 1px solid var(--vscode-widget-border);
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-sm);
+	padding: var(--spacing-md);
+	background-color: var(--vscode-editor-background);
+	border-radius: var(--radius-medium);
+	border: 1px solid var(--vscode-widget-border);
 }
 
 .summaryBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--radius-small);
-  font-weight: 600;
-  font-size: var(--font-size-md);
-  width: fit-content;
+	display: inline-flex;
+	align-items: center;
+	gap: var(--spacing-sm);
+	padding: var(--spacing-sm) var(--spacing-md);
+	border-radius: var(--radius-small);
+	font-weight: 600;
+	font-size: var(--font-size-md);
+	width: fit-content;
 }
 
 .summaryBadge svg {
-  width: 16px;
-  height: 16px;
+	width: 16px;
+	height: 16px;
 }
 
 .satisfied {
-  background-color: rgba(16, 124, 16, 0.15);
-  color: var(--policy-approved, #107c10);
-  border: 1px solid rgba(16, 124, 16, 0.3);
+	background-color: rgba(16, 124, 16, 0.15);
+	color: var(--policy-approved, #107c10);
+	border: 1px solid rgba(16, 124, 16, 0.3);
 }
 
 .notSatisfied {
-  background-color: rgba(255, 185, 0, 0.15);
-  color: var(--policy-pending, #ffb900);
-  border: 1px solid rgba(255, 185, 0, 0.3);
+	background-color: rgba(255, 185, 0, 0.15);
+	color: var(--policy-pending, #ffb900);
+	border: 1px solid rgba(255, 185, 0, 0.3);
 }
 
 .summaryStats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-md);
-  font-size: var(--font-size-sm);
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--spacing-md);
+	font-size: var(--font-size-sm);
 }
 
 .statApproved {
-  color: var(--policy-approved, #107c10);
+	color: var(--policy-approved, #107c10);
 }
 
 .statRejected {
-  color: var(--policy-rejected, #d13438);
+	color: var(--policy-rejected, #d13438);
 }
 
 .statPending {
-  color: var(--policy-pending, #ffb900);
+	color: var(--policy-pending, #ffb900);
 }
 
 /* Section */
 .section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-sm);
 }
 
 /* Policy List */
 .policyList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
 }
 
 .policyItem {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-sm);
-  border-radius: var(--radius-small);
-  transition: background-color var(--animation-fast) ease;
+	display: flex;
+	align-items: flex-start;
+	gap: var(--spacing-sm);
+	padding: var(--spacing-sm);
+	border-radius: var(--radius-small);
+	transition: background-color var(--animation-fast) ease;
 }
 
 .policyItem:hover {
-  background-color: var(--vscode-list-hoverBackground);
+	background-color: var(--vscode-list-hoverBackground);
 }
 
 .policyItem.blocking {
-  background-color: rgba(209, 52, 56, 0.05);
+	background-color: rgba(209, 52, 56, 0.05);
 }
 
 .policyItem.blocking:hover {
-  background-color: rgba(209, 52, 56, 0.1);
+	background-color: rgba(209, 52, 56, 0.1);
 }
 
 /* Status Icon */
 .statusIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 18px;
+	height: 18px;
+	margin-top: 2px;
 }
 
 .statusIcon svg {
-  width: 14px;
-  height: 14px;
+	width: 14px;
+	height: 14px;
 }
 
 .statusApproved {
-  color: var(--policy-approved, #107c10);
+	color: var(--policy-approved, #107c10);
 }
 
 .statusRejected {
-  color: var(--policy-rejected, #d13438);
+	color: var(--policy-rejected, #d13438);
 }
 
 .statusPending {
-  color: var(--policy-pending, #ffb900);
+	color: var(--policy-pending, #ffb900);
 }
 
 .statusNA {
-  color: var(--vscode-descriptionForeground);
-  opacity: 0.6;
+	color: var(--vscode-descriptionForeground);
+	opacity: 0.6;
 }
 
 /* Policy Content */
 .policyContent {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	min-width: 0;
 }
 
 .policyName {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  font-size: var(--font-size-md);
-  color: var(--vscode-foreground);
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm);
+	font-size: var(--font-size-md);
+	color: var(--vscode-foreground);
 }
 
 .blockingBadge {
-  display: inline-flex;
-  padding: 1px 6px;
-  background-color: rgba(209, 52, 56, 0.15);
-  color: var(--policy-rejected, #d13438);
-  border-radius: var(--radius-small);
-  font-size: calc(var(--font-size-sm) - 1px);
-  font-weight: 500;
+	display: inline-flex;
+	padding: 1px 6px;
+	background-color: rgba(209, 52, 56, 0.15);
+	color: var(--policy-rejected, #d13438);
+	border-radius: var(--radius-small);
+	font-size: calc(var(--font-size-sm) - 1px);
+	font-weight: 500;
 }
 
 .policyDetails {
-  font-size: var(--font-size-sm);
-  color: var(--vscode-descriptionForeground);
+	font-size: var(--font-size-sm);
+	color: var(--vscode-descriptionForeground);
 }
 
 /* View Details Button */
 .viewDetailsButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  color: var(--vscode-icon-foreground);
-  cursor: pointer;
-  border-radius: var(--radius-small);
-  opacity: 0;
-  transition: opacity var(--animation-fast) ease,
-    background-color var(--animation-fast) ease;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	padding: 0;
+	border: none;
+	background: transparent;
+	color: var(--vscode-icon-foreground);
+	cursor: pointer;
+	border-radius: var(--radius-small);
+	opacity: 0;
+	transition:
+		opacity var(--animation-fast) ease,
+		background-color var(--animation-fast) ease;
 }
 
 .policyItem:hover .viewDetailsButton {
-  opacity: 1;
+	opacity: 1;
 }
 
 .viewDetailsButton:hover {
-  background-color: var(--vscode-toolbar-hoverBackground);
+	background-color: var(--vscode-toolbar-hoverBackground);
 }
 
 .viewDetailsButton:focus {
-  outline: 1px solid var(--vscode-focusBorder);
-  outline-offset: 1px;
-  opacity: 1;
+	outline: 1px solid var(--vscode-focusBorder);
+	outline-offset: 1px;
+	opacity: 1;
 }
 
 .viewDetailsButton svg {
-  width: 14px;
-  height: 14px;
+	width: 14px;
+	height: 14px;
 }
 
 /* Legend */
 .legend {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-  padding-top: var(--spacing-md);
-  border-top: 1px solid var(--vscode-widget-border);
-  margin-top: auto;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-xs);
+	padding-top: var(--spacing-md);
+	border-top: 1px solid var(--vscode-widget-border);
+	margin-top: auto;
 }
 
 .legendTitle {
-  font-size: var(--font-size-sm);
-  color: var(--vscode-descriptionForeground);
-  font-weight: 500;
+	font-size: var(--font-size-sm);
+	color: var(--vscode-descriptionForeground);
+	font-weight: 500;
 }
 
 .legendItems {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-md);
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--spacing-md);
 }
 
 .legendItem {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  font-size: var(--font-size-sm);
-  color: var(--vscode-foreground);
+	display: inline-flex;
+	align-items: center;
+	gap: var(--spacing-xs);
+	font-size: var(--font-size-sm);
+	color: var(--vscode-foreground);
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .closeButton,
-  .policyItem,
-  .viewDetailsButton {
-    transition: none;
-  }
+	.closeButton,
+	.policyItem,
+	.viewDetailsButton {
+		transition: none;
+	}
 }

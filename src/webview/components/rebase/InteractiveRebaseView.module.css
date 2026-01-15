@@ -6,181 +6,185 @@
 
 /* Container - Full screen modal */
 .container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--bg-primary);
-  z-index: 1000;
-  overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--bg-primary);
+	z-index: 1000;
+	overflow: hidden;
 }
 
 /* Header */
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--spacing-md) var(--spacing-lg);
-  background-color: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-primary);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--spacing-md) var(--spacing-lg);
+	background-color: var(--bg-secondary);
+	border-bottom: 1px solid var(--border-primary);
 }
 
 .title {
-  margin: 0;
-  font-size: var(--font-size-xl);
-  font-weight: 600;
-  color: var(--text-primary);
-  letter-spacing: 0.5px;
+	margin: 0;
+	font-size: var(--font-size-xl);
+	font-weight: 600;
+	color: var(--text-primary);
+	letter-spacing: 0.5px;
 }
 
 .closeButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  background: transparent;
-  border: none;
-  border-radius: var(--radius-small);
-  color: var(--text-secondary);
-  font-size: 20px;
-  cursor: pointer;
-  transition: background-color var(--animation-fast), color var(--animation-fast);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	background: transparent;
+	border: none;
+	border-radius: var(--radius-small);
+	color: var(--text-secondary);
+	font-size: 20px;
+	cursor: pointer;
+	transition:
+		background-color var(--animation-fast),
+		color var(--animation-fast);
 }
 
 .closeButton:hover {
-  background-color: var(--bg-hover);
-  color: var(--text-primary);
+	background-color: var(--bg-hover);
+	color: var(--text-primary);
 }
 
 .closeButton:focus {
-  outline: 1px solid var(--border-focus);
-  outline-offset: -1px;
+	outline: 1px solid var(--border-focus);
+	outline-offset: -1px;
 }
 
 /* Onto info */
 .ontoInfo {
-  padding: var(--spacing-sm) var(--spacing-lg);
-  background-color: var(--bg-tertiary);
-  border-bottom: 1px solid var(--border-primary);
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
+	padding: var(--spacing-sm) var(--spacing-lg);
+	background-color: var(--bg-tertiary);
+	border-bottom: 1px solid var(--border-primary);
+	font-size: var(--font-size-sm);
+	color: var(--text-secondary);
 }
 
 .ontoInfo strong {
-  color: var(--text-primary);
-  font-weight: 600;
+	color: var(--text-primary);
+	font-weight: 600;
 }
 
 /* Main content area */
 .content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  padding: var(--spacing-lg);
-  gap: var(--spacing-lg);
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	padding: var(--spacing-lg);
+	gap: var(--spacing-lg);
 }
 
 /* Commit list section */
 .commitListSection {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--border-primary);
-  border-radius: var(--radius-medium);
-  overflow: hidden;
-  min-height: 200px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid var(--border-primary);
+	border-radius: var(--radius-medium);
+	overflow: hidden;
+	min-height: 200px;
 }
 
 .sectionHeader {
-  padding: var(--spacing-sm) var(--spacing-md);
-  background-color: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-primary);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  color: var(--text-secondary);
-  letter-spacing: 0.5px;
+	padding: var(--spacing-sm) var(--spacing-md);
+	background-color: var(--bg-secondary);
+	border-bottom: 1px solid var(--border-primary);
+	font-size: var(--font-size-sm);
+	font-weight: 600;
+	color: var(--text-secondary);
+	letter-spacing: 0.5px;
 }
 
 .commitList {
-  flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
+	flex: 1;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 /* Warning message */
 .warning {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-md) var(--spacing-lg);
-  background-color: rgba(255, 193, 7, 0.1);
-  border: 1px solid var(--warning-yellow);
-  border-radius: var(--radius-medium);
-  font-size: var(--font-size-sm);
-  color: var(--text-primary);
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm);
+	padding: var(--spacing-md) var(--spacing-lg);
+	background-color: rgba(255, 193, 7, 0.1);
+	border: 1px solid var(--warning-yellow);
+	border-radius: var(--radius-medium);
+	font-size: var(--font-size-sm);
+	color: var(--text-primary);
 }
 
 .warningIcon {
-  flex-shrink: 0;
+	flex-shrink: 0;
 }
 
 /* Footer with action buttons */
 .footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--spacing-md) var(--spacing-lg);
-  background-color: var(--bg-secondary);
-  border-top: 1px solid var(--border-primary);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--spacing-md) var(--spacing-lg);
+	background-color: var(--bg-secondary);
+	border-top: 1px solid var(--border-primary);
 }
 
 .cancelButton,
 .startButton {
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border: none;
-  border-radius: var(--radius-medium);
-  font-size: var(--font-size-md);
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color var(--animation-fast), opacity var(--animation-fast);
+	padding: var(--spacing-sm) var(--spacing-lg);
+	border: none;
+	border-radius: var(--radius-medium);
+	font-size: var(--font-size-md);
+	font-weight: 500;
+	cursor: pointer;
+	transition:
+		background-color var(--animation-fast),
+		opacity var(--animation-fast);
 }
 
 .cancelButton {
-  background-color: var(--button-secondary-bg);
-  color: var(--button-secondary-fg);
+	background-color: var(--button-secondary-bg);
+	color: var(--button-secondary-fg);
 }
 
 .cancelButton:hover {
-  background-color: var(--button-secondary-hover-bg);
+	background-color: var(--button-secondary-hover-bg);
 }
 
 .startButton {
-  background-color: var(--button-bg);
-  color: var(--button-fg);
+	background-color: var(--button-bg);
+	color: var(--button-fg);
 }
 
 .startButton:hover {
-  background-color: var(--button-hover-bg);
+	background-color: var(--button-hover-bg);
 }
 
 .cancelButton:focus,
 .startButton:focus {
-  outline: 2px solid var(--border-focus);
-  outline-offset: 2px;
+	outline: 2px solid var(--border-focus);
+	outline-offset: 2px;
 }
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .container,
-  .closeButton,
-  .cancelButton,
-  .startButton {
-    transition: none;
-  }
+	.container,
+	.closeButton,
+	.cancelButton,
+	.startButton {
+		transition: none;
+	}
 }

@@ -10,16 +10,16 @@
    ============================================================================= */
 
 .container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background: var(--vscode-editor-background, #1e1e1e);
-  color: var(--vscode-editor-foreground, #d4d4d4);
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background: var(--vscode-editor-background, #1e1e1e);
+	color: var(--vscode-editor-foreground, #d4d4d4);
 }
 
 .container:focus {
-  outline: none;
+	outline: none;
 }
 
 /* =============================================================================
@@ -27,37 +27,37 @@
    ============================================================================= */
 
 .svgContainer {
-  position: relative;
-  min-height: 100%;
+	position: relative;
+	min-height: 100%;
 }
 
 .svgContainer svg {
-  display: block;
+	display: block;
 }
 
 .svgContainer.vertical {
-  width: 60px;
-  min-height: 100%;
+	width: 60px;
+	min-height: 100%;
 }
 
 .svgContainer.horizontal {
-  height: 60px;
-  min-width: 100%;
+	height: 60px;
+	min-width: 100%;
 }
 
 /* Override @gitgraph/js default styles */
 .svgContainer svg circle {
-  cursor: pointer;
-  transition: transform var(--animation-fast, 200ms) ease;
+	cursor: pointer;
+	transition: transform var(--animation-fast, 200ms) ease;
 }
 
 .svgContainer svg circle:hover {
-  transform: scale(1.2);
+	transform: scale(1.2);
 }
 
 .svgContainer svg path {
-  stroke-linecap: round;
-  stroke-linejoin: round;
+	stroke-linecap: round;
+	stroke-linejoin: round;
 }
 
 /* =============================================================================
@@ -65,16 +65,16 @@
    ============================================================================= */
 
 .nodesOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
 }
 
 .nodesOverlay > * {
-  pointer-events: auto;
+	pointer-events: auto;
 }
 
 /* =============================================================================
@@ -82,28 +82,28 @@
    ============================================================================= */
 
 .loading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-  color: var(--vscode-descriptionForeground, #808080);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 200px;
+	color: var(--vscode-descriptionForeground, #808080);
 }
 
 .loadingSpinner {
-  width: 24px;
-  height: 24px;
-  border: 2px solid var(--vscode-progressBar-background, #0e70c0);
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: var(--spacing-md, 12px);
+	width: 24px;
+	height: 24px;
+	border: 2px solid var(--vscode-progressBar-background, #0e70c0);
+	border-top-color: transparent;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+	margin-bottom: var(--spacing-md, 12px);
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 /* =============================================================================
@@ -111,48 +111,48 @@
    ============================================================================= */
 
 .tooltip {
-  position: fixed;
-  z-index: 1000;
-  max-width: 400px;
-  padding: var(--spacing-sm, 8px) var(--spacing-md, 12px);
-  background: var(--vscode-editorHoverWidget-background, #252526);
-  border: 1px solid var(--vscode-editorHoverWidget-border, #454545);
-  border-radius: var(--radius-medium, 4px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  pointer-events: none;
-  animation: fadeIn var(--animation-fast, 200ms) ease;
+	position: fixed;
+	z-index: 1000;
+	max-width: 400px;
+	padding: var(--spacing-sm, 8px) var(--spacing-md, 12px);
+	background: var(--vscode-editorHoverWidget-background, #252526);
+	border: 1px solid var(--vscode-editorHoverWidget-border, #454545);
+	border-radius: var(--radius-medium, 4px);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+	pointer-events: none;
+	animation: fadeIn var(--animation-fast, 200ms) ease;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(-4px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .tooltipHash {
-  font-family: var(--vscode-editor-font-family, monospace);
-  font-size: var(--font-size-sm, 12px);
-  color: var(--vscode-textLink-foreground, #3794ff);
-  margin-bottom: var(--spacing-xs, 4px);
+	font-family: var(--vscode-editor-font-family, monospace);
+	font-size: var(--font-size-sm, 12px);
+	color: var(--vscode-textLink-foreground, #3794ff);
+	margin-bottom: var(--spacing-xs, 4px);
 }
 
 .tooltipMessage {
-  font-size: var(--font-size-md, 13px);
-  color: var(--vscode-editor-foreground, #d4d4d4);
-  margin-bottom: var(--spacing-xs, 4px);
-  word-wrap: break-word;
+	font-size: var(--font-size-md, 13px);
+	color: var(--vscode-editor-foreground, #d4d4d4);
+	margin-bottom: var(--spacing-xs, 4px);
+	word-wrap: break-word;
 }
 
 .tooltipMeta {
-  display: flex;
-  gap: var(--spacing-md, 12px);
-  font-size: var(--font-size-xs, 10px);
-  color: var(--vscode-descriptionForeground, #808080);
+	display: flex;
+	gap: var(--spacing-md, 12px);
+	font-size: var(--font-size-xs, 10px);
+	color: var(--vscode-descriptionForeground, #808080);
 }
 
 /* =============================================================================
@@ -162,26 +162,26 @@
 /* These classes can be used to style specific branch lines */
 .branchMain svg path[data-branch="main"],
 .branchMain svg path[data-branch="master"] {
-  stroke: var(--graph-line-1, #4caf50);
+	stroke: var(--graph-line-1, #4caf50);
 }
 
 .branchDevelop svg path[data-branch="develop"],
 .branchDevelop svg path[data-branch="development"],
 .branchDevelop svg path[data-branch="dev"] {
-  stroke: var(--graph-line-2, #2196f3);
+	stroke: var(--graph-line-2, #2196f3);
 }
 
 .branchFeature svg path[data-branch*="feature"] {
-  stroke: var(--graph-line-3, #9c27b0);
+	stroke: var(--graph-line-3, #9c27b0);
 }
 
 .branchRelease svg path[data-branch*="release"] {
-  stroke: var(--graph-line-4, #ff9800);
+	stroke: var(--graph-line-4, #ff9800);
 }
 
 .branchHotfix svg path[data-branch*="hotfix"],
 .branchHotfix svg path[data-branch*="bugfix"] {
-  stroke: var(--graph-line-5, #f44336);
+	stroke: var(--graph-line-5, #f44336);
 }
 
 /* =============================================================================
@@ -189,35 +189,35 @@
    ============================================================================= */
 
 .svgContainer svg circle[data-type="feat"] {
-  fill: var(--badge-feat, #4caf50);
+	fill: var(--badge-feat, #4caf50);
 }
 
 .svgContainer svg circle[data-type="fix"] {
-  fill: var(--badge-fix, #f44336);
+	fill: var(--badge-fix, #f44336);
 }
 
 .svgContainer svg circle[data-type="chore"] {
-  fill: var(--badge-chore, #9e9e9e);
+	fill: var(--badge-chore, #9e9e9e);
 }
 
 .svgContainer svg circle[data-type="refactor"] {
-  fill: var(--badge-refactor, #2196f3);
+	fill: var(--badge-refactor, #2196f3);
 }
 
 .svgContainer svg circle[data-type="docs"] {
-  fill: var(--badge-docs, #9c27b0);
+	fill: var(--badge-docs, #9c27b0);
 }
 
 .svgContainer svg circle[data-type="style"] {
-  fill: var(--badge-style, #e91e63);
+	fill: var(--badge-style, #e91e63);
 }
 
 .svgContainer svg circle[data-type="test"] {
-  fill: var(--badge-test, #00bcd4);
+	fill: var(--badge-test, #00bcd4);
 }
 
 .svgContainer svg circle[data-type="perf"] {
-  fill: var(--badge-perf, #ff9800);
+	fill: var(--badge-perf, #ff9800);
 }
 
 /* =============================================================================
@@ -225,8 +225,8 @@
    ============================================================================= */
 
 .svgContainer svg circle.selected {
-  stroke: var(--vscode-focusBorder, #007fd4);
-  stroke-width: 3px;
+	stroke: var(--vscode-focusBorder, #007fd4);
+	stroke-width: 3px;
 }
 
 /* =============================================================================
@@ -234,18 +234,18 @@
    ============================================================================= */
 
 @media (max-width: 600px) {
-  .tooltip {
-    max-width: 280px;
-    font-size: var(--font-size-sm, 12px);
-  }
+	.tooltip {
+		max-width: 280px;
+		font-size: var(--font-size-sm, 12px);
+	}
 
-  .svgContainer.vertical {
-    width: 40px;
-  }
+	.svgContainer.vertical {
+		width: 40px;
+	}
 
-  .svgContainer.horizontal {
-    height: 40px;
-  }
+	.svgContainer.horizontal {
+		height: 40px;
+	}
 }
 
 /* =============================================================================
@@ -253,17 +253,17 @@
    ============================================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .loadingSpinner {
-    animation: none;
-  }
+	.loadingSpinner {
+		animation: none;
+	}
 
-  .tooltip {
-    animation: none;
-  }
+	.tooltip {
+		animation: none;
+	}
 
-  .svgContainer svg circle {
-    transition: none;
-  }
+	.svgContainer svg circle {
+		transition: none;
+	}
 }
 
 /* =============================================================================
@@ -271,15 +271,15 @@
    ============================================================================= */
 
 @media (prefers-contrast: high) {
-  .tooltip {
-    border-width: 2px;
-  }
+	.tooltip {
+		border-width: 2px;
+	}
 
-  .svgContainer svg path {
-    stroke-width: 3px;
-  }
+	.svgContainer svg path {
+		stroke-width: 3px;
+	}
 
-  .svgContainer svg circle {
-    stroke-width: 3px;
-  }
+	.svgContainer svg circle {
+		stroke-width: 3px;
+	}
 }

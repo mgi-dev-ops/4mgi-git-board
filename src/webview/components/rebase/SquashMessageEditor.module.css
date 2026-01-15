@@ -6,177 +6,179 @@
 
 /* Overlay */
 .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1100;
-  animation: overlayFade var(--animation-fast) ease-out;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1100;
+	animation: overlayFade var(--animation-fast) ease-out;
 }
 
 @keyframes overlayFade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 /* Dialog */
 .dialog {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  max-width: 700px;
-  max-height: 85vh;
-  background-color: var(--bg-primary);
-  border: 1px solid var(--border-primary);
-  border-radius: var(--radius-large);
-  box-shadow: 0 8px 32px var(--shadow-widget);
-  animation: dialogSlide var(--animation-normal) ease-out;
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	max-width: 700px;
+	max-height: 85vh;
+	background-color: var(--bg-primary);
+	border: 1px solid var(--border-primary);
+	border-radius: var(--radius-large);
+	box-shadow: 0 8px 32px var(--shadow-widget);
+	animation: dialogSlide var(--animation-normal) ease-out;
 }
 
 @keyframes dialogSlide {
-  from {
-    opacity: 0;
-    transform: translateY(-20px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(-20px) scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
 }
 
 /* Header */
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--spacing-md) var(--spacing-lg);
-  background-color: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-primary);
-  border-radius: var(--radius-large) var(--radius-large) 0 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--spacing-md) var(--spacing-lg);
+	background-color: var(--bg-secondary);
+	border-bottom: 1px solid var(--border-primary);
+	border-radius: var(--radius-large) var(--radius-large) 0 0;
 }
 
 .title {
-  margin: 0;
-  font-size: var(--font-size-lg);
-  font-weight: 600;
-  color: var(--text-primary);
+	margin: 0;
+	font-size: var(--font-size-lg);
+	font-weight: 600;
+	color: var(--text-primary);
 }
 
 .closeButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  background: transparent;
-  border: none;
-  border-radius: var(--radius-small);
-  color: var(--text-secondary);
-  font-size: 20px;
-  cursor: pointer;
-  transition: background-color var(--animation-fast), color var(--animation-fast);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	background: transparent;
+	border: none;
+	border-radius: var(--radius-small);
+	color: var(--text-secondary);
+	font-size: 20px;
+	cursor: pointer;
+	transition:
+		background-color var(--animation-fast),
+		color var(--animation-fast);
 }
 
 .closeButton:hover {
-  background-color: var(--bg-hover);
-  color: var(--text-primary);
+	background-color: var(--bg-hover);
+	color: var(--text-primary);
 }
 
 .closeButton:focus {
-  outline: 1px solid var(--border-focus);
+	outline: 1px solid var(--border-focus);
 }
 
 /* Info */
 .info {
-  padding: var(--spacing-sm) var(--spacing-lg);
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
-  background-color: var(--bg-tertiary);
-  border-bottom: 1px solid var(--border-primary);
+	padding: var(--spacing-sm) var(--spacing-lg);
+	font-size: var(--font-size-sm);
+	color: var(--text-secondary);
+	background-color: var(--bg-tertiary);
+	border-bottom: 1px solid var(--border-primary);
 }
 
 /* Commit list */
 .commitList {
-  padding: var(--spacing-sm) var(--spacing-lg);
-  background-color: var(--bg-tertiary);
-  border-bottom: 1px solid var(--border-primary);
-  max-height: 120px;
-  overflow-y: auto;
+	padding: var(--spacing-sm) var(--spacing-lg);
+	background-color: var(--bg-tertiary);
+	border-bottom: 1px solid var(--border-primary);
+	max-height: 120px;
+	overflow-y: auto;
 }
 
 .commitItem {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-xs) 0;
-  font-size: var(--font-size-sm);
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm);
+	padding: var(--spacing-xs) 0;
+	font-size: var(--font-size-sm);
 }
 
 .commitIndex {
-  flex-shrink: 0;
-  width: 20px;
-  color: var(--text-muted);
-  font-weight: 500;
+	flex-shrink: 0;
+	width: 20px;
+	color: var(--text-muted);
+	font-weight: 500;
 }
 
 .commitSha {
-  flex-shrink: 0;
-  font-family: var(--vscode-editor-font-family, monospace);
-  font-size: var(--font-size-xs);
-  color: var(--text-link);
+	flex-shrink: 0;
+	font-family: var(--vscode-editor-font-family, monospace);
+	font-size: var(--font-size-xs);
+	color: var(--text-link);
 }
 
 .commitMessage {
-  flex: 1;
-  color: var(--text-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+	flex: 1;
+	color: var(--text-primary);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 /* Editor container */
 .editorContainer {
-  flex: 1;
-  padding: var(--spacing-lg);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  min-height: 200px;
+	flex: 1;
+	padding: var(--spacing-lg);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	min-height: 200px;
 }
 
 .editor {
-  flex: 1;
-  width: 100%;
-  min-height: 250px;
-  padding: var(--spacing-md);
-  background-color: var(--input-bg);
-  border: 1px solid var(--input-border);
-  border-radius: var(--radius-medium);
-  color: var(--input-fg);
-  font-family: var(--vscode-editor-font-family, monospace);
-  font-size: var(--font-size-md);
-  line-height: 1.5;
-  resize: vertical;
-  transition: border-color var(--animation-fast);
+	flex: 1;
+	width: 100%;
+	min-height: 250px;
+	padding: var(--spacing-md);
+	background-color: var(--input-bg);
+	border: 1px solid var(--input-border);
+	border-radius: var(--radius-medium);
+	color: var(--input-fg);
+	font-family: var(--vscode-editor-font-family, monospace);
+	font-size: var(--font-size-md);
+	line-height: 1.5;
+	resize: vertical;
+	transition: border-color var(--animation-fast);
 }
 
 .editor::placeholder {
-  color: var(--input-placeholder);
+	color: var(--input-placeholder);
 }
 
 .editor:focus {
-  outline: none;
-  border-color: var(--input-active-border);
+	outline: none;
+	border-color: var(--input-active-border);
 }
 
 /* Comment line styling (visual only - actual filtering in component) */
@@ -184,129 +186,131 @@
 
 /* Help text */
 .helpText {
-  padding: var(--spacing-sm) var(--spacing-lg) 0;
-  font-size: var(--font-size-sm);
-  color: var(--text-muted);
+	padding: var(--spacing-sm) var(--spacing-lg) 0;
+	font-size: var(--font-size-sm);
+	color: var(--text-muted);
 }
 
 .helpText code {
-  font-family: var(--vscode-editor-font-family, monospace);
-  background-color: var(--bg-secondary);
-  padding: 1px 4px;
-  border-radius: var(--radius-small);
-  color: var(--text-secondary);
+	font-family: var(--vscode-editor-font-family, monospace);
+	background-color: var(--bg-secondary);
+	padding: 1px 4px;
+	border-radius: var(--radius-small);
+	color: var(--text-secondary);
 }
 
 /* Preview section */
 .preview {
-  margin: var(--spacing-sm) var(--spacing-lg);
-  border: 1px solid var(--border-primary);
-  border-radius: var(--radius-medium);
-  overflow: hidden;
+	margin: var(--spacing-sm) var(--spacing-lg);
+	border: 1px solid var(--border-primary);
+	border-radius: var(--radius-medium);
+	overflow: hidden;
 }
 
 .previewSummary {
-  padding: var(--spacing-sm) var(--spacing-md);
-  background-color: var(--bg-secondary);
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
-  cursor: pointer;
+	padding: var(--spacing-sm) var(--spacing-md);
+	background-color: var(--bg-secondary);
+	font-size: var(--font-size-sm);
+	color: var(--text-secondary);
+	cursor: pointer;
 }
 
 .previewSummary:hover {
-  background-color: var(--bg-hover);
+	background-color: var(--bg-hover);
 }
 
 .previewContent {
-  margin: 0;
-  padding: var(--spacing-md);
-  background-color: var(--bg-tertiary);
-  font-family: var(--vscode-editor-font-family, monospace);
-  font-size: var(--font-size-sm);
-  color: var(--text-primary);
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  max-height: 150px;
-  overflow-y: auto;
+	margin: 0;
+	padding: var(--spacing-md);
+	background-color: var(--bg-tertiary);
+	font-family: var(--vscode-editor-font-family, monospace);
+	font-size: var(--font-size-sm);
+	color: var(--text-primary);
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	max-height: 150px;
+	overflow-y: auto;
 }
 
 /* Footer */
 .footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--spacing-md) var(--spacing-lg);
-  background-color: var(--bg-secondary);
-  border-top: 1px solid var(--border-primary);
-  border-radius: 0 0 var(--radius-large) var(--radius-large);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--spacing-md) var(--spacing-lg);
+	background-color: var(--bg-secondary);
+	border-top: 1px solid var(--border-primary);
+	border-radius: 0 0 var(--radius-large) var(--radius-large);
 }
 
 .abortButton,
 .continueButton {
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border: none;
-  border-radius: var(--radius-medium);
-  font-size: var(--font-size-md);
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color var(--animation-fast), opacity var(--animation-fast);
+	padding: var(--spacing-sm) var(--spacing-lg);
+	border: none;
+	border-radius: var(--radius-medium);
+	font-size: var(--font-size-md);
+	font-weight: 500;
+	cursor: pointer;
+	transition:
+		background-color var(--animation-fast),
+		opacity var(--animation-fast);
 }
 
 .abortButton {
-  background-color: rgba(244, 67, 54, 0.2);
-  color: var(--status-deleted);
+	background-color: rgba(244, 67, 54, 0.2);
+	color: var(--status-deleted);
 }
 
 .abortButton:hover {
-  background-color: rgba(244, 67, 54, 0.3);
+	background-color: rgba(244, 67, 54, 0.3);
 }
 
 .continueButton {
-  background-color: var(--button-bg);
-  color: var(--button-fg);
+	background-color: var(--button-bg);
+	color: var(--button-fg);
 }
 
 .continueButton:hover {
-  background-color: var(--button-hover-bg);
+	background-color: var(--button-hover-bg);
 }
 
 .continueButton:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+	opacity: 0.5;
+	cursor: not-allowed;
 }
 
 .abortButton:focus,
 .continueButton:focus {
-  outline: 2px solid var(--border-focus);
-  outline-offset: 2px;
+	outline: 2px solid var(--border-focus);
+	outline-offset: 2px;
 }
 
 /* Scrollbar */
 .commitList::-webkit-scrollbar,
 .previewContent::-webkit-scrollbar {
-  width: 6px;
+	width: 6px;
 }
 
 .commitList::-webkit-scrollbar-track,
 .previewContent::-webkit-scrollbar-track {
-  background: transparent;
+	background: transparent;
 }
 
 .commitList::-webkit-scrollbar-thumb,
 .previewContent::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-bg);
-  border-radius: 3px;
+	background-color: var(--scrollbar-bg);
+	border-radius: 3px;
 }
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .overlay,
-  .dialog,
-  .closeButton,
-  .editor,
-  .abortButton,
-  .continueButton {
-    animation: none;
-    transition: none;
-  }
+	.overlay,
+	.dialog,
+	.closeButton,
+	.editor,
+	.abortButton,
+	.continueButton {
+		animation: none;
+		transition: none;
+	}
 }
