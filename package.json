@@ -168,13 +168,20 @@
         "category": "Git Board"
       }
     ],
-    "views": {
-      "scm": [
+    "viewsContainers": {
+      "activitybar": [
         {
-          "type": "webview",
-          "id": "gitBoard.mainView",
+          "id": "gitBoard",
+          "title": "Git Board",
+          "icon": "$(git-merge)"
+        }
+      ]
+    },
+    "views": {
+      "gitBoard": [
+        {
+          "id": "gitBoard.welcome",
           "name": "Git Board",
-          "icon": "$(git-branch)",
           "contextualTitle": "Git Board"
         }
       ]

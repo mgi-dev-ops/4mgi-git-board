@@ -5,5 +5,4 @@
 export {
 	createGitBoardWebviewProvider,
 	GitBoardWebviewProvider,
-	registerWebviewProvider,
 } from './WebviewProvider';

@@ -5,7 +5,6 @@ import { createGitService, type GitService } from './services/GitService';
 import {
 	createGitBoardWebviewProvider,
 	type GitBoardWebviewProvider,
-	registerWebviewProvider,
 } from './webview/WebviewProvider';
 
 // =============================================================================
@@ -60,18 +59,34 @@ export function activate(context: vscode.ExtensionContext): void {
 	azureAuthProvider = new AzureAuthProvider(context);
 	azureService = createAzureService(azureAuthProvider);
 
-	// Create and register WebviewProvider
+	// Create WebviewProvider
 	webviewProvider = createGitBoardWebviewProvider(context);
-	const webviewDisposable = registerWebviewProvider(context, webviewProvider);
-	context.subscriptions.push(webviewDisposable);
 
 	// Register message handlers
 	registerMessageHandlers(webviewProvider, gitService, azureService);
 
 	// Register commands
 	const openCommand = vscode.commands.registerCommand('gitBoard.open', () => {
-		vscode.commands.executeCommand('gitBoardView.focus');
+		webviewProvider?.show();
 	});
+
+	// Auto-open panel when sidebar icon is clicked
+	const treeView = vscode.window.createTreeView('gitBoard.welcome', {
+		treeDataProvider: {
+			getTreeItem: () => undefined as never,
+			getChildren: () => [],
+		},
+	});
+
+	// Open panel when sidebar icon is clicked, then close sidebar
+	treeView.onDidChangeVisibility((e) => {
+		if (e.visible) {
+			webviewProvider?.show();
+			// Close sidebar to show only the full page panel
+			vscode.commands.executeCommand('workbench.action.closeSidebar');
+		}
+	});
+	context.subscriptions.push(treeView);
 
 	const refreshCommand = vscode.commands.registerCommand(
 		'gitBoard.refresh',

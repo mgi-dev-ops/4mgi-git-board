@@ -1,6 +1,6 @@
 /**
  * WebviewProvider
- * VS Code WebviewViewProvider implementation for Git Board panel
+ * VS Code WebviewPanel implementation for Git Board (full page editor)
  */
 
 import * as vscode from 'vscode';
@@ -14,10 +14,10 @@ import type { EventMessage, RequestMessage } from '../../core/messages/types';
 // WebviewProvider Class
 // =============================================================================
 
-export class GitBoardWebviewProvider implements vscode.WebviewViewProvider {
+export class GitBoardWebviewProvider {
 	public static readonly viewType = 'gitBoard.mainView';
 
-	private view?: vscode.WebviewView;
+	private panel?: vscode.WebviewPanel;
 	private messageProtocol: MessageProtocol;
 	private messageListener?: vscode.Disposable;
 
@@ -51,64 +51,81 @@ export class GitBoardWebviewProvider implements vscode.WebviewViewProvider {
 	 * Check if webview is visible
 	 */
 	public isVisible(): boolean {
-		return this.view?.visible ?? false;
+		return this.panel?.visible ?? false;
 	}
 
 	/**
 	 * Refresh the webview content
 	 */
 	public refresh(): void {
-		if (this.view) {
+		if (this.panel) {
 			this.sendEvent({ type: 'git/changed' });
 		}
 	}
 
 	/**
-	 * WebviewViewProvider implementation
+	 * Show or create the webview panel
 	 */
-	public resolveWebviewView(
-		webviewView: vscode.WebviewView,
-		_context: vscode.WebviewViewResolveContext,
-		_token: vscode.CancellationToken,
-	): void | Thenable<void> {
-		this.view = webviewView;
+	public show(): void {
+		// If panel exists, reveal it
+		if (this.panel) {
+			this.panel.reveal(vscode.ViewColumn.One);
+			return;
+		}
 
-		// Configure webview options
-		webviewView.webview.options = {
-			enableScripts: true,
-			localResourceRoots: [
-				vscode.Uri.joinPath(this.extensionUri, 'dist'),
-				vscode.Uri.joinPath(this.extensionUri, 'media'),
-			],
-		};
+		// Create new panel
+		this.panel = vscode.window.createWebviewPanel(
+			GitBoardWebviewProvider.viewType,
+			'Git Board',
+			vscode.ViewColumn.One,
+			{
+				enableScripts: true,
+				retainContextWhenHidden: true,
+				localResourceRoots: [
+					vscode.Uri.joinPath(this.extensionUri, 'dist'),
+					vscode.Uri.joinPath(this.extensionUri, 'media'),
+					vscode.Uri.joinPath(this.extensionUri, 'node_modules', '@vscode/codicons', 'dist'),
+				],
+			},
+		);
+
+		// Set panel icon
+		this.panel.iconPath = new vscode.ThemeIcon('git-merge');
 
 		// Set HTML content
-		webviewView.webview.html = this.getHtmlContent(webviewView.webview);
+		this.panel.webview.html = this.getHtmlContent(this.panel.webview);
 
 		// Setup message protocol
-		this.messageProtocol.setWebview(webviewView.webview);
+		this.messageProtocol.setWebview(this.panel.webview);
 
 		// Setup message listener
-		this.messageListener = webviewView.webview.onDidReceiveMessage(
+		this.messageListener = this.panel.webview.onDidReceiveMessage(
 			(message: RequestMessage) => this.messageProtocol.handleMessage(message),
 			undefined,
 			this.extensionContext.subscriptions,
 		);
 
-		// Handle webview disposal
-		webviewView.onDidDispose(() => {
+		// Handle panel disposal
+		this.panel.onDidDispose(() => {
 			this.messageListener?.dispose();
 			this.messageProtocol.clearWebview();
-			this.view = undefined;
+			this.panel = undefined;
 		});
 
 		// Handle visibility changes
-		webviewView.onDidChangeVisibility(() => {
-			if (webviewView.visible) {
-				// Webview became visible - refresh data
+		this.panel.onDidChangeViewState(() => {
+			if (this.panel?.visible) {
+				// Panel became visible - refresh data
 				this.sendEvent({ type: 'git/changed' });
 			}
 		});
+	}
+
+	/**
+	 * Dispose the panel
+	 */
+	public dispose(): void {
+		this.panel?.dispose();
 	}
 
 	/**
@@ -184,23 +201,4 @@ export function createGitBoardWebviewProvider(
 	context: vscode.ExtensionContext,
 ): GitBoardWebviewProvider {
 	return new GitBoardWebviewProvider(context, context.extensionUri);
-}
-
-// =============================================================================
-// Registration helper
-// =============================================================================
-
-export function registerWebviewProvider(
-	_context: vscode.ExtensionContext,
-	provider: GitBoardWebviewProvider,
-): vscode.Disposable {
-	return vscode.window.registerWebviewViewProvider(
-		GitBoardWebviewProvider.viewType,
-		provider,
-		{
-			webviewOptions: {
-				retainContextWhenHidden: true,
-			},
-		},
-	);
 }
