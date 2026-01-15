@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
+import { vscode } from '../vscodeApi';
 
 // ============================================================================
 // Types
@@ -194,25 +195,9 @@ const initialState: GitState = {
 // VS Code API Helper
 // ============================================================================
 
-declare function acquireVsCodeApi(): {
-	postMessage: (message: unknown) => void;
-	getState: () => unknown;
-	setState: (state: unknown) => void;
-};
-
-let vscodeApi: ReturnType<typeof acquireVsCodeApi> | null = null;
-
-function getVsCodeApi() {
-	if (!vscodeApi && typeof acquireVsCodeApi !== 'undefined') {
-		vscodeApi = acquireVsCodeApi();
-	}
-	return vscodeApi;
-}
-
 function postMessage(type: string, payload?: Record<string, unknown>) {
-	const api = getVsCodeApi();
-	if (api) {
-		api.postMessage({ type, ...payload });
+	if (vscode) {
+		vscode.postMessage({ type, ...payload });
 	} else {
 		console.warn(
 			'[GitStore] VS Code API not available, message not sent:',

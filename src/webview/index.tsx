@@ -1,20 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
+import { vscode } from './vscodeApi';
 import './styles/global.css';
-
-// Type for VS Code API (defined in vscode.d.ts)
-type VsCodeApi = {
-	postMessage(message: unknown): void;
-	getState<T = unknown>(): T | undefined;
-	setState<T>(newState: T): T;
-};
-
-/**
- * Acquire VS Code API instance
- * Can only be called once per webview session
- */
-const vscode: VsCodeApi = acquireVsCodeApi();
 
 /**
  * Get the current VS Code theme kind
@@ -97,7 +85,7 @@ function initialize(): void {
 	);
 
 	// Notify extension that webview is ready
-	vscode.postMessage({ type: 'webview-ready' });
+	vscode?.postMessage({ type: 'webview-ready' });
 }
 
 // Initialize when DOM is ready
@@ -106,6 +94,3 @@ if (document.readyState === 'loading') {
 } else {
 	initialize();
 }
-
-// Export vscode API for use in other modules
-export { vscode };
