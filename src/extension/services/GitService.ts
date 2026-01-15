@@ -346,10 +346,13 @@ export class GitService {
 			const localBranchList = mapBranchSummaryToBranches(
 				localBranches as unknown as SimpleGitBranchSummary,
 				trackingInfo,
+				false, // not remote branches
 			);
 
 			const remoteBranchList = mapBranchSummaryToBranches(
 				remoteBranches as unknown as SimpleGitBranchSummary,
+				undefined, // no tracking info for remote branches
+				true, // these are remote branches
 			);
 
 			return [...localBranchList, ...remoteBranchList];

@@ -183,6 +183,9 @@ export function mapLogEntryToCommit(entry: SimpleGitLogEntry): Commit {
 
 /**
  * Map simple-git branch info to domain Branch
+ * @param summary - Branch summary from simple-git
+ * @param trackingInfo - Tracking info for local branches
+ * @param isRemoteBranches - If true, treat all branches as remote branches
  */
 export function mapBranchSummaryToBranches(
 	summary: SimpleGitBranchSummary,
@@ -190,20 +193,32 @@ export function mapBranchSummaryToBranches(
 		string,
 		{ ahead: number; behind: number; tracking?: string }
 	>,
+	isRemoteBranches = false,
 ): Branch[] {
 	const branches: Branch[] = [];
 
 	for (const [name, info] of Object.entries(summary.branches)) {
 		const tracking = trackingInfo?.get(name);
-		const isRemote = name.startsWith('remotes/');
-		const cleanName = isRemote ? name.replace(/^remotes\//, '') : name;
+		// Check for remotes/ prefix OR if explicitly marked as remote branches
+		const hasRemotePrefix = name.startsWith('remotes/');
+		const isRemote = hasRemotePrefix || isRemoteBranches;
+		const cleanName = hasRemotePrefix ? name.replace(/^remotes\//, '') : name;
+
+		// For remote branches without remotes/ prefix (from git branch -r),
+		// extract remote name from branch name (e.g., "origin/main" -> "origin")
+		let remoteName: string | undefined;
+		if (isRemote) {
+			remoteName = cleanName.includes('/')
+				? cleanName.split('/')[0]
+				: undefined;
+		}
 
 		branches.push({
 			name: cleanName,
 			current: info.current,
 			commit: info.commit,
 			label: info.label,
-			remote: isRemote ? cleanName.split('/')[0] : undefined,
+			remote: remoteName,
 			tracking: tracking?.tracking,
 			ahead: tracking?.ahead || 0,
 			behind: tracking?.behind || 0,

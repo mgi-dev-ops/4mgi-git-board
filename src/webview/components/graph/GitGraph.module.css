@@ -61,7 +61,29 @@
 }
 
 /* =============================================================================
-   Nodes Overlay (Custom Commit Nodes)
+   Commit List
+   ============================================================================= */
+
+.commitList {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	padding: var(--spacing-sm, 8px) 0;
+}
+
+.commitRow {
+	border-left: 2px solid #6e7681;
+	margin-left: var(--spacing-md, 12px);
+	padding-left: var(--spacing-sm, 8px);
+	transition: background-color 0.15s ease;
+}
+
+.commitRow:hover {
+	background-color: var(--vscode-list-hoverBackground, rgba(255, 255, 255, 0.05));
+}
+
+/* =============================================================================
+   Nodes Overlay (Custom Commit Nodes) - Legacy, kept for compatibility
    ============================================================================= */
 
 .nodesOverlay {

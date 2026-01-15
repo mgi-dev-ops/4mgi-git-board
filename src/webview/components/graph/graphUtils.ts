@@ -401,6 +401,18 @@ export function formatFullDate(dateString: string): string {
 // =============================================================================
 
 /**
+ * Clean up ref name by removing HEAD pointer prefix
+ * "HEAD -> develop" becomes "develop"
+ */
+function cleanRefName(ref: string): string {
+	// Remove "HEAD -> " prefix if present
+	if (ref.startsWith('HEAD -> ')) {
+		return ref.replace('HEAD -> ', '');
+	}
+	return ref;
+}
+
+/**
  * Convert GitCommit from store to GraphCommit for rendering
  */
 export function convertToGraphCommit(
@@ -409,10 +421,11 @@ export function convertToGraphCommit(
 ): GraphCommit {
 	const parsedType = parseCommitType(commit.message);
 
-	// Extract branch refs and tag refs
-	const branchRefs = commit.refs.filter(
-		(ref) => !ref.startsWith('tag:') && ref !== 'HEAD',
-	);
+	// Extract branch refs and tag refs, cleaning up HEAD pointer refs
+	const branchRefs = commit.refs
+		.filter((ref) => !ref.startsWith('tag:') && ref !== 'HEAD')
+		.map(cleanRefName)
+		.filter((ref) => ref.length > 0 && ref !== 'HEAD');
 	const tagRefs = commit.refs
 		.filter((ref) => ref.startsWith('tag:'))
 		.map((ref) => ref.replace('tag:', '').trim());
@@ -620,9 +633,14 @@ export function buildCommitToBranchMap(
 export function extractBranchNames(refs: string[]): string[] {
 	return refs
 		.filter((ref) => !ref.startsWith('tag:') && ref !== 'HEAD')
-		.map((ref) =>
-			ref.replace(/^refs\/heads\//, '').replace(/^refs\/remotes\//, ''),
-		);
+		.map((ref) => {
+			// Clean up HEAD pointer prefix
+			let cleaned = ref.startsWith('HEAD -> ') ? ref.replace('HEAD -> ', '') : ref;
+			// Remove refs/heads/ and refs/remotes/ prefixes
+			cleaned = cleaned.replace(/^refs\/heads\//, '').replace(/^refs\/remotes\//, '');
+			return cleaned;
+		})
+		.filter((ref) => ref.length > 0 && ref !== 'HEAD');
 }
 
 /**

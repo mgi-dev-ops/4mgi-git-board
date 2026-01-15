@@ -492,3 +492,4 @@ export const selectRemoteBranches = (state: GitState) =>
 	state.branches.filter((b) => b.isRemote);
 export const selectHasChanges = (state: GitState) =>
 	state.status ? !state.status.isClean : false;
+export const selectTags = (state: GitState) => state.tags;

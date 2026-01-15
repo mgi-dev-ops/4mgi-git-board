@@ -1,5 +1,6 @@
 import type React from 'react';
 import { useEffect, useCallback } from 'react';
+import { GitGraph } from './components/graph';
 import { Layout } from './components/layout';
 import { useMessageHandler } from './hooks/useMessageHandler';
 import {
@@ -99,6 +100,7 @@ export const App: React.FC = () => {
 	const fetchAll = useGitStore((state) => state.fetchAll);
 	const setCommits = useGitStore((state) => state.setCommits);
 	const setBranches = useGitStore((state) => state.setBranches);
+	const setCurrentBranch = useGitStore((state) => state.setCurrentBranch);
 	const setStatus = useGitStore((state) => state.setStatus);
 	const setStashes = useGitStore((state) => state.setStashes);
 	const setLoading = useGitStore((state) => state.setLoading);
@@ -115,9 +117,15 @@ export const App: React.FC = () => {
 
 	const handleGitBranches = useCallback(
 		(payload: Branch[]) => {
-			setBranches(payload.map(mapBranch));
+			const mappedBranches = payload.map(mapBranch);
+			setBranches(mappedBranches);
+			// Set current branch from the branch marked as head
+			const headBranch = mappedBranches.find((b) => b.isHead && !b.isRemote);
+			if (headBranch) {
+				setCurrentBranch(headBranch.name);
+			}
 		},
-		[setBranches],
+		[setBranches, setCurrentBranch],
 	);
 
 	const handleGitStashes = useCallback(
@@ -232,9 +240,7 @@ export const App: React.FC = () => {
 					<p className="graph__empty">No commits found</p>
 				)}
 				{!loading && !error && commits.length > 0 && (
-					<div className="graph__placeholder">
-						<p>Git Graph - {commits.length} commits loaded</p>
-					</div>
+					<GitGraph orientation="vertical" maxCommits={100} showTooltips />
 				)}
 			</div>
 		</Layout>

@@ -1,37 +1,23 @@
 /**
  * GitGraph Component
  *
- * Main Git graph visualization component using @gitgraph/js
- * Renders commit history with branch visualization
+ * Git commit history visualization component
+ * Renders commits as an interactive list with branch/tag indicators
  */
 
-import type {
-	BranchUserApi,
-	GitgraphOptions,
-	GitgraphUserApi,
-} from '@gitgraph/js';
-import {
-	createGitgraph,
-	Orientation,
-	TemplateName,
-	templateExtend,
-} from '@gitgraph/js';
 import type React from 'react';
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useGraphInteraction } from '../../hooks/useGraphInteraction';
 import {
 	selectBranches,
 	selectCommits,
-	selectTags,
 	useGitStore,
 } from '../../stores/gitStore';
 import { CommitNode } from './CommitNode';
 import styles from './GitGraph.module.css';
 import {
 	convertCommitsToGraphFormat,
-	GRAPH_LINE_COLORS,
 	type GraphCommit,
-	generateBranchColorMap,
 	getBranchColor,
 } from './graphUtils';
 
@@ -95,17 +81,9 @@ export function GitGraph({
 	onCommitContextMenu,
 	className,
 }: GitGraphProps) {
-	// Refs
-	const containerRef = useRef<HTMLDivElement>(null);
-	const gitgraphRef = useRef<GitgraphUserApi<SVGElement> | null>(null);
-	const branchMapRef = useRef<Map<string, BranchUserApi<SVGElement>>>(
-		new Map(),
-	);
-
 	// Store
 	const commits = useGitStore(selectCommits);
 	const branches = useGitStore(selectBranches);
-	const _tags = useGitStore(selectTags);
 	const selectedCommitHash = useGitStore((state) => state.selectedCommitHash);
 	const selectCommit = useGitStore((state) => state.selectCommit);
 
@@ -129,223 +107,56 @@ export function GitGraph({
 		return convertCommitsToGraphFormat(limitedCommits, branches);
 	}, [commits, branches, maxCommits]);
 
-	// Generate branch color map
-	const branchColorMap = useMemo(
-		() => generateBranchColorMap(branches),
-		[branches],
-	);
+	// Build a simple branch color indicator based on first branchRef or parent chain
+	const commitBranchColors = useMemo(() => {
+		const colorMap = new Map<string, string>();
+		let colorIndex = 0;
+		const branchColorCache = new Map<string, string>();
 
-	// Initialize gitgraph
-	useEffect(() => {
-		if (!containerRef.current) return;
-
-		// Clear previous graph
-		containerRef.current.innerHTML = '';
-		branchMapRef.current.clear();
-
-		// Create template with custom options
-		const template = templateExtend(TemplateName.Metro, {
-			colors: GRAPH_LINE_COLORS,
-			branch: {
-				lineWidth: compact ? 1.5 : 2,
-				spacing: compact ? 30 : 50,
-				mergeStyle: 'bezier' as const,
-				label: {
-					display: false,
-				},
-			},
-			commit: {
-				spacing: compact ? 30 : 40,
-				dot: {
-					size: compact ? 4 : 6,
-					strokeWidth: compact ? 1.5 : 2,
-				},
-				message: {
-					display: false,
-					displayAuthor: false,
-					displayHash: false,
-				},
-			},
-			tag: {
-				pointerWidth: 6,
-			},
-		});
-
-		// Create gitgraph options
-		const options: GitgraphOptions = {
-			template,
-			orientation:
-				orientation === 'horizontal'
-					? Orientation.Horizontal
-					: Orientation.VerticalReverse,
-			author: 'GitBoard',
-			mode: undefined,
-		};
-
-		// Create gitgraph instance
-		gitgraphRef.current = createGitgraph(containerRef.current, options);
-
-		return () => {
-			// Cleanup
-			if (containerRef.current) {
-				containerRef.current.innerHTML = '';
-			}
-			branchMapRef.current.clear();
-		};
-	}, [orientation, compact]);
-
-	// Render commits to graph
-	useEffect(() => {
-		if (!gitgraphRef.current || graphCommits.length === 0) return;
-
-		const gitgraph = gitgraphRef.current;
-		const branchMap = branchMapRef.current;
-
-		// Clear existing branches
-		branchMap.clear();
-
-		// Build commit index for quick lookup
-		const commitIndex = new Map<string, GraphCommit>();
-		graphCommits.forEach((commit) => commitIndex.set(commit.hash, commit));
-
-		// Track which commits belong to which branch
-		const commitBranches = new Map<string, string>();
-
-		// Process commits to determine branch structure
 		graphCommits.forEach((commit) => {
 			if (commit.branchRefs.length > 0) {
-				commitBranches.set(commit.hash, commit.branchRefs[0]);
-			}
-		});
-
-		// Create main branch
-		const mainBranch = gitgraph.branch({
-			name: 'main',
-			style: {
-				color: getBranchColor('main', 0),
-				lineWidth: compact ? 1.5 : 2,
-			},
-		});
-		branchMap.set('main', mainBranch);
-
-		// Track processed commits
-		const processedCommits = new Set<string>();
-
-		// Process commits in reverse order (oldest first)
-		const reversedCommits = [...graphCommits].reverse();
-
-		reversedCommits.forEach((commit) => {
-			if (processedCommits.has(commit.hash)) return;
-
-			// Determine which branch this commit belongs to
-			const branchName = commit.branchRefs[0] || 'main';
-
-			// Get or create branch
-			let branch = branchMap.get(branchName);
-			if (!branch) {
-				// Determine parent branch for branching
-				let parentBranch = mainBranch;
-				if (commit.parents.length > 0) {
-					const parentCommit = commitIndex.get(commit.parents[0]);
-					if (parentCommit) {
-						const parentBranchName = parentCommit.branchRefs[0] || 'main';
-						parentBranch = branchMap.get(parentBranchName) || mainBranch;
-					}
+				const branchName = commit.branchRefs[0];
+				if (!branchColorCache.has(branchName)) {
+					branchColorCache.set(branchName, getBranchColor(branchName, colorIndex++));
 				}
-
-				// Create new branch
-				const branchColor =
-					branchColorMap.get(branchName) ||
-					getBranchColor(branchName, branchMap.size);
-				branch = parentBranch.branch({
-					name: branchName,
-					style: {
-						color: branchColor,
-						lineWidth: compact ? 1.5 : 2,
-					},
-				});
-				branchMap.set(branchName, branch);
-			}
-
-			// Handle merge commits
-			if (commit.isMerge && commit.parents.length >= 2) {
-				// Get the merged branch
-				const mergedParentHash = commit.parents[1];
-				const mergedCommit = commitIndex.get(mergedParentHash);
-				if (mergedCommit) {
-					const mergedBranchName = mergedCommit.branchRefs[0];
-					const mergedBranch = branchMap.get(mergedBranchName || '');
-					if (mergedBranch) {
-						mergedBranch.merge(branch, {
-							subject: commit.message,
-							author: commit.author.name,
-						});
-					} else {
-						// Just add as regular commit if merged branch not found
-						branch.commit({
-							subject: commit.message,
-							author: commit.author.name,
-							hash: commit.shortHash,
-						});
-					}
-				} else {
-					branch.commit({
-						subject: commit.message,
-						author: commit.author.name,
-						hash: commit.shortHash,
-					});
-				}
+				colorMap.set(commit.hash, branchColorCache.get(branchName)!);
 			} else {
-				// Regular commit
-				branch.commit({
-					subject: commit.message,
-					author: commit.author.name,
-					hash: commit.shortHash,
-				});
+				// Default color for commits without branch refs
+				colorMap.set(commit.hash, '#6e7681');
 			}
-
-			// Add tags
-			commit.tagRefs.forEach((tagName) => {
-				branch?.tag(tagName);
-			});
-
-			processedCommits.add(commit.hash);
 		});
-	}, [graphCommits, branchColorMap, compact]);
 
-	// Render custom commit nodes overlay
-	const renderCommitNodes = useCallback(() => {
-		return graphCommits.map((commit, index) => {
+		return colorMap;
+	}, [graphCommits]);
+
+	// Render commit list
+	const renderCommitList = useCallback(() => {
+		return graphCommits.map((commit: GraphCommit) => {
 			const isSelected = commit.hash === selectedCommitHash;
 			const isHovered = commit.hash === hoveredCommit?.hash;
-
-			// Calculate position based on index and orientation
-			const spacing = compact ? 30 : 40;
-			const offset = compact ? 60 : 80;
-
-			const position =
-				orientation === 'horizontal'
-					? { left: index * spacing + offset, top: 10 }
-					: { left: 60, top: index * spacing + offset };
+			const branchColor = commitBranchColors.get(commit.hash) || '#6e7681';
 
 			return (
-				<CommitNode
+				<div
 					key={commit.hash}
-					commit={commit}
-					isSelected={isSelected}
-					isHovered={isHovered}
-					compact={compact}
+					className={styles.commitRow}
 					style={{
-						position: 'absolute',
-						left: position.left,
-						top: position.top,
+						borderLeftColor: branchColor,
+						borderLeftWidth: commit.branchRefs.length > 0 ? '3px' : '2px',
 					}}
-					onClick={() => handleCommitClick(commit)}
-					onDoubleClick={() => handleCommitDoubleClick(commit)}
-					onContextMenu={(e) => handleCommitContextMenu(commit, e)}
-					onMouseEnter={(e) => handleCommitHover(commit, e)}
-					onMouseLeave={() => handleCommitHover(null, null)}
-				/>
+				>
+					<CommitNode
+						commit={commit}
+						isSelected={isSelected}
+						isHovered={isHovered}
+						compact={compact}
+						onClick={() => handleCommitClick(commit)}
+						onDoubleClick={() => handleCommitDoubleClick(commit)}
+						onContextMenu={(e) => handleCommitContextMenu(commit, e)}
+						onMouseEnter={(e) => handleCommitHover(commit, e)}
+						onMouseLeave={() => handleCommitHover(null, null)}
+					/>
+				</div>
 			);
 		});
 	}, [
@@ -353,7 +164,7 @@ export function GitGraph({
 		selectedCommitHash,
 		hoveredCommit,
 		compact,
-		orientation,
+		commitBranchColors,
 		handleCommitClick,
 		handleCommitDoubleClick,
 		handleCommitContextMenu,
@@ -395,15 +206,14 @@ export function GitGraph({
 	}
 
 	return (
-		<div className={`${styles.container} ${className || ''}`}>
-			{/* SVG Graph from @gitgraph/js */}
-			<div
-				ref={containerRef}
-				className={`${styles.svgContainer} ${orientation === 'horizontal' ? styles.horizontal : styles.vertical}`}
-			/>
-
-			{/* Custom Commit Nodes Overlay */}
-			<div className={styles.nodesOverlay}>{renderCommitNodes()}</div>
+		<div
+			className={`${styles.container} ${className || ''}`}
+			data-orientation={orientation}
+		>
+			{/* Commit List */}
+			<div className={styles.commitList}>
+				{renderCommitList()}
+			</div>
 
 			{/* Tooltip */}
 			{renderTooltip()}
